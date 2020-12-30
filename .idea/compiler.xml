@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="house-admin-center" />
+        <module name="house-common" />
+        <module name="house-user-center" />
+        <module name="house-web-utils" />
+        <module name="second-order-center" />
+        <module name="second-payment-center" />
+        <module name="springbootdemo-consumer" />
+        <module name="springbootdemo-entity" />
+        <module name="springbootdemo-eureka" />
+        <module name="springbootdemo-product" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hanfu-web-utils" target="11" />
+      <module name="house-admin-center" target="1.8" />
+      <module name="house-common" target="11" />
+      <module name="house-system" target="11" />
+      <module name="house-user-center" target="1.8" />
+      <module name="house-web-utils" target="1.8" />
+      <module name="second-order-center" target="1.8" />
+      <module name="second-payment-center" target="11" />
+      <module name="springbootdemo-consumer" target="1.8" />
+      <module name="springbootdemo-entity" target="1.8" />
+      <module name="springbootdemo-entity (1)" target="1.8" />
+      <module name="springbootdemo-eureka" target="1.8" />
+      <module name="springbootdemo-product" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

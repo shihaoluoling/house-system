@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/house-admin-center/house-admin-center.iml" filepath="$PROJECT_DIR$/house-admin-center/house-admin-center.iml" />
+      <module fileurl="file://$PROJECT_DIR$/house-common/house-common.iml" filepath="$PROJECT_DIR$/house-common/house-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/house-system.iml" filepath="$PROJECT_DIR$/.idea/house-system.iml" />
+      <module fileurl="file://$PROJECT_DIR$/house-user-center/house-user-center.iml" filepath="$PROJECT_DIR$/house-user-center/house-user-center.iml" />
+      <module fileurl="file://$PROJECT_DIR$/house-web-utils/house-web-utils.iml" filepath="$PROJECT_DIR$/house-web-utils/house-web-utils.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springbootdemo-consumer/springbootdemo-consumer.iml" filepath="$PROJECT_DIR$/springbootdemo-consumer/springbootdemo-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springbootdemo-entity/springbootdemo-entity.iml" filepath="$PROJECT_DIR$/springbootdemo-entity/springbootdemo-entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springbootdemo-eureka/springbootdemo-eureka.iml" filepath="$PROJECT_DIR$/springbootdemo-eureka/springbootdemo-eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springbootdemo-product/springbootdemo-product.iml" filepath="$PROJECT_DIR$/springbootdemo-product/springbootdemo-product.iml" />
+    </modules>
+  </component>
+</project>

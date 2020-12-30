@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FindBugsConfigurable">
+    <option name="make" value="true" />
+    <option name="effort" value="default" />
+    <option name="priority" value="Medium" />
+    <option name="excludeFilter" value="" />
+  </component>
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/springbootdemo-product/pom.xml" />
+        <option value="$PROJECT_DIR$/springbootdemo-eureka/pom.xml" />
+        <option value="$PROJECT_DIR$/springbootdemo-entity/pom.xml" />
+        <option value="$PROJECT_DIR$/springbootdemo-consumer/pom.xml" />
+        <option value="$PROJECT_DIR$/second-user-center/pom.xml" />
+        <option value="$PROJECT_DIR$/second-product-center/pom.xml" />
+        <option value="$PROJECT_DIR$/second-order-center/pom.xml" />
+        <option value="$PROJECT_DIR$/second-payment-center/pom.xml" />
+        <option value="$PROJECT_DIR$/second-common/pom.xml" />
+        <option value="$PROJECT_DIR$/second-web-utils/pom.xml" />
+        <option value="$PROJECT_DIR$/house-common/pom.xml" />
+        <option value="$PROJECT_DIR$/house-admin-center/pom.xml" />
+        <option value="$PROJECT_DIR$/house-web-utils/pom.xml" />
+        <option value="$PROJECT_DIR$/house-user-center/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="false" project-jdk-name="11 (6)" project-jdk-type="JavaSDK" />
+  <component name="SuppressionsComponent">
+    <option name="suppComments" value="[]" />
+  </component>
+</project>

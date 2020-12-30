@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry
+            location="C:\Users\MACHENIKE\.m2\repository\mysql\mysql-connector-java\8.0.17\mysql-connector-java-8.0.17.jar"/>
+    <context id="MySQLTables" targetRuntime="MyBatis3">
+        <property name="xmlFormatter"
+                  value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+        <property name="javaFormatter"
+                  value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <property name="javaFileEncoding" value="UTF-8"/>
+
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+        <!-- 配置生成自定义的类序列化接口的插件 -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
+
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://39.98.126.20:3306/user_center?serverTimezone=UTC"
+                        userId="hanfu_admin" password="Davin1234!">
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="useJSR310Types" value="true"/>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator
+                targetPackage="com.example.user.center.model"
+                targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mappers"
+                         targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.example.user.center.dao"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table schema="user_center" tableName="second_user"
+               domainObjectName="SecondUser">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_store_address"
+               domainObjectName="SecondStoreAddress">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_store"
+               domainObjectName="SecondStore">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_auth"
+               domainObjectName="SecondAuth">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_city"
+               domainObjectName="SecondCity">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_colleges"
+               domainObjectName="SecondColleges">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_authentication"
+               domainObjectName="SecondAuthentication">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_authentication_picture"
+               domainObjectName="SecondAuthenticationPicture">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_authentication_picture"
+               domainObjectName="SecondAuthenticationPicture">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_authentication"
+               domainObjectName="SecondAuthentication">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_category"
+               domainObjectName="SecondCategory">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_goods"
+               domainObjectName="SecondGoods">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_goods_spec"
+               domainObjectName="SecondGoodsSpec">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_product"
+               domainObjectName="SecondProduct">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_product_pictrue"
+               domainObjectName="SecondProductPictrue">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_product_spec"
+               domainObjectName="SecondProductSpec">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_slideshow"
+               domainObjectName="SecondSlideshow">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_slideshow"
+               domainObjectName="SecondSlideshow">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_order"
+               domainObjectName="SecondOrder">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_order_address"
+                               domainObjectName="SecondOrderAddress">
+        <property name="useActualColumnNames" value="false"/>
+        <generatedKey column="id" sqlStatement="mysql"
+                      identity="true"/>
+    </table>
+        <table schema="user_center" tableName="second_order_detail"
+               domainObjectName="SecondOrderDetail">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_pay_order"
+               domainObjectName="SecondPayOrder">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_label"
+               domainObjectName="SecondLabel">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_product_label"
+               domainObjectName="SecondProductLabel">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+<!--商品点赞，收藏，想要，浏览-->
+        <table schema="user_center" tableName="second_product_want"
+               domainObjectName="SecondProductWant">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+<!--评价-->
+        <table schema="user_center" tableName="second_evaluate"
+               domainObjectName="SecondEvaluate">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <!--评价文件-->
+        <table schema="user_center" tableName="second_evaluate_file"
+               domainObjectName="SecondEvaluateFile">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+<!--关注-->
+        <table schema="user_center" tableName="second_attention"
+               domainObjectName="SecondAttention">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+<!--店铺余额-->
+        <table schema="user_center" tableName="second_store_balance"
+               domainObjectName="SecondStoreBalance">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <!--店铺余额收支明细-->
+        <table schema="user_center" tableName="second_store_balance_detail"
+               domainObjectName="SecondStoreBalanceDetail">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+<!--提现申请-->
+        <table schema="user_center" tableName="second_withdrawal"
+               domainObjectName="SecondWithdrawal">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+<!--提现方法-->
+        <table schema="user_center" tableName="second_withdrawal_method"
+               domainObjectName="SecondWithdrawalMethod">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <!--提现审批记录-->
+        <table schema="user_center" tableName="second_withdrawal_audit"
+               domainObjectName="SecondWithdrawalAudit">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <!--提现免手续费额度-->
+        <table schema="user_center" tableName="second_withdrawal_exempt"
+               domainObjectName="SecondWithdrawalExempt">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+<!--积分换购-->
+        <table schema="user_center" tableName="second_integral"
+               domainObjectName="SecondIntegral">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <!--积分换购策略-->
+        <table schema="user_center" tableName="second_integral_strategy"
+               domainObjectName="SecondIntegralStrategy">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <!--积分换购领取记录-->
+        <table schema="user_center" tableName="second_integral_record"
+               domainObjectName="SecondIntegralRecord">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <!--文件-->
+        <table schema="user_center" tableName="second_file"
+               domainObjectName="SecondFile">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <!--商家入驻认证-->
+        <table schema="user_center" tableName="second_store_authentication"
+               domainObjectName="SecondStoreAuthentication">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_store_authentication_picture"
+               domainObjectName="SecondStoreAuthenticationPicture">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+<!--子站点-->
+        <table schema="user_center" tableName="second_son"
+               domainObjectName="SecondSon">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+<!--boss second_boss-->
+        <table schema="user_center" tableName="second_boss"
+               domainObjectName="SecondBoss">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <table schema="user_center" tableName="second_boss_setting"
+               domainObjectName="SecondBossSetting">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <!--支付 second_transaction_flow-->
+        <table schema="user_center" tableName="second_transaction_flow"
+               domainObjectName="SecondTransactionFlow">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <!--商品地址 second_product_address-->
+        <table schema="user_center" tableName="second_product_address"
+               domainObjectName="SecondProductAddress">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+<!--second_message 消息-->
+        <table schema="user_center" tableName="second_message"
+               domainObjectName="SecondMessage">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+        <!--站点和用户-->
+        <table schema="user_center" tableName="second_user_son"
+        domainObjectName="SecondUserSon">
+        <property name="useActualColumnNames" value="false"/>
+        <generatedKey column="id" sqlStatement="mysql"
+        identity="true"/>
+        </table>
+        <!--聊天-->
+        <table schema="user_center" tableName="second_chat"
+               domainObjectName="SecondChat">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/house-admin-center" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/house-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/house-user-center" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/house-web-utils" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/second-entity-center" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springbootdemo-consumer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springbootdemo-entity" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springbootdemo-eureka" charset="UTF-8" />
+  </component>
+</project>

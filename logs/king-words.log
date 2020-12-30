@@ -1,0 +1,146 @@
+2020-12-04 10:30:08.930  INFO 2676 --- [main] c.e.p.c.SecondProductCenterApplication   : No active profile set, falling back to default profiles: default
+2020-12-04 10:30:10.624  INFO 2676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2020-12-04 10:30:10.628  INFO 2676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2020-12-04 10:30:10.778  INFO 2676 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 126ms. Found 0 repository interfaces.
+2020-12-04 10:30:11.227  INFO 2676 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=9ac37e34-9df9-3fee-9dfb-01402a275689
+2020-12-04 10:30:11.291  INFO 2676 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$91681b98] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-12-04 10:30:11.342  INFO 2676 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$cafc5d6a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-12-04 10:30:11.374  INFO 2676 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$e7166067] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2020-12-04 10:30:11.725  INFO 2676 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7002 (http)
+2020-12-04 10:30:11.753  INFO 2676 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-12-04 10:30:11.754  INFO 2676 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
+2020-12-04 10:30:11.761  INFO 2676 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk-11.0.6\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk1.8.0_212\bin;C:\Program Files\Java\jdk1.8.0_212\jre\bin;D:\nodejs\;C:\Users\MACHENIKE\AppData\Local\Microsoft\WindowsApps;C:\Users\MACHENIKE\AppData\Roaming\npm;D:\Microsoft VS Code\bin;.]
+2020-12-04 10:30:12.101  INFO 2676 --- [main] o.a.c.c.C.[.[localhost].[/product]       : Initializing Spring embedded WebApplicationContext
+2020-12-04 10:30:12.101  INFO 2676 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3135 ms
+2020-12-04 10:30:13.963  INFO 2676 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2020-12-04 10:30:14.091  WARN 2676 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-12-04 10:30:14.092  INFO 2676 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-12-04 10:30:14.098  WARN 2676 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2020-12-04 10:30:14.098  INFO 2676 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2020-12-04 10:30:14.203  INFO 2676 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-12-04 10:30:14.748  INFO 2676 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2020-12-04 10:30:15.568  INFO 2676 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2020-12-04 10:30:15.616  INFO 2676 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2020-12-04 10:30:15.803  INFO 2676 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON encoding codec LegacyJacksonJson
+2020-12-04 10:30:15.803  INFO 2676 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using JSON decoding codec LegacyJacksonJson
+2020-12-04 10:30:15.952  INFO 2676 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML encoding codec XStreamXml
+2020-12-04 10:30:15.953  INFO 2676 --- [main] c.n.d.provider.DiscoveryJerseyProvider   : Using XML decoding codec XStreamXml
+2020-12-04 10:30:16.137  INFO 2676 --- [main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 10:30:16.321  INFO 2676 --- [main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2020-12-04 10:30:16.321  INFO 2676 --- [main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2020-12-04 10:30:16.321  INFO 2676 --- [main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2020-12-04 10:30:16.321  INFO 2676 --- [main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2020-12-04 10:30:16.321  INFO 2676 --- [main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2020-12-04 10:30:16.321  INFO 2676 --- [main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2020-12-04 10:30:16.321  INFO 2676 --- [main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2020-12-04 10:30:16.552  INFO 2676 --- [main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2020-12-04 10:30:16.555  INFO 2676 --- [main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 30
+2020-12-04 10:30:16.560  INFO 2676 --- [main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2020-12-04 10:30:16.565  INFO 2676 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1607049016564 with initial instances count: 1
+2020-12-04 10:30:16.567  INFO 2676 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application product-center with eureka with status UP
+2020-12-04 10:30:16.568  INFO 2676 --- [main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1607049016568, current=UP, previous=STARTING]
+2020-12-04 10:30:16.570  INFO 2676 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PRODUCT-CENTER/DESKTOP-E4IRNU3:product-center:7002: registering service...
+2020-12-04 10:30:16.573  INFO 2676 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2020-12-04 10:30:16.598  INFO 2676 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2020-12-04 10:30:16.639  INFO 2676 --- [DiscoveryClient-InstanceInfoReplicator-0] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_PRODUCT-CENTER/DESKTOP-E4IRNU3:product-center:7002 - registration status: 204
+2020-12-04 10:30:16.659  INFO 2676 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2020-12-04 10:30:16.840  WARN 2676 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2020-12-04 10:30:16.858  INFO 2676 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deletedUsingPOST_1
+2020-12-04 10:30:16.882  INFO 2676 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: addProductUsingPOST_1
+2020-12-04 10:30:16.888  INFO 2676 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: deleteProductUsingPOST_1
+2020-12-04 10:30:16.908  INFO 2676 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [39.100.237.144:5672]
+2020-12-04 10:30:17.019  INFO 2676 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#240291d9:0/SimpleConnection@7d8c264 [delegate=amqp://sw@39.100.237.144:5672/, localPort= 57584]
+2020-12-04 10:30:17.201  INFO 2676 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7002 (http) with context path '/product'
+2020-12-04 10:30:17.204  INFO 2676 --- [main] c.e.p.c.SecondProductCenterApplication   : Started SecondProductCenterApplication in 10.475 seconds (JVM running for 14.129)
+2020-12-04 10:31:32.481  INFO 2676 --- [http-nio-7002-exec-1] o.a.c.c.C.[.[localhost].[/product]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-12-04 10:31:32.481  INFO 2676 --- [http-nio-7002-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-12-04 10:31:32.492  INFO 2676 --- [http-nio-7002-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2020-12-04 10:31:32.518  INFO 2676 --- [http-nio-7002-exec-1] c.e.p.c.i.AuthorityInterceptor           : /product/swagger-ui.html{}
+2020-12-04 10:31:32.561  INFO 2676 --- [http-nio-7002-exec-3] c.e.p.c.i.AuthorityInterceptor           : /product/webjars/springfox-swagger-ui/swagger-ui.css{"v":["2.9.2"]}
+2020-12-04 10:31:32.561  INFO 2676 --- [http-nio-7002-exec-2] c.e.p.c.i.AuthorityInterceptor           : /product/webjars/springfox-swagger-ui/springfox.css{"v":["2.9.2"]}
+2020-12-04 10:31:32.561  INFO 2676 --- [http-nio-7002-exec-4] c.e.p.c.i.AuthorityInterceptor           : /product/webjars/springfox-swagger-ui/swagger-ui-bundle.js{"v":["2.9.2"]}
+2020-12-04 10:31:32.562  INFO 2676 --- [http-nio-7002-exec-5] c.e.p.c.i.AuthorityInterceptor           : /product/webjars/springfox-swagger-ui/swagger-ui-standalone-preset.js{"v":["2.9.2"]}
+2020-12-04 10:31:32.562  INFO 2676 --- [http-nio-7002-exec-6] c.e.p.c.i.AuthorityInterceptor           : /product/webjars/springfox-swagger-ui/springfox.js{"v":["2.9.2"]}
+2020-12-04 10:31:33.567  INFO 2676 --- [http-nio-7002-exec-1] c.e.p.c.i.AuthorityInterceptor           : /product/swagger-resources/configuration/ui{}
+2020-12-04 10:31:33.576  INFO 2676 --- [http-nio-7002-exec-2] c.e.p.c.i.AuthorityInterceptor           : /product/webjars/springfox-swagger-ui/favicon-32x32.png{"v":["2.9.2"]}
+2020-12-04 10:31:33.633  INFO 2676 --- [http-nio-7002-exec-3] c.e.p.c.i.AuthorityInterceptor           : /product/swagger-resources/configuration/security{}
+2020-12-04 10:31:33.643  INFO 2676 --- [http-nio-7002-exec-6] c.e.p.c.i.AuthorityInterceptor           : /product/swagger-resources{}
+2020-12-04 10:31:33.687  INFO 2676 --- [http-nio-7002-exec-4] c.e.p.c.i.AuthorityInterceptor           : /product/{}
+2020-12-04 10:31:33.700  INFO 2676 --- [http-nio-7002-exec-4] c.e.p.c.i.AuthorityInterceptor           : /product/error{}
+2020-12-04 10:31:33.758  INFO 2676 --- [http-nio-7002-exec-9] c.e.p.c.i.AuthorityInterceptor           : /product/webjars/springfox-swagger-ui/fonts/titillium-web-v6-latin-700.woff2{}
+2020-12-04 10:31:33.759  INFO 2676 --- [http-nio-7002-exec-10] c.e.p.c.i.AuthorityInterceptor           : /product/csrf{}
+2020-12-04 10:31:33.766  INFO 2676 --- [http-nio-7002-exec-10] c.e.p.c.i.AuthorityInterceptor           : /product/error{}
+2020-12-04 10:31:34.041  INFO 2676 --- [http-nio-7002-exec-8] c.e.p.c.i.AuthorityInterceptor           : /product/webjars/springfox-swagger-ui/fonts/open-sans-v15-latin-700.woff2{}
+2020-12-04 10:31:34.046  INFO 2676 --- [http-nio-7002-exec-7] c.e.p.c.i.AuthorityInterceptor           : /product/webjars/springfox-swagger-ui/fonts/source-code-pro-v7-latin-300.woff2{}
+2020-12-04 10:31:34.048  INFO 2676 --- [http-nio-7002-exec-2] c.e.p.c.i.AuthorityInterceptor           : /product/webjars/springfox-swagger-ui/fonts/open-sans-v15-latin-regular.woff2{}
+2020-12-04 10:31:34.048  INFO 2676 --- [http-nio-7002-exec-1] c.e.p.c.i.AuthorityInterceptor           : /product/webjars/springfox-swagger-ui/fonts/titillium-web-v6-latin-600.woff2{}
+2020-12-04 10:31:35.513  INFO 2676 --- [http-nio-7002-exec-3] c.e.p.c.i.AuthorityInterceptor           : /product/webjars/springfox-swagger-ui/fonts/source-code-pro-v7-latin-600.woff2{}
+2020-12-04 10:31:44.180  INFO 2676 --- [http-nio-7002-exec-5] c.e.p.c.i.AuthorityInterceptor           : /product/webjars/springfox-swagger-ui/fonts/titillium-web-v6-latin-regular.woff2{}
+2020-12-04 10:33:35.551  INFO 2676 --- [http-nio-7002-exec-7] c.e.p.c.i.AuthorityInterceptor           : /product/SecondProduct/addVideoProduct{"checkItemFacePrice":["1000"],"file":["https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=229496119,784077640&fm=26&gp=0.jpg"],"isPutaway":["0"],"itemId":["20096"],"itemPrice":["1000"],"linePrice":["500"],"price":["200"],"productDesc":["描述"],"productName":["视频会员一号"],"quantity":["10"]}
+2020-12-04 10:33:35.569  WARN 2676 --- [http-nio-7002-exec-7] com.zaxxer.hikari.HikariConfig           : dataSource - idleTimeout is close to or more than maxLifetime, disabling it.
+2020-12-04 10:33:35.570  INFO 2676 --- [http-nio-7002-exec-7] com.zaxxer.hikari.HikariDataSource       : dataSource - Starting...
+2020-12-04 10:33:35.970  INFO 2676 --- [http-nio-7002-exec-7] com.zaxxer.hikari.HikariDataSource       : dataSource - Start completed.
+2020-12-04 10:34:20.974  INFO 2676 --- [http-nio-7002-exec-2] c.e.p.c.i.AuthorityInterceptor           : /product/SecondProduct/selectVideoProduct{}
+2020-12-04 10:34:32.115  INFO 2676 --- [http-nio-7002-exec-6] c.e.p.c.i.AuthorityInterceptor           : /product/SecondProduct/deleteVideoProduct{"productId":["1"]}
+2020-12-04 10:34:35.814  INFO 2676 --- [http-nio-7002-exec-9] c.e.p.c.i.AuthorityInterceptor           : /product/SecondProduct/selectVideoProduct{}
+2020-12-04 10:34:45.849  INFO 2676 --- [http-nio-7002-exec-5] c.e.p.c.i.AuthorityInterceptor           : /product/SecondProduct/selectVideoProduct{}
+2020-12-04 10:35:16.324  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 10:40:16.326  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 10:45:16.329  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 10:50:16.330  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 10:55:16.333  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 11:00:16.333  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 11:05:16.336  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 11:10:16.339  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 11:15:16.341  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 11:20:16.344  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 11:25:16.345  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 11:30:16.348  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 11:35:16.350  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 11:40:16.351  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 11:45:16.352  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 11:50:16.354  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 11:55:16.359  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 12:00:16.361  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 12:05:16.362  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 12:10:16.368  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 12:15:16.370  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 12:20:16.371  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 12:25:16.373  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 12:30:16.378  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 12:35:16.380  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 12:40:16.382  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 12:45:16.384  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 12:50:16.385  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 12:55:16.387  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 13:00:16.389  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 13:05:16.390  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 13:10:16.392  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 13:15:16.394  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 13:20:16.395  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 13:25:16.397  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 13:30:16.398  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 13:35:16.402  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 13:40:16.403  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 13:45:16.408  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 13:50:16.414  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 13:55:16.415  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 14:00:16.420  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 14:05:16.426  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 14:10:16.432  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 14:15:16.438  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 14:20:16.440  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 14:25:16.445  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 14:30:16.446  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 14:35:16.453  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 14:40:16.459  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 14:45:16.461  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 14:50:16.467  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 14:55:16.468  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 15:00:16.470  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 15:05:16.471  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 15:10:16.479  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 15:15:16.481  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 15:20:16.486  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 15:25:16.487  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2020-12-04 15:30:16.489  INFO 2676 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
