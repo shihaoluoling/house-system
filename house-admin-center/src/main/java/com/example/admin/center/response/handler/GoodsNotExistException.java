@@ -1,4 +1,4 @@
-package com.example.product.center.response.handler;
+package com.example.admin.center.response.handler;
 
 @SuppressWarnings("serial")
 public class GoodsNotExistException extends Exception {

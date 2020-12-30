@@ -1,4 +1,4 @@
-package com.example.product.center.response.handler;
+package com.example.admin.center.response.handler;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,13 +26,13 @@ public class GlobalExceptionHandler extends com.house.utils.response.handler.Glo
         logger.error("login failed:", e);
     }
 
-    @ExceptionHandler(value = GoodsNotExistException.class)
+    @ExceptionHandler(value = com.example.admin.center.response.handler.GoodsNotExistException.class)
     @ResponseStatus(value = HttpStatus.PRECONDITION_FAILED, reason = "goods is invalid")
     public void goodsNotExistExceptionHandler(HttpServletRequest req, Exception e) {
         logger.error("goods is invalid:", e);
     }
 
-    @ExceptionHandler(value = ProductNotExistException.class)
+    @ExceptionHandler(value = com.example.admin.center.response.handler.ProductNotExistException.class)
     @ResponseStatus(value = HttpStatus.PRECONDITION_FAILED, reason = "product is invalid")
     public void productNotExistExceptionHandler(HttpServletRequest req, Exception e) {
         logger.error("product is invalid:", e);

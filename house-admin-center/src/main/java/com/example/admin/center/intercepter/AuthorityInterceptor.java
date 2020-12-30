@@ -1,4 +1,4 @@
-package com.example.product.center.intercepter;
+package com.example.admin.center.intercepter;
 
 import com.alibaba.fastjson.JSON;
 import org.slf4j.Logger;

@@ -1,4 +1,4 @@
-package com.example.product.center.service;
+package com.example.admin.center.service;
 
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.cloud.openfeign.FeignClient;

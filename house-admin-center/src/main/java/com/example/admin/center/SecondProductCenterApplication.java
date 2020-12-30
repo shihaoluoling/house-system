@@ -1,4 +1,4 @@
-package com.example.product.center;
+package com.example.admin.center;
 
 import com.github.pagehelper.PageHelper;
 import org.mybatis.spring.annotation.MapperScan;
@@ -16,7 +16,7 @@ import java.util.Properties;
 @SpringBootApplication
 @EnableFeignClients
 @EnableEurekaClient
-@MapperScans({@MapperScan("com.example.product.center.dao"),@MapperScan("com.example.product.center.manual.dao")})
+//@MapperScans({@MapperScan("com.example.product.center.dao"),@MapperScan("com.example.product.center.manual.dao")})
 @EnableTransactionManagement//shiwu
 @EnableScheduling//定时器
 public class SecondProductCenterApplication {

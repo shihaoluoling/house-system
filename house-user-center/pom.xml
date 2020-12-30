@@ -117,8 +117,8 @@
             <scope>compile</scope>
         </dependency>
         <dependency>
-            <groupId>house-web-utils</groupId>
-            <artifactId>com.house.utils</artifactId>
+            <groupId>com.house.utils</groupId>
+            <artifactId>house-web-utils</artifactId>
             <version>0.0.1</version>
             <scope>compile</scope>
         </dependency>
