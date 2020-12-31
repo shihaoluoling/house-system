@@ -2,7 +2,7 @@ spring:
   aop:
     proxy-target-class: true
   application:
-    name: product-center
+    name: admin-center
   main:
     allow-bean-definition-overriding: true
   rabbitmq:
