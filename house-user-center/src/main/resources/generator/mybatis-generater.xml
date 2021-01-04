@@ -45,106 +45,113 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 <!--//行政区域-->
-        <table schema="user_center" tableName="house_administrative"
-               domainObjectName="HouseAdministrative">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
-<!--授权登录-->
-        <table schema="user_center" tableName="house_auth"
-               domainObjectName="HouseAuth">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
-<!--标签-->
-        <table schema="user_center" tableName="house_label"
-               domainObjectName="HouseLabel">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
-<!--土地管理-->
-        <table schema="user_center" tableName="house_land"
-               domainObjectName="HouseLand">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
-<!--板块管理-->
-        <table schema="user_center" tableName="house_plate"
-               domainObjectName="HousePlate">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
-<!--板块标签-->
-        <table schema="user_center" tableName="house_plate_label"
-               domainObjectName="HousePlateLabel">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
-<!--楼盘管理-->
-        <table schema="user_center" tableName="house_premises"
-               domainObjectName="HousePremises">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
-<!--楼盘标签-->
-        <table schema="user_center" tableName="house_premises_label"
-               domainObjectName="HousePremisesLabel">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
-<!--楼盘图-->
-        <table schema="user_center" tableName="house_premises_picture"
-               domainObjectName="HousePremisesPicture">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
-<!--项目管理-->
-        <table schema="user_center" tableName="house_project"
-               domainObjectName="HouseProject">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
-<!--系统设置-->
-        <table schema="user_center" tableName="house_system"
-               domainObjectName="HouseSystem">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
-<!--户型-->
-        <table schema="user_center" tableName="house_type"
-               domainObjectName="HouseType">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
-<!--户型组成-->
-        <table schema="user_center" tableName="house_type_constitute"
-               domainObjectName="HouseTypeConstitute">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
-<!--户型图-->
-        <table schema="user_center" tableName="house_type_picture"
-               domainObjectName="HouseTypePicture">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
-<!--用户管理-->
-        <table schema="user_center" tableName="house_user"
-               domainObjectName="HouseUser">
+        <!--<table schema="user_center" tableName="house_administrative"-->
+               <!--domainObjectName="HouseAdministrative">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
+<!--&lt;!&ndash;授权登录&ndash;&gt;-->
+        <!--<table schema="user_center" tableName="house_auth"-->
+               <!--domainObjectName="HouseAuth">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
+<!--&lt;!&ndash;标签&ndash;&gt;-->
+        <!--<table schema="user_center" tableName="house_label"-->
+               <!--domainObjectName="HouseLabel">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
+<!--&lt;!&ndash;土地管理&ndash;&gt;-->
+        <!--<table schema="user_center" tableName="house_land"-->
+               <!--domainObjectName="HouseLand">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
+<!--&lt;!&ndash;板块管理&ndash;&gt;-->
+        <!--<table schema="user_center" tableName="house_plate"-->
+               <!--domainObjectName="HousePlate">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
+<!--&lt;!&ndash;板块标签&ndash;&gt;-->
+        <!--<table schema="user_center" tableName="house_plate_label"-->
+               <!--domainObjectName="HousePlateLabel">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
+<!--&lt;!&ndash;楼盘管理&ndash;&gt;-->
+        <!--<table schema="user_center" tableName="house_premises"-->
+               <!--domainObjectName="HousePremises">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
+<!--&lt;!&ndash;楼盘标签&ndash;&gt;-->
+        <!--<table schema="user_center" tableName="house_premises_label"-->
+               <!--domainObjectName="HousePremisesLabel">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
+<!--&lt;!&ndash;楼盘图&ndash;&gt;-->
+        <!--<table schema="user_center" tableName="house_premises_picture"-->
+               <!--domainObjectName="HousePremisesPicture">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
+<!--&lt;!&ndash;项目管理&ndash;&gt;-->
+        <!--<table schema="user_center" tableName="house_project"-->
+               <!--domainObjectName="HouseProject">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
+<!--&lt;!&ndash;系统设置&ndash;&gt;-->
+        <!--<table schema="user_center" tableName="house_system"-->
+               <!--domainObjectName="HouseSystem">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
+<!--&lt;!&ndash;户型&ndash;&gt;-->
+        <!--<table schema="user_center" tableName="house_type"-->
+               <!--domainObjectName="HouseType">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
+<!--&lt;!&ndash;户型组成&ndash;&gt;-->
+        <!--<table schema="user_center" tableName="house_type_constitute"-->
+               <!--domainObjectName="HouseTypeConstitute">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
+<!--&lt;!&ndash;户型图&ndash;&gt;-->
+        <!--<table schema="user_center" tableName="house_type_picture"-->
+               <!--domainObjectName="HouseTypePicture">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
+<!--&lt;!&ndash;用户管理&ndash;&gt;-->
+        <!--<table schema="user_center" tableName="house_user"-->
+               <!--domainObjectName="HouseUser">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
+<!--文件管理-->
+        <table schema="user_center" tableName="house_file"
+               domainObjectName="HouseFile">
             <property name="useActualColumnNames" value="false"/>
             <generatedKey column="id" sqlStatement="mysql"
                           identity="true"/>

@@ -7,6 +7,7 @@ import com.example.user.center.manual.Login;
 import com.example.user.center.manual.UserType;
 import com.example.user.center.model.HouseAuth;
 import com.example.user.center.model.HouseAuthExample;
+import com.example.user.center.model.HouseSystem;
 import com.example.user.center.model.HouseUser;
 import com.example.user.utils.Message;
 import com.house.common.utils.Encrypt;
@@ -145,6 +146,17 @@ public class LoginController {
                 if(passwd.equals(code)) {
                     Map<String, Object> map = new HashMap<String, Object>();
                     map.put("userId", list.get(0).getUserId());
+                    Encrypt encrypt = new Encrypt();
+                    String token = encrypt.getToken(true, list.get(0).getUserId(), "boss", 0);
+                    map.put("token",token);
+                    HouseAuthExample example1 = new HouseAuthExample();
+                    example1.createCriteria()
+                            .andUserIdEqualTo(list.get(0).getUserId())
+                            .andAuthTypeEqualTo(Login.ADMIN.getPaymentTypeName())
+                            .andIsDeletedEqualTo((byte) 0)
+                            .andAuthStatusEqualTo(String.valueOf(0));
+                    List<HouseAuth> list1 = houseAuthMapper.selectByExample(example1);
+                    map.put("name",list1.get(0).getAuthKey());
                     return builder.body(ResponseUtils.getResponseBody(map));
                 }else {
                     return builder.body(ResponseUtils.getResponseBody("验证码不正确"));
@@ -261,6 +273,50 @@ public class LoginController {
         houseAuth.setAuthType(Login.ADMIN.getPaymentTypeName());
         houseAuthMapper.insertSelective(houseAuth);
         return builder.body(ResponseUtils.getResponseBody(0));
+    }
 
+    //
+    @RequestMapping(value = "/forbid", method = RequestMethod.POST)
+    @ApiOperation(value = "禁用", notes = "禁用")
+    public ResponseEntity<JSONObject> forbid(HttpServletRequest request, HttpServletResponse response,
+                                               @RequestParam(name = "userId") Integer userId
+                                             ) throws Exception {
+        ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder();
+        HouseAuthExample houseAuthExample = new HouseAuthExample();
+        houseAuthExample.createCriteria().andUserIdEqualTo(userId)
+                .andIsDeletedEqualTo((byte) 0);
+        List<HouseAuth> houseAuths = houseAuthMapper.selectByExample(houseAuthExample);
+        String a;
+        if (houseAuths.get(0).getAuthStatus().equals("0")){
+            a = "1";
+        } else {
+            a = "0";
+        }
+        houseAuths.forEach(houseAuth -> {
+            houseAuth.setAuthStatus(a);
+            houseAuthMapper.updateByPrimaryKeySelective(houseAuth);
+        });
+        return builder.body(ResponseUtils.getResponseBody(0));
+    }
+
+
+    //
+    @RequestMapping(value = "/system", method = RequestMethod.POST)
+    @ApiOperation(value = "系统设置", notes = "系统设置")
+    public ResponseEntity<JSONObject> system(HttpServletRequest request, HttpServletResponse response,
+                                             @RequestParam(name = "name") String name,
+                                             @RequestParam(name = "login") String login,
+                                             @RequestParam(name = "BottomCopyright") String BottomCopyright
+    ) throws Exception {
+        ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder();
+        HouseSystem houseSystem = new HouseSystem();
+        houseSystem.setId(1);
+        houseSystem.setSystemName(name);
+        houseSystem.setLogo(login);
+        houseSystem.setBottomCopyright(BottomCopyright);
+        houseSystem.setCreateDate(LocalDateTime.now());
+        houseSystem.setModifyDate(LocalDateTime.now());
+        houseSystem.setIsDeleted((byte) 0);
+        return builder.body(ResponseUtils.getResponseBody(0));
     }
 }
