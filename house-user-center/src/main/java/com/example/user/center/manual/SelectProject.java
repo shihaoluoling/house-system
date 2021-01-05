@@ -2,6 +2,9 @@ package com.example.user.center.manual;
 
 import io.swagger.models.auth.In;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * @author shihao
  * @Title: SelectProject
@@ -12,5 +15,40 @@ import io.swagger.models.auth.In;
  */
 public class SelectProject {
     private Integer projectId;//项目id
+    private String projectName;//项目名称
+    private String developersName;//开发商
+    private Map<String, List<String>> LandType;//土地和下面的楼盘
 
+
+    public Integer getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(Integer projectId) {
+        this.projectId = projectId;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public String getDevelopersName() {
+        return developersName;
+    }
+
+    public void setDevelopersName(String developersName) {
+        this.developersName = developersName;
+    }
+
+    public Map<String, List<String>> getLandType() {
+        return LandType;
+    }
+
+    public void setLandType(Map<String, List<String>> landType) {
+        LandType = landType;
+    }
 }

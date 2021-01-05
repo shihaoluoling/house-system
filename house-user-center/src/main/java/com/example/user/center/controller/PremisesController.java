@@ -362,9 +362,9 @@ public class PremisesController {
                 HouseLabelExample houseLabelExample = new HouseLabelExample();
                 houseLabelExample.createCriteria().andIdIn(Lists.newArrayList(labelIds));
                 List<HouseLabel> houseLabels = houseLabelMapper.selectByExample(houseLabelExample);
-                Map<Integer,String> map = new HashMap<>();
+                Map<Object,String> map = new HashMap<>();
                 houseLabels.forEach(houseLabel -> {
-                    map.put(houseLabel.getId(),houseLabel.getLabelName());
+                    map.put(houseLabel.getId().toString(),houseLabel.getLabelName());
                 });
                 selectPremises1.setLabels(map);
             }

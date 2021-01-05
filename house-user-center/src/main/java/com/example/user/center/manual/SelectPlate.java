@@ -18,7 +18,7 @@ public class SelectPlate {
     private Integer administrativeId;//行政区域id
     private String administrative;//行政区域
     private String address;//板块地址
-    private Map<Integer,String> label;//板块标签
+    private Map<Object,String> label;//板块标签
     private String advantage;//区域优势
     private Integer supply;//供应套数
     private Integer transaction;//成交套数
@@ -71,11 +71,11 @@ public class SelectPlate {
         this.address = address;
     }
 
-    public Map<Integer, String> getLabel() {
+    public Map<Object, String> getLabel() {
         return label;
     }
 
-    public void setLabel(Map<Integer, String> label) {
+    public void setLabel(Map<Object, String> label) {
         this.label = label;
     }
 
@@ -167,26 +167,4 @@ public class SelectPlate {
         this.developMessage = developMessage;
     }
 
-    @Override
-    public String toString() {
-        return "SelectPlate{" +
-                "plateId=" + plateId +
-                ", plateName='" + plateName + '\'' +
-                ", administrativeId=" + administrativeId +
-                ", administrative='" + administrative + '\'' +
-                ", address='" + address + '\'' +
-                ", label=" + label +
-                ", advantage='" + advantage + '\'' +
-                ", supply=" + supply +
-                ", transaction=" + transaction +
-                ", ratio=" + ratio +
-                ", houses=" + houses +
-                ", plotRatioMax=" + plotRatioMax +
-                ", plotRatioMin=" + plotRatioMin +
-                ", plotRatioMuch=" + plotRatioMuch +
-                ", averagePrice=" + averagePrice +
-                ", housesPrice=" + housesPrice +
-                ", developMessage='" + developMessage + '\'' +
-                '}';
-    }
 }

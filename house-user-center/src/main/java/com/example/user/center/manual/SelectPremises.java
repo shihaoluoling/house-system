@@ -21,7 +21,7 @@ public class SelectPremises {
     private String projectName;//所属项目名称
     private List<String> sumFiles;//楼盘总图
     private List<String> facadeFiles;//楼房立面图
-    private Map<Integer,String> labels;//标签
+    private Map<Object,String> labels;//标签
     private BigDecimal price;//楼盘价格
     private String landName;//所属土地名称
     private Integer landId;//所属土地id
@@ -89,11 +89,11 @@ public class SelectPremises {
         this.facadeFiles = facadeFiles;
     }
 
-    public Map<Integer, String> getLabels() {
+    public Map<Object, String> getLabels() {
         return labels;
     }
 
-    public void setLabels(Map<Integer, String> labels) {
+    public void setLabels(Map<Object, String> labels) {
         this.labels = labels;
     }
 

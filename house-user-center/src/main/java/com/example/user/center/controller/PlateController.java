@@ -1,10 +1,7 @@
 package com.example.user.center.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.example.user.center.dao.HouseAdministrativeMapper;
-import com.example.user.center.dao.HouseLabelMapper;
-import com.example.user.center.dao.HousePlateLabelMapper;
-import com.example.user.center.dao.HousePlateMapper;
+import com.example.user.center.dao.*;
 import com.example.user.center.manual.Login;
 import com.example.user.center.manual.SelectPlate;
 import com.example.user.center.model.*;
@@ -36,10 +33,10 @@ import java.util.stream.Collectors;
  * @date Created in
  * @Version: $
  */
-@RestController
-@Api
-@RequestMapping("/Plate")
 @CrossOrigin
+@RestController
+@RequestMapping("/Plate")
+@Api
 public class PlateController {
 @Autowired
 private HousePlateMapper housePlateMapper;
@@ -52,6 +49,14 @@ private HousePlateMapper housePlateMapper;
     //标签
     @Autowired
     private HouseLabelMapper houseLabelMapper;
+    //土地
+    @Autowired
+    private HouseLandMapper houseLandMapper;
+@Autowired
+    private HousePremisesMapper housePremisesMapper;
+//户型
+    @Autowired
+    private HouseTypeMapper houseTypeMapper;
     @ApiOperation(value = "添加板块", notes = "添加板块")
     @RequestMapping(value = "/addPlate", method = RequestMethod.POST)
     @ApiImplicitParams({
@@ -217,9 +222,9 @@ private HousePlateMapper housePlateMapper;
             .andIsDeletedEqualTo((byte) 0);
             List<HouseLabel> houseLabels =
                     houseLabelMapper.selectByExample(houseLabelExample);
-            Map<Integer,String> map = new HashMap<>();
+            Map<Object,String> map = new HashMap<>();
             houseLabels.forEach(houseLabel -> {
-                map.put(houseLabel.getId(),houseLabel.getLabelName());
+                map.put(houseLabel.getId().toString(),houseLabel.getLabelName());
             });
             selectPlate.setLabel(map);
             //区域优势
@@ -228,6 +233,62 @@ private HousePlateMapper housePlateMapper;
             selectPlate.setAveragePrice(housePlate.getAveragePrice());
             //区域发展信息
             selectPlate.setDevelopMessage(housePlate.getDevelopMessage());
+//供应套数
+//区域板块查询土地
+            HouseLandExample houseLandExample = new HouseLandExample();
+            houseLandExample.createCriteria().andPlateIdEqualTo(housePlate.getId())
+                    .andIsDeletedEqualTo((byte) 0);
+            List<HouseLand> houseLands =
+                    houseLandMapper.selectByExample(houseLandExample);
+            //土地ids
+            Set<Integer> landIds = houseLands.stream()
+                    .map(HouseLand::getId).collect(Collectors.toSet());
+            if (landIds.size() != 0){//---------------------
+                //土地查询所有楼盘
+                HousePremisesExample housePremisesExample = new HousePremisesExample();
+                housePremisesExample.createCriteria()
+                        .andLandIdIn(Lists.newArrayList(landIds));
+                List<HousePremises> housePremises =
+                        housePremisesMapper.selectByExample(housePremisesExample);
+                if (housePremises.size() != 0){ //-------
+                    //已有楼盘 houses
+                    List<String> houses = housePremises.stream()
+                            .map(HousePremises::getPremisesName).collect(Collectors.toList());
+                    selectPlate.setHouses(houses);
+                    //楼盘均价
+//            楼盘所有价格
+                    Double moneys = housePremises.stream()
+                            .mapToDouble(a->a.getPrice().doubleValue())
+                            .sum();
+                    Double money = moneys/housePremises.size();//平均
+                    BigDecimal d1TobigDe = new BigDecimal(money);
+                    selectPlate.setHousesPrice(d1TobigDe);
+                    //楼盘ids
+                    Set<Integer> premisesIds = housePremises.stream()
+                            .map(HousePremises::getId).collect(Collectors.toSet());
+                    //查询寻所有户型
+                    HouseTypeExample houseTypeExample = new HouseTypeExample();
+                    houseTypeExample.createCriteria()
+                            .andPremisesIdIn(Lists.newArrayList(premisesIds));
+                    List<HouseType> houseTypes =
+                            houseTypeMapper.selectByExample(houseTypeExample);
+                    if (houseTypes.size()!=0){//------------
+                        //计算总供应套数
+                        Integer sumSupply = houseTypes.stream()
+                                .mapToInt(HouseType::getSupply).sum();
+                        selectPlate.setSupply(sumSupply);
+                        //计算总成交套数
+                        Integer sumTransaction = houseTypes.stream()
+                                .mapToInt(HouseType::getTransaction).sum();
+                        selectPlate.setTransaction(sumTransaction);
+                        //供求比
+                        selectPlate.setRatio(sumSupply.doubleValue()/sumTransaction.doubleValue());
+                    }
+
+                }
+
+            }
+
 
             selectPlates.add(selectPlate);
         });

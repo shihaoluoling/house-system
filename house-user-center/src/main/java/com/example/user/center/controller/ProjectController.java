@@ -1,10 +1,11 @@
 package com.example.user.center.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.example.user.center.dao.HouseLandMapper;
+import com.example.user.center.dao.HousePremisesMapper;
 import com.example.user.center.dao.HouseProjectMapper;
-import com.example.user.center.model.HousePlate;
-import com.example.user.center.model.HouseProject;
-import com.example.user.center.model.HouseProjectExample;
+import com.example.user.center.manual.SelectProject;
+import com.example.user.center.model.*;
 import com.house.utils.response.handler.ResponseEntity;
 import com.house.utils.response.handler.ResponseUtils;
 import io.swagger.annotations.Api;
@@ -17,8 +18,13 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * @author shihao
@@ -36,7 +42,11 @@ public class ProjectController {
 //项目
     @Autowired
     private HouseProjectMapper houseProjectMapper;
-
+//土地
+    @Autowired
+    private HouseLandMapper houseLandMapper;
+@Autowired
+    private HousePremisesMapper housePremisesMapper;
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     @ApiOperation(value = "添加项目", notes = "添加项目")
     @RequestMapping(value = "/addProject", method = RequestMethod.POST)
@@ -115,7 +125,36 @@ public class ProjectController {
                 .andIsDeletedEqualTo((byte) 0);
         List<HouseProject> houseProjects =
                 houseProjectMapper.selectByExample(houseProjectExample);
+        List<SelectProject> selectProjects = new ArrayList<>();
+        houseProjects.forEach(houseProject -> {
+            SelectProject selectProject = new SelectProject();
 
-        return builder.body(ResponseUtils.getResponseBody(0));
+            selectProject.setProjectName(houseProject.getProjectName());
+            selectProject.setProjectId(houseProject.getId());
+            //土地
+            HouseLandExample houseLandExample = new HouseLandExample();
+            houseLandExample.createCriteria().andIsDeletedEqualTo((byte) 0)
+                    .andProjectIdEqualTo(houseProject.getId());
+            List<HouseLand> houseLands =
+                    houseLandMapper.selectByExample(houseLandExample);
+            //土地
+            Map<String, List<String>> map = new HashMap<>();
+            houseLands.forEach(houseLand -> {
+                //某一个土地下的所有楼盘
+                HousePremisesExample housePremisesExample = new HousePremisesExample();
+                housePremisesExample.createCriteria()
+                        .andIsDeletedEqualTo((byte) 0)
+                        .andLandIdEqualTo(houseLand.getId());
+                List<HousePremises> housePremises = housePremisesMapper.selectByExample(housePremisesExample);
+                //楼盘筛选
+                List<String> PremisesName =  housePremises.stream()
+                        .map(HousePremises::getPremisesName).collect(Collectors.toList());
+                map.put(houseLand.getLandName(),PremisesName);
+            });
+            selectProject.setLandType(map);
+            selectProjects.add(selectProject);
+        });
+        System.out.println(selectProjects);
+        return builder.body(ResponseUtils.getResponseBody(selectProjects));
     }
 }
