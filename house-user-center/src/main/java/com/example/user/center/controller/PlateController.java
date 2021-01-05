@@ -25,9 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -69,7 +67,7 @@ private HousePlateMapper housePlateMapper;
             @RequestParam(name = "plateName") String plateName,
             @RequestParam(name = "administrativeId") Integer administrativeId,
             @RequestParam(name = "plateAddress") String plateAddress,
-            @RequestParam(name = "plateLabelId[]") Integer plateLabelId[],
+            @RequestParam(name = "plateLabelId[]") Integer[] plateLabelId,
             @RequestParam(name = "advantage") String advantage,
             @RequestParam(name = "averagePrice") BigDecimal averagePrice,
             @RequestParam(name = "developMessage") String developMessage,
@@ -120,7 +118,7 @@ private HousePlateMapper housePlateMapper;
             @RequestParam(name = "administrativeId") Integer administrativeId,
             @RequestParam(name = "plateId") Integer plateId,
             @RequestParam(name = "plateAddress") String plateAddress,
-            @RequestParam(name = "plateLabelId") Integer plateLabelId[],
+            @RequestParam(name = "plateLabelId") Integer[] plateLabelId,
             @RequestParam(name = "advantage") String advantage,
             @RequestParam(name = "averagePrice") BigDecimal averagePrice,
             @RequestParam(name = "developMessage") String developMessage,
@@ -219,9 +217,11 @@ private HousePlateMapper housePlateMapper;
             .andIsDeletedEqualTo((byte) 0);
             List<HouseLabel> houseLabels =
                     houseLabelMapper.selectByExample(houseLabelExample);
-            List<String> labelNames = houseLabels.stream()
-                    .map(HouseLabel::getLabelName).collect(Collectors.toList());
-            selectPlate.setLabel(labelNames);
+            Map<Integer,String> map = new HashMap<>();
+            houseLabels.forEach(houseLabel -> {
+                map.put(houseLabel.getId(),houseLabel.getLabelName());
+            });
+            selectPlate.setLabel(map);
             //区域优势
             selectPlate.setAdvantage(housePlate.getAdvantage());
             //置业均价

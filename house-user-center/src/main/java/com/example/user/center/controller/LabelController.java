@@ -14,6 +14,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,6 +41,7 @@ public class LabelController {
 
     @ApiOperation(value = "添加标签", notes = "添加标签")
     @RequestMapping(value = "/addLabel", method = RequestMethod.POST)
+    @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     public ResponseEntity<JSONObject> addLabel(String name,String type) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
         HouseLabel houseLabel = new HouseLabel();
@@ -55,6 +57,7 @@ public class LabelController {
 
     @ApiOperation(value = "修改标签", notes = "修改标签")
     @RequestMapping(value = "/updateLabel", method = RequestMethod.POST)
+    @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     public ResponseEntity<JSONObject> updateLabel(Integer id,String name,String type) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
         HouseLabel houseLabel = new HouseLabel();
@@ -68,6 +71,7 @@ public class LabelController {
     }
     @ApiOperation(value = "删除标签", notes = "删除标签")
     @RequestMapping(value = "/deleteLabel", method = RequestMethod.POST)
+    @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     public ResponseEntity<JSONObject> deleteLabel(Integer id) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
         HouseLabel houseLabel = new HouseLabel();
@@ -78,6 +82,7 @@ public class LabelController {
     }
     @ApiOperation(value = "查询标签", notes = "查询标签")
     @RequestMapping(value = "/selectLabel", method = RequestMethod.POST)
+    @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     public ResponseEntity<JSONObject> selectLabel(String type) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
         HouseLabelExample houseLabelExample = new HouseLabelExample();

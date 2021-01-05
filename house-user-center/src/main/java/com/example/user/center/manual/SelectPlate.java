@@ -2,6 +2,7 @@ package com.example.user.center.manual;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author shihao
@@ -17,7 +18,7 @@ public class SelectPlate {
     private Integer administrativeId;//行政区域id
     private String administrative;//行政区域
     private String address;//板块地址
-    private List<String> label;//板块标签
+    private Map<Integer,String> label;//板块标签
     private String advantage;//区域优势
     private Integer supply;//供应套数
     private Integer transaction;//成交套数
@@ -70,11 +71,11 @@ public class SelectPlate {
         this.address = address;
     }
 
-    public List<String> getLabel() {
+    public Map<Integer, String> getLabel() {
         return label;
     }
 
-    public void setLabel(List<String> label) {
+    public void setLabel(Map<Integer, String> label) {
         this.label = label;
     }
 

@@ -12,6 +12,7 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -33,6 +34,8 @@ public class ProjectController {
 //项目
     @Autowired
     private HouseProjectMapper houseProjectMapper;
+
+    @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     @ApiOperation(value = "添加项目", notes = "添加项目")
     @RequestMapping(value = "/addProject", method = RequestMethod.POST)
     @ApiImplicitParams({
@@ -54,6 +57,8 @@ public class ProjectController {
         houseProjectMapper.insertSelective(houseProject);
         return builder.body(ResponseUtils.getResponseBody(0));
     }
+
+    @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     @ApiOperation(value = "修改项目", notes = "修改项目")
     @RequestMapping(value = "/updateProject", method = RequestMethod.POST)
     @ApiImplicitParams({
@@ -78,6 +83,7 @@ public class ProjectController {
     }
 
     //
+    @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     @ApiOperation(value = "删除项目", notes = "删除项目")
     @RequestMapping(value = "/deleteProject", method = RequestMethod.POST)
     @ApiImplicitParams({

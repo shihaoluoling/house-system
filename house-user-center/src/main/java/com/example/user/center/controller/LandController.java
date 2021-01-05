@@ -1,10 +1,9 @@
 package com.example.user.center.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.example.user.center.dao.HouseLandMapper;
-import com.example.user.center.model.HouseLand;
-import com.example.user.center.model.HouseLandExample;
-import com.example.user.center.model.HouseProject;
+import com.example.user.center.dao.*;
+import com.example.user.center.manual.SelectLand;
+import com.example.user.center.model.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.house.utils.response.handler.ResponseEntity;
 import com.house.utils.response.handler.ResponseUtils;
@@ -16,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
@@ -26,7 +26,10 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author shihao
@@ -44,6 +47,18 @@ public class LandController {
     //土地
     @Autowired
     private HouseLandMapper houseLandMapper;
+    //项目
+    @Autowired
+    private HouseProjectMapper houseProjectMapper;
+    //板块
+    @Autowired
+    private HousePlateMapper housePlateMapper;
+//区域
+    @Autowired
+    private HouseAdministrativeMapper houseAdministrativeMapper;
+    //楼盘
+    @Autowired
+    private HousePremisesMapper housePremisesMapper;
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -52,6 +67,7 @@ public class LandController {
     }
     @ApiOperation(value = "添加土地", notes = "添加土地")
     @RequestMapping(value = "/addLand", method = RequestMethod.POST)
+    @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", name = "landName", value = "土地名称", required = true, type = "String"),
             @ApiImplicitParam(paramType = "query", name = "projectId", value = "项目id", required = true, type = "Integer"),
@@ -100,7 +116,7 @@ public class LandController {
         houseLandMapper.insertSelective(houseLand);
         return builder.body(ResponseUtils.getResponseBody(0));
     }
-
+    @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     @ApiOperation(value = "修改土地", notes = "修改土地")
     @RequestMapping(value = "/updateLand", method = RequestMethod.POST)
     @ApiImplicitParams({
@@ -152,7 +168,7 @@ public class LandController {
         houseLandMapper.updateByPrimaryKeySelective(houseLand);
         return builder.body(ResponseUtils.getResponseBody(0));
     }
-
+    @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     @ApiOperation(value = "删除土地", notes = "删除土地")
     @RequestMapping(value = "/deleteLand", method = RequestMethod.POST)
     @ApiImplicitParams({
@@ -169,5 +185,93 @@ public class LandController {
         houseLand.setModifyDate(LocalDateTime.now());
         houseLandMapper.updateByPrimaryKeySelective(houseLand);
         return builder.body(ResponseUtils.getResponseBody(0));
+    }
+
+    @ApiOperation(value = "查询土地信息", notes = "查询土地信息")
+    @RequestMapping(value = "/selectLand", method = RequestMethod.GET)
+    public ResponseEntity<JSONObject> selectLand(
+            HttpServletResponse response
+    ) throws Exception {
+        ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
+        HouseLandExample houseLandExample = new HouseLandExample();
+        houseLandExample.createCriteria()
+                .andIsDeletedEqualTo((byte) 0);
+        List<HouseLand> houseLands =
+                houseLandMapper.selectByExample(houseLandExample);
+        List<SelectLand> selectLands = new ArrayList<>();
+        //houseLands
+        houseLands.forEach(houseLand -> {
+            //houseLand
+            SelectLand selectLand = new SelectLand();
+            selectLand.setLandId(houseLand.getId());
+            //土地名称
+            selectLand.setLandName(houseLand.getLandName());
+            //土地地址
+            selectLand.setLandAddress(houseLand.getLandAddress());
+            //所属项目id
+            selectLand.setProjectId(houseLand.getProjectId());
+            //所属项目名称
+            HouseProject houseProject = houseProjectMapper.selectByPrimaryKey(houseLand.getProjectId());
+            selectLand.setProjectName(houseProject.getProjectName());
+            //所属板块id
+            selectLand.setPlateId(houseLand.getPlateId());
+            //所属板块名称
+            HousePlate housePlate =
+            housePlateMapper.selectByPrimaryKey(houseLand.getPlateId());
+            selectLand.setPlateName(housePlate.getPlateName());
+            //所属区域名称
+            HouseAdministrative houseAdministrative =
+            houseAdministrativeMapper.selectByPrimaryKey(housePlate.getAdministrativeId());
+            selectLand.setAdministrativeName(houseAdministrative.getAdministrativeName());
+            //建筑密度
+            selectLand.setDensity(houseLand.getDensity());
+            //成交日期
+            selectLand.setSucceedTime(houseLand.getSucceedTime());
+            //成交价格
+            selectLand.setTransactionPrice(houseLand.getTransactionPrice());
+            //起拍价格
+            selectLand.setStartingPrice(houseLand.getStartingPrice());
+            //受让方
+            selectLand.setTransfer(houseLand.getTransfer());
+            //备注
+            selectLand.setRemark(houseLand.getRemark());
+        /**
+         * 楼盘查询
+ */
+
+            HousePremisesExample housePremisesExample = new HousePremisesExample();
+            housePremisesExample.createCriteria()
+                    .andIsDeletedEqualTo((byte) 0)
+                    .andLandIdEqualTo(houseLand.getId());
+            List<HousePremises> housePremises = housePremisesMapper.selectByExample(housePremisesExample);
+            //楼盘
+            List<String> PremisesName =  housePremises.stream()
+                    .map(HousePremises::getPremisesName).collect(Collectors.toList());
+            selectLand.setPremises(PremisesName);
+            //用地总面积面积 楼盘相加
+            Double siteArea = housePremises.stream()
+                    .mapToDouble(HousePremises::getSiteArea).sum();
+            selectLand.setSiteArea(siteArea);
+            //建筑面积 楼盘相加
+            Double architectureArea = housePremises.stream()
+                    .mapToDouble(HousePremises::getArchitectureArea).sum();
+            selectLand.setArchitectureArea(architectureArea);
+//容积率  建筑面积 / 用地面积
+            System.out.println(siteArea);
+            System.out.println(architectureArea);
+            if (architectureArea!=0 && siteArea!=0){
+                BigDecimal bg = new BigDecimal(architectureArea/siteArea);
+                selectLand.setRatio(bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue());
+            } else {
+                selectLand.setRatio(Double.valueOf(0));
+            }
+
+            //溢价率 土地成交价 / 土地初始起拍价格
+
+            //楼面价 土地成交价格 / （用地面积 * 容积率 ） 或 土地成交价 /  建筑面积
+//            selectLand.setAccommodation();
+            selectLands.add(selectLand);
+        });
+        return builder.body(ResponseUtils.getResponseBody(selectLands));
     }
 }

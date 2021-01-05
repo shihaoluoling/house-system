@@ -122,12 +122,12 @@
                           <!--identity="true"/>-->
         <!--</table>-->
 <!--&lt;!&ndash;户型&ndash;&gt;-->
-        <!--<table schema="user_center" tableName="house_type"-->
-               <!--domainObjectName="HouseType">-->
-            <!--<property name="useActualColumnNames" value="false"/>-->
-            <!--<generatedKey column="id" sqlStatement="mysql"-->
-                          <!--identity="true"/>-->
-        <!--</table>-->
+        <table schema="user_center" tableName="house_type"
+               domainObjectName="HouseType">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
 <!--&lt;!&ndash;户型组成&ndash;&gt;-->
         <!--<table schema="user_center" tableName="house_type_constitute"-->
                <!--domainObjectName="HouseTypeConstitute">-->
@@ -150,11 +150,18 @@
                           <!--identity="true"/>-->
         <!--</table>-->
 <!--文件管理-->
-        <table schema="user_center" tableName="house_file"
-               domainObjectName="HouseFile">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
+        <!--<table schema="user_center" tableName="house_file"-->
+               <!--domainObjectName="HouseFile">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
+        <!--house_type_constitute_group-->
+        <!--<table schema="user_center" tableName="house_type_constitute_group"-->
+               <!--domainObjectName="HouseTypeConstituteGroup">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
     </context>
 </generatorConfiguration>
