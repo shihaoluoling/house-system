@@ -90,7 +90,7 @@ public class TypeController {
             @RequestParam(name = "livingWide") Double livingWide,
             @RequestParam(name = "guestWide") Double guestWide,
             @RequestParam(name = "constitute") String constitute,
-            @RequestParam(name = "houseFiles[]") String[] houseFiles,//户型图
+            @RequestParam(name = "houseFiles") String[] houseFiles,//户型图
             HttpServletResponse response
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
@@ -168,7 +168,7 @@ public class TypeController {
             @RequestParam(name = "livingWide") Double livingWide,
             @RequestParam(name = "guestWide") Double guestWide,
             @RequestParam(name = "constitute") String constitute,
-            @RequestParam(name = "houseFiles[]") String[] houseFiles,//户型图
+            @RequestParam(name = "houseFiles") String[] houseFiles,//户型图
             HttpServletResponse response
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);

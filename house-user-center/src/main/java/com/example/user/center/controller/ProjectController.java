@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.user.center.dao.HouseProjectMapper;
 import com.example.user.center.model.HousePlate;
 import com.example.user.center.model.HouseProject;
+import com.example.user.center.model.HouseProjectExample;
 import com.house.utils.response.handler.ResponseEntity;
 import com.house.utils.response.handler.ResponseUtils;
 import io.swagger.annotations.Api;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * @author shihao
@@ -99,6 +101,21 @@ public class ProjectController {
         houseProject.setIsDeleted((byte) 1);
         houseProject.setModifyDate(LocalDateTime.now());
         houseProjectMapper.updateByPrimaryKeySelective(houseProject);
+        return builder.body(ResponseUtils.getResponseBody(0));
+    }
+
+    @ApiOperation(value = "查询项目信息", notes = "查询项目信息")
+    @RequestMapping(value = "/selectProject", method = RequestMethod.GET)
+    public ResponseEntity<JSONObject> selectProject(
+            HttpServletResponse response
+    ) throws Exception {
+        ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
+        HouseProjectExample houseProjectExample = new HouseProjectExample();
+        houseProjectExample.createCriteria()
+                .andIsDeletedEqualTo((byte) 0);
+        List<HouseProject> houseProjects =
+                houseProjectMapper.selectByExample(houseProjectExample);
+
         return builder.body(ResponseUtils.getResponseBody(0));
     }
 }

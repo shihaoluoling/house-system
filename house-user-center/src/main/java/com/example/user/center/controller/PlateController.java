@@ -67,7 +67,7 @@ private HousePlateMapper housePlateMapper;
             @RequestParam(name = "plateName") String plateName,
             @RequestParam(name = "administrativeId") Integer administrativeId,
             @RequestParam(name = "plateAddress") String plateAddress,
-            @RequestParam(name = "plateLabelId[]") Integer[] plateLabelId,
+            @RequestParam(name = "plateLabelId") Integer[] plateLabelId,
             @RequestParam(name = "advantage") String advantage,
             @RequestParam(name = "averagePrice") BigDecimal averagePrice,
             @RequestParam(name = "developMessage") String developMessage,

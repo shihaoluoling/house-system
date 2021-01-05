@@ -96,9 +96,9 @@ public class PremisesController {
             @RequestParam(name = "siteArea") Double siteArea,
             @RequestParam(name = "architectureArea") Double architectureArea,
             @RequestParam(name = "plotRatio") Double plotRatio,
-            @RequestParam(name = "plateLabelId[]") Integer[] plateLabelId,//标签
-            @RequestParam(name = "houseSunPicture[]") String[] houseSunPicture,//楼房总图
-            @RequestParam(name = "houseFacadePicture[]") String[] houseFacadePicture,//楼房立面图
+            @RequestParam(name = "plateLabelId") Integer[] plateLabelId,//标签
+            @RequestParam(name = "houseSunPicture") String[] houseSunPicture,//楼房总图
+            @RequestParam(name = "houseFacadePicture") String[] houseFacadePicture,//楼房立面图
             @RequestParam(required = false)
             @DateTimeFormat(pattern = "yyyy-MM-dd") Date openingTime,//开盘时间
             HttpServletResponse response
@@ -189,9 +189,9 @@ public class PremisesController {
             @RequestParam(name = "siteArea") Double siteArea,
             @RequestParam(name = "architectureArea") Double architectureArea,
             @RequestParam(name = "plotRatio") Double plotRatio,
-            @RequestParam(name = "plateLabelId[]") Integer[] plateLabelId,//标签
-            @RequestParam(name = "houseSunPicture[]") String[] houseSunPicture,//楼房总图
-            @RequestParam(name = "houseFacadePicture[]") String[] houseFacadePicture,//楼房立面图
+            @RequestParam(name = "plateLabelId") Integer[] plateLabelId,//标签
+            @RequestParam(name = "houseSunPicture") String[] houseSunPicture,//楼房总图
+            @RequestParam(name = "houseFacadePicture") String[] houseFacadePicture,//楼房立面图
             HttpServletResponse response
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
