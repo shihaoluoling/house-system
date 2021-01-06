@@ -17,8 +17,11 @@ public class SelectPremises {
     private Integer premisesId;//楼盘id
     private String premisesName;//楼盘名称
     private String administrativeName;//所属区域名称
+    private Integer administrativeId;//所属区域id
     private String plateName;//所属板块名称
+    private Integer plateId;//所属板块id
     private String projectName;//所属项目名称
+    private Integer projectId;//所属项目id
     private List<String> sumFiles;//楼盘总图
     private List<String> facadeFiles;//楼房立面图
     private Map<Object,String> labels;//标签
@@ -175,5 +178,29 @@ public class SelectPremises {
 
     public void setPropertyName(String propertyName) {
         this.propertyName = propertyName;
+    }
+
+    public Integer getAdministrativeId() {
+        return administrativeId;
+    }
+
+    public void setAdministrativeId(Integer administrativeId) {
+        this.administrativeId = administrativeId;
+    }
+
+    public Integer getPlateId() {
+        return plateId;
+    }
+
+    public void setPlateId(Integer plateId) {
+        this.plateId = plateId;
+    }
+
+    public Integer getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(Integer projectId) {
+        this.projectId = projectId;
     }
 }

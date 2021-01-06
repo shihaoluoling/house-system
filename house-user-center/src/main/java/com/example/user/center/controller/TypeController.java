@@ -264,6 +264,10 @@ public class TypeController {
     @ApiOperation(value = "查询户型信息", notes = "查询户型信息")
     @RequestMapping(value = "/selectType", method = RequestMethod.GET)
     public ResponseEntity<JSONObject> selectType(
+            Integer projectId,//项目id
+            Integer plateId,//板块id
+            String typeName,//户型名称
+            Integer adminId,//区域id
             HttpServletResponse response
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
@@ -274,7 +278,8 @@ public class TypeController {
                 houseTypeMapper.selectByExample(houseTypeExample);
         List<SelectType> selectTypes = new ArrayList<>();
         //开始循环
-        houseTypes.forEach(houseType -> {
+//        houseTypes.forEach(houseType -> {
+            for (HouseType houseType:houseTypes){
             SelectType selectType = new SelectType();
             selectType.setTypeId(houseType.getId());
             selectType.setTypeName(houseType.getHouseName());
@@ -287,12 +292,15 @@ public class TypeController {
             //项目
             HouseProject houseProject = houseProjectMapper.selectByPrimaryKey(houseLand.getProjectId());
             selectType.setProjectName(houseProject.getProjectName());
+            selectType.setProjectId(houseProject.getId());
             //板块
             HousePlate housePlate = housePlateMapper.selectByPrimaryKey(houseLand.getPlateId());
             selectType.setPlateName(housePlate.getPlateName());
+            selectType.setPlateId(housePlate.getId());
             //行政区域
             HouseAdministrative houseAdministrative = houseAdministrativeMapper.selectByPrimaryKey(housePlate.getAdministrativeId());
             selectType.setAdministrativeName(houseAdministrative.getAdministrativeName());
+            selectType.setAdministrativeId(houseAdministrative.getId());
             //图片
             HouseTypePictureExample houseTypePictureExample = new HouseTypePictureExample();
             houseTypePictureExample.createCriteria()
@@ -300,9 +308,11 @@ public class TypeController {
                     .andTypeEqualTo(TypePictureEnum.TYPE.getPaymentTypeName())
                     .andTypeIdEqualTo(houseType.getId());
             List<HouseTypePicture> houseTypePictures = houseTypePictureMapper.selectByExample(houseTypePictureExample);
-            List<String> files = houseTypePictures.stream()
-                    .map(HouseTypePicture::getFile).collect(Collectors.toList());
-            selectType.setFiles(files);
+            if (houseTypePictures.size()!=0){
+                List<String> files = houseTypePictures.stream()
+                        .map(HouseTypePicture::getFile).collect(Collectors.toList());
+                selectType.setFiles(files);
+            }
             //户型面积
             selectType.setArea(houseType.getArea());
             //供应套数
@@ -326,17 +336,31 @@ HouseTypeConstituteGroupExample houseTypeConstituteGroupExample = new HouseTypeC
             //设置参数值
             List<HouseTypeConstituteGroup> houseTypeConstituteGroups =
                     houseTypeConstituteGroupMapper.selectByExample(houseTypeConstituteGroupExample);
-            Map<String,Object> map = new HashMap<>();
-            houseTypeConstituteGroups.forEach(houseTypeConstituteGroup -> {
-               HouseTypeConstitute houseTypeConstitute =
-                       houseTypeConstituteMapper.selectByPrimaryKey(houseTypeConstituteGroup.getConstituteId());
-                map.put(houseTypeConstitute.getConstituteName(),houseTypeConstituteGroup.getValue());
-            });
-            selectType.setConstitute(map);
+            if (houseTypeConstituteGroups.size()!=0){
+                Map<String,Object> map = new HashMap<>();
+                houseTypeConstituteGroups.forEach(houseTypeConstituteGroup -> {
+                    HouseTypeConstitute houseTypeConstitute =
+                            houseTypeConstituteMapper.selectByPrimaryKey(houseTypeConstituteGroup.getConstituteId());
+                    map.put(houseTypeConstitute.getConstituteName(),houseTypeConstituteGroup.getValue());
+                });
+                selectType.setConstitute(map);
+            }
             //供求比
             selectType.setRatio(houseType.getTransaction().doubleValue()/houseType.getSupply().doubleValue());
             selectTypes.add(selectType);
-        });
+        }
+        if (adminId != null){
+            selectTypes = selectTypes.stream()
+                    .filter(a->a.getAdministrativeId().equals(adminId)).collect(Collectors.toList());
+        }
+        if (projectId != null){//项目筛选
+            selectTypes = selectTypes.stream()
+                    .filter(a->a.getProjectId().equals(projectId)).collect(Collectors.toList());
+        }
+        if (plateId != null){//板块筛选
+            selectTypes = selectTypes.stream()
+                    .filter(a->a.getPlateId().equals(plateId)).collect(Collectors.toList());
+        }
         return builder.body(ResponseUtils.getResponseBody(selectTypes));
     }
 }

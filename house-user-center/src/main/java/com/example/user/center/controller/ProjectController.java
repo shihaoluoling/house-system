@@ -117,12 +117,17 @@ public class ProjectController {
     @ApiOperation(value = "查询项目信息", notes = "查询项目信息")
     @RequestMapping(value = "/selectProject", method = RequestMethod.GET)
     public ResponseEntity<JSONObject> selectProject(
+            String projectName,
             HttpServletResponse response
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
         HouseProjectExample houseProjectExample = new HouseProjectExample();
+        HouseProjectExample.Criteria criteria =
         houseProjectExample.createCriteria()
                 .andIsDeletedEqualTo((byte) 0);
+        if (projectName != null){
+            criteria.andProjectNameLike("%"+projectName+"%");
+        }
         List<HouseProject> houseProjects =
                 houseProjectMapper.selectByExample(houseProjectExample);
         List<SelectProject> selectProjects = new ArrayList<>();
@@ -138,23 +143,27 @@ public class ProjectController {
             List<HouseLand> houseLands =
                     houseLandMapper.selectByExample(houseLandExample);
             //土地
-            Map<String, List<String>> map = new HashMap<>();
-            houseLands.forEach(houseLand -> {
-                //某一个土地下的所有楼盘
-                HousePremisesExample housePremisesExample = new HousePremisesExample();
-                housePremisesExample.createCriteria()
-                        .andIsDeletedEqualTo((byte) 0)
-                        .andLandIdEqualTo(houseLand.getId());
-                List<HousePremises> housePremises = housePremisesMapper.selectByExample(housePremisesExample);
-                //楼盘筛选
-                List<String> PremisesName =  housePremises.stream()
-                        .map(HousePremises::getPremisesName).collect(Collectors.toList());
-                map.put(houseLand.getLandName(),PremisesName);
-            });
-            selectProject.setLandType(map);
+            if (houseLands.size()!=0){
+                Map<String, List<String>> map = new HashMap<>();
+                houseLands.forEach(houseLand -> {
+                    //某一个土地下的所有楼盘
+                    HousePremisesExample housePremisesExample = new HousePremisesExample();
+                    housePremisesExample.createCriteria()
+                            .andIsDeletedEqualTo((byte) 0)
+                            .andLandIdEqualTo(houseLand.getId());
+                    List<HousePremises> housePremises = housePremisesMapper.selectByExample(housePremisesExample);
+                    //楼盘筛选
+                    if (housePremises.size()!=0){
+                        List<String> PremisesName =  housePremises.stream()
+                                .map(HousePremises::getPremisesName).collect(Collectors.toList());
+                        map.put(houseLand.getLandName(),PremisesName);
+                    }
+                });
+                selectProject.setLandType(map);
+            }
+
             selectProjects.add(selectProject);
         });
-        System.out.println(selectProjects);
         return builder.body(ResponseUtils.getResponseBody(selectProjects));
     }
 }

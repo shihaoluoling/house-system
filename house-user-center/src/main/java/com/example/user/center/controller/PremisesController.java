@@ -2,10 +2,7 @@ package com.example.user.center.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.user.center.dao.*;
-import com.example.user.center.manual.PictureEnum;
-import com.example.user.center.manual.SelectPremises;
-import com.example.user.center.manual.SelectType;
-import com.example.user.center.manual.TypePictureEnum;
+import com.example.user.center.manual.*;
 import com.example.user.center.model.*;
 import com.google.common.collect.Lists;
 import com.house.utils.response.handler.ResponseEntity;
@@ -299,16 +296,25 @@ public class PremisesController {
     @ApiOperation(value = "查询楼盘信息", notes = "查询楼盘信息")
     @RequestMapping(value = "/selectPremises", method = RequestMethod.GET)
     public ResponseEntity<JSONObject> selectPremises(
+            Integer projectId,//项目id
+            Integer plateId,//板块id
+            String premisesName,//楼盘名称
+            Integer adminId,//区域id
             HttpServletResponse response
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
         HousePremisesExample housePremisesExample = new HousePremisesExample();
+        HousePremisesExample.Criteria criteria =
         housePremisesExample.createCriteria()
                 .andIsDeletedEqualTo((byte) 0);
+        if (premisesName != null){
+            criteria.andPremisesNameLike("%"+premisesName+"%");
+        }
         List<HousePremises> housePremises =
                 housePremisesMapper.selectByExample(housePremisesExample);
         List<SelectPremises> selectPremises = new ArrayList<>();
-        housePremises.forEach(housePremises1 -> {
+//        housePremises.forEach(housePremises1 -> {
+            for (HousePremises housePremises1:housePremises){
             //housePremises1
             SelectPremises selectPremises1 = new SelectPremises();
             selectPremises1.setPremisesId(housePremises1.getId());
@@ -320,12 +326,15 @@ public class PremisesController {
             ////所属板块名称
             HousePlate housePlate = housePlateMapper.selectByPrimaryKey(houseLand.getPlateId());
             selectPremises1.setPlateName(housePlate.getPlateName());
+            selectPremises1.setPlateId(housePlate.getId());
             //所属项目名称
             HouseProject houseProject = houseProjectMapper.selectByPrimaryKey(houseLand.getProjectId());
             selectPremises1.setProjectName(houseProject.getProjectName());
+            selectPremises1.setProjectId(houseProject.getId());
             //所属区域名称
             HouseAdministrative houseAdministrative = houseAdministrativeMapper.selectByPrimaryKey(housePlate.getAdministrativeId());
             selectPremises1.setAdministrativeName(houseAdministrative.getAdministrativeName());
+            selectPremises1.setAdministrativeId(houseAdministrative.getId());
             //楼盘总图
             HousePremisesPictureExample housePremisesPictureExample = new HousePremisesPictureExample();
             housePremisesPictureExample.createCriteria()
@@ -334,9 +343,11 @@ public class PremisesController {
             .andPremisesIdEqualTo(housePremises1.getId());
             List<HousePremisesPicture> housePremisesPictures =
                     housePremisesPictureMapper.selectByExample(housePremisesPictureExample);
-            List<String> sunFiles = housePremisesPictures.stream()
-                    .map(HousePremisesPicture::getFile).collect(Collectors.toList());
-            selectPremises1.setSumFiles(sunFiles);
+            if (housePremisesPictures.size()!=0){
+                List<String> sunFiles = housePremisesPictures.stream()
+                        .map(HousePremisesPicture::getFile).collect(Collectors.toList());
+                selectPremises1.setSumFiles(sunFiles);
+            }
             //楼房立面图
             housePremisesPictureExample.clear();
             housePremisesPictureExample.createCriteria()
@@ -345,9 +356,12 @@ public class PremisesController {
                     .andPremisesIdEqualTo(housePremises1.getId());
             List<HousePremisesPicture> housePremisesPictures1 =
                     housePremisesPictureMapper.selectByExample(housePremisesPictureExample);
-            List<String> facadeFiles = housePremisesPictures1.stream()
-                    .map(HousePremisesPicture::getFile).collect(Collectors.toList());
-            selectPremises1.setFacadeFiles(facadeFiles);
+            if (housePremisesPictures1.size()!=0){
+                List<String> facadeFiles = housePremisesPictures1.stream()
+                        .map(HousePremisesPicture::getFile).collect(Collectors.toList());
+                selectPremises1.setFacadeFiles(facadeFiles);
+            }
+
             //标签
             HousePremisesLabelExample housePremisesLabelExample = new HousePremisesLabelExample();
             housePremisesLabelExample.createCriteria().andIsDeletedEqualTo((byte) 0)
@@ -386,7 +400,19 @@ public class PremisesController {
             //物业名称
             selectPremises1.setPropertyName(housePremises1.getPropertyName());
             selectPremises.add(selectPremises1);
-        });
+        }
+        if (adminId != null){
+            selectPremises = selectPremises.stream()
+                    .filter(a->a.getAdministrativeId().equals(adminId)).collect(Collectors.toList());
+        }
+        if (projectId != null){//项目筛选
+            selectPremises = selectPremises.stream()
+                    .filter(a->a.getProjectId().equals(projectId)).collect(Collectors.toList());
+        }
+        if (plateId != null){//板块筛选
+            selectPremises = selectPremises.stream()
+                    .filter(a->a.getPlateId().equals(plateId)).collect(Collectors.toList());
+        }
         return builder.body(ResponseUtils.getResponseBody(selectPremises));
     }
 }

@@ -19,6 +19,7 @@ public class SelectLand {
     private String projectName;//所属项目名称
     private String landAddress;//土地地址
     private String administrativeName;//所属区域名称
+    private Integer administrativeId;//所属区域id
     private Integer plateId;//所属板块id
     private String plateName;//所属板块名称
     private Double siteArea;//用地面积
@@ -192,5 +193,13 @@ public class SelectLand {
 
     public void setPremises(List<String> premises) {
         this.premises = premises;
+    }
+
+    public Integer getAdministrativeId() {
+        return administrativeId;
+    }
+
+    public void setAdministrativeId(Integer administrativeId) {
+        this.administrativeId = administrativeId;
     }
 }

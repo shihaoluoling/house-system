@@ -190,12 +190,26 @@ public class LandController {
     @ApiOperation(value = "查询土地信息", notes = "查询土地信息")
     @RequestMapping(value = "/selectLand", method = RequestMethod.GET)
     public ResponseEntity<JSONObject> selectLand(
+            Integer projectId,//项目id
+            Integer plateId,//板块id
+            String landName,//土地名称
+            Integer adminId,//区域id
             HttpServletResponse response
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
         HouseLandExample houseLandExample = new HouseLandExample();
+        HouseLandExample.Criteria criteria =
         houseLandExample.createCriteria()
                 .andIsDeletedEqualTo((byte) 0);
+        if (projectId != null){//项目筛选
+            criteria.andProjectIdEqualTo(projectId);
+        }
+        if (plateId != null){//板块筛选
+            criteria.andPlateIdEqualTo(plateId);
+        }
+        if (landName != null){//土地名称筛选
+            criteria.andLandNameLike("%"+landName+"%");
+        }
         List<HouseLand> houseLands =
                 houseLandMapper.selectByExample(houseLandExample);
         List<SelectLand> selectLands = new ArrayList<>();
@@ -223,6 +237,7 @@ public class LandController {
             HouseAdministrative houseAdministrative =
             houseAdministrativeMapper.selectByPrimaryKey(housePlate.getAdministrativeId());
             selectLand.setAdministrativeName(houseAdministrative.getAdministrativeName());
+            selectLand.setAdministrativeId(houseAdministrative.getId());
             //建筑密度
             selectLand.setDensity(houseLand.getDensity());
             //成交日期
@@ -245,33 +260,37 @@ public class LandController {
                     .andLandIdEqualTo(houseLand.getId());
             List<HousePremises> housePremises = housePremisesMapper.selectByExample(housePremisesExample);
             //楼盘
-            List<String> PremisesName =  housePremises.stream()
-                    .map(HousePremises::getPremisesName).collect(Collectors.toList());
-            selectLand.setPremises(PremisesName);
-            //用地总面积面积 楼盘相加
-            Double siteArea = housePremises.stream()
-                    .mapToDouble(HousePremises::getSiteArea).sum();
-            selectLand.setSiteArea(siteArea);
-            //建筑面积 楼盘相加
-            Double architectureArea = housePremises.stream()
-                    .mapToDouble(HousePremises::getArchitectureArea).sum();
-            selectLand.setArchitectureArea(architectureArea);
-//容积率  建筑面积 / 用地面积
-            System.out.println(siteArea);
-            System.out.println(architectureArea);
-            if (architectureArea!=0 && siteArea!=0){
-                BigDecimal bg = new BigDecimal(architectureArea/siteArea);
-                selectLand.setRatio(bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue());
-            } else {
-                selectLand.setRatio(Double.valueOf(0));
+            if (housePremises.size()!=0){
+                List<String> PremisesName =  housePremises.stream()
+                        .map(HousePremises::getPremisesName).collect(Collectors.toList());
+                selectLand.setPremises(PremisesName);
+                //用地总面积面积 楼盘相加
+                Double siteArea = housePremises.stream()
+                        .mapToDouble(HousePremises::getSiteArea).sum();
+                selectLand.setSiteArea(siteArea);
+                //建筑面积 楼盘相加
+                Double architectureArea = housePremises.stream()
+                        .mapToDouble(HousePremises::getArchitectureArea).sum();
+                selectLand.setArchitectureArea(architectureArea);
+                //容积率  建筑面积 / 用地面积
+                if (architectureArea!=0 && siteArea!=0){
+                    BigDecimal bg = new BigDecimal(architectureArea/siteArea);
+                    selectLand.setRatio(bg.setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue());
+                } else {
+                    selectLand.setRatio(Double.valueOf(0));
+                }
             }
-
             //溢价率 土地成交价 / 土地初始起拍价格
 
             //楼面价 土地成交价格 / （用地面积 * 容积率 ） 或 土地成交价 /  建筑面积
 //            selectLand.setAccommodation();
             selectLands.add(selectLand);
         });
+        if (adminId != null){
+            List<SelectLand> selectLands1 = selectLands.stream()
+                    .filter(a-> a.getAdministrativeId().equals(adminId)).collect(Collectors.toList());
+            return builder.body(ResponseUtils.getResponseBody(selectLands1));
+        }
         return builder.body(ResponseUtils.getResponseBody(selectLands));
     }
 }

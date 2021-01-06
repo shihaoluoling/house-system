@@ -186,14 +186,23 @@ private HousePlateMapper housePlateMapper;
     @RequestMapping(value = "/selectPlate", method = RequestMethod.GET)
     public ResponseEntity<JSONObject> selectPlate(
 //            Integer start,
+            Integer adminId,
+            String plateName,
             HttpServletResponse response
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
         HousePlateExample housePlateExample = new HousePlateExample();
 //        housePlateExample.setOrderByClause("id limit " + start + ","+2);
+        HousePlateExample.Criteria criteria =
         housePlateExample.createCriteria().andIsDeletedEqualTo((byte) 0);
 //        RowBounds rowBounds = new RowBounds(start, 20); //　每次查询20条
 //        housePlateMapper.selectByExampleAndRowBounds(housePlateExample,rowBounds);
+        if (adminId != null){
+            criteria.andAdministrativeIdEqualTo(adminId);
+        }
+        if (plateName != null){
+            criteria.andPlateNameLike("%"+plateName+"%");
+        }
         List<HousePlate> housePlates =
         housePlateMapper.selectByExample(housePlateExample);
         List<SelectPlate> selectPlates = new ArrayList<>();
@@ -214,19 +223,21 @@ private HousePlateMapper housePlateMapper;
                     .andIsDeletedEqualTo((byte) 0);
             List<HousePlateLabel> housePlateLabels =
             housePlateLabelMapper.selectByExample(housePlateLabelExample);
-            Set<Integer> labels = housePlateLabels.stream()
-                    .map(HousePlateLabel::getId).collect(Collectors.toSet());
-            HouseLabelExample houseLabelExample = new HouseLabelExample();
-            houseLabelExample.createCriteria()
-                    .andIdIn(Lists.newArrayList(labels))
-            .andIsDeletedEqualTo((byte) 0);
-            List<HouseLabel> houseLabels =
-                    houseLabelMapper.selectByExample(houseLabelExample);
-            Map<Object,String> map = new HashMap<>();
-            houseLabels.forEach(houseLabel -> {
-                map.put(houseLabel.getId().toString(),houseLabel.getLabelName());
-            });
-            selectPlate.setLabel(map);
+            if (housePlateLabels.size()!=0){
+                Set<Integer> labels = housePlateLabels.stream()
+                        .map(HousePlateLabel::getId).collect(Collectors.toSet());
+                HouseLabelExample houseLabelExample = new HouseLabelExample();
+                houseLabelExample.createCriteria()
+                        .andIdIn(Lists.newArrayList(labels))
+                        .andIsDeletedEqualTo((byte) 0);
+                List<HouseLabel> houseLabels =
+                        houseLabelMapper.selectByExample(houseLabelExample);
+                Map<Object,String> map = new HashMap<>();
+                houseLabels.forEach(houseLabel -> {
+                    map.put(houseLabel.getId().toString(),houseLabel.getLabelName());
+                });
+                selectPlate.setLabel(map);
+            }
             //区域优势
             selectPlate.setAdvantage(housePlate.getAdvantage());
             //置业均价

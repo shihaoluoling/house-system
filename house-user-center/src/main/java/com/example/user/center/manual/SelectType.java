@@ -17,8 +17,11 @@ public class SelectType {
     private Integer premisesId;//楼盘id
     private String premisesName;//楼盘名称
     private String projectName;//所属项目名称
+    private Integer projectId;//所属项目id
     private String administrativeName;//所属区域名称
+    private Integer administrativeId;//所属区域id
     private String plateName;//所属板块名称
+    private Integer plateId;//所属板块id
     private String landName;//所属土地名称
     private List<String> files;//图片
     private Double area;//户型面积
@@ -173,5 +176,29 @@ public class SelectType {
 
     public void setRatio(Double ratio) {
         this.ratio = ratio;
+    }
+
+    public Integer getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(Integer projectId) {
+        this.projectId = projectId;
+    }
+
+    public Integer getAdministrativeId() {
+        return administrativeId;
+    }
+
+    public void setAdministrativeId(Integer administrativeId) {
+        this.administrativeId = administrativeId;
+    }
+
+    public Integer getPlateId() {
+        return plateId;
+    }
+
+    public void setPlateId(Integer plateId) {
+        this.plateId = plateId;
     }
 }
