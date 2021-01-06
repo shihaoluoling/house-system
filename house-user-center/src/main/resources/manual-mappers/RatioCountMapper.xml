@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.user.center.manual.dao.RatioCountMapper">
+    <resultMap id="BaseResultMap" type="com.example.user.center.manual.model.RatioCount">
+        <result column="plot_ratio" jdbcType="DOUBLE" property="plotRatio"/>
+        <result column="count" jdbcType="INTEGER" property="count"/>
+    </resultMap>
+
+
+    <select id="count" resultMap="BaseResultMap">
+SELECT
+	plot_ratio,
+	count( * ) AS count
+FROM
+	`house_premises`
+WHERE
+1 = 1
+        <if test="ids.size()!=0">
+            and id in
+            <foreach collection="ids" item="item" index="index" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+GROUP BY
+	plot_ratio
+ORDER BY
+	count DESC
+    </select>
+</mapper>

@@ -4,7 +4,9 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.user.center.dao.*;
 import com.example.user.center.manual.Login;
 import com.example.user.center.manual.SelectPlate;
+import com.example.user.center.manual.model.RatioCount;
 import com.example.user.center.model.*;
+import com.example.user.center.service.RatioCountService;
 import com.google.common.collect.Lists;
 import com.house.common.utils.Decrypt;
 import com.house.utils.response.handler.ResponseEntity;
@@ -57,6 +59,9 @@ private HousePlateMapper housePlateMapper;
 //户型
     @Autowired
     private HouseTypeMapper houseTypeMapper;
+
+    @Autowired
+    private RatioCountService ratioCountService;
     @ApiOperation(value = "添加板块", notes = "添加板块")
     @RequestMapping(value = "/addPlate", method = RequestMethod.POST)
     @ApiImplicitParams({
@@ -258,7 +263,8 @@ private HousePlateMapper housePlateMapper;
                 //土地查询所有楼盘
                 HousePremisesExample housePremisesExample = new HousePremisesExample();
                 housePremisesExample.createCriteria()
-                        .andLandIdIn(Lists.newArrayList(landIds));
+                        .andLandIdIn(Lists.newArrayList(landIds))
+                .andIsDeletedEqualTo((byte) 0);
                 List<HousePremises> housePremises =
                         housePremisesMapper.selectByExample(housePremisesExample);
                 if (housePremises.size() != 0){ //-------
@@ -277,10 +283,27 @@ private HousePlateMapper housePlateMapper;
                     //楼盘ids
                     Set<Integer> premisesIds = housePremises.stream()
                             .map(HousePremises::getId).collect(Collectors.toSet());
+                    //取所有容积率
+//                    List<Double> ratios = housePremises.stream()
+//                            .map(HousePremises::getPlotRatio).collect(Collectors.toList());
+                    //---最大容积率
+                    Optional<HousePremises> ratioMax = housePremises.stream().filter(a->Optional.ofNullable(a.getPlotRatio()).isPresent())
+                            .max(Comparator.comparing(HousePremises::getPlotRatio));
+                    selectPlate.setPlotRatioMax(Optional.ofNullable(ratioMax.get().getPlotRatio()).orElse(Double.valueOf(0)));
+                    //----最小容积率
+                    Optional<HousePremises> ratioMin = housePremises.stream().filter(a->Optional.ofNullable(a.getPlotRatio()).isPresent())
+                            .min(Comparator.comparing(HousePremises::getPlotRatio));
+                    selectPlate.setPlotRatioMin(Optional.ofNullable(ratioMin.get().getPlotRatio()).orElse(Double.valueOf(0)));
+                    //所有容积率和出现次数
+                      List<RatioCount> ratioCounts = ratioCountService.count(Lists.newArrayList(premisesIds));
+                      Double ratio = Optional.ofNullable(ratioCounts.get(0).getPlotRatio()).orElse(Double.valueOf(0));
+                      //-----最多出现容积率,如果有多个占取第一个
+                    selectPlate.setPlotRatioMuch(ratio);
                     //查询寻所有户型
                     HouseTypeExample houseTypeExample = new HouseTypeExample();
                     houseTypeExample.createCriteria()
-                            .andPremisesIdIn(Lists.newArrayList(premisesIds));
+                            .andPremisesIdIn(Lists.newArrayList(premisesIds))
+                    .andIsDeletedEqualTo((byte) 0);
                     List<HouseType> houseTypes =
                             houseTypeMapper.selectByExample(houseTypeExample);
                     if (houseTypes.size()!=0){//------------
