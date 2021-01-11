@@ -18,7 +18,7 @@
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin"/>
 
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://39.98.126.20:3306/user_center?serverTimezone=UTC"
+                        connectionURL="jdbc:mysql://39.98.126.20:3306/test?serverTimezone=UTC"
                         userId="hanfu_admin" password="Davin1234!">
         </jdbcConnection>
 
@@ -28,7 +28,7 @@
         </javaTypeResolver>
 
         <javaModelGenerator
-                targetPackage="com.example.product.center.model"
+                targetPackage="com.example.admin.center.model"
                 targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
@@ -40,7 +40,7 @@
         </sqlMapGenerator>
 
         <javaClientGenerator type="XMLMAPPER"
-                             targetPackage="com.example.product.center.dao"
+                             targetPackage="com.example.admin.center.dao"
                              targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>

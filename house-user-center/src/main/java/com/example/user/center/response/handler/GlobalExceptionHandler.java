@@ -16,12 +16,14 @@ public class GlobalExceptionHandler extends com.house.utils.response.handler.Glo
 
     @ExceptionHandler(value = Exception.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR, reason = "unknow exception")
+    @Override
     public void exceptionHandler(HttpServletRequest req, Exception e) {
         logger.error("unknow exception:", e);
     }
 
     @ExceptionHandler(value = LoginException.class)
     @ResponseStatus(value = HttpStatus.FORBIDDEN, reason = "login failed")
+    @Override
     public void loginExceptionHandler(HttpServletRequest req, Exception e) {
         logger.error("login failed:", e);
     }

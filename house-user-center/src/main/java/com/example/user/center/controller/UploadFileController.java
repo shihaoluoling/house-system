@@ -53,8 +53,8 @@ private HouseFileMapper houseFileMapper;
     public ResponseEntity<JSONObject> fileUpLoad(MultipartFile file) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
         String arr[];
-        FileMangeService fileMangeService = new FileMangeService();
-        arr = fileMangeService.uploadFile(file.getBytes(), String.valueOf("-1"));
+//        FileMangeService fileMangeService = new FileMangeService();
+        arr = FileMangeService.uploadFile(file.getBytes(), String.valueOf("-1"));
         HouseFile fileDesc = new HouseFile();
         fileDesc.setFileName(file.getName());
         fileDesc.setGroupName(arr[0]);
@@ -83,7 +83,7 @@ private HouseFileMapper houseFileMapper;
         }
         FileMangeService fileManageService = new FileMangeService();
         synchronized (LOCK) {
-            byte[] file = fileManageService.downloadFile(fileDesc.getGroupName(), fileDesc.getRemoteFilename());
+            byte[] file = FileMangeService.downloadFile(fileDesc.getGroupName(), fileDesc.getRemoteFilename());
             InputStream sbs = new ByteArrayInputStream(file);
             ByteArrayOutputStream os = new ByteArrayOutputStream();
             Thumbnails.of(sbs).scale(1f).outputFormat("jpg").outputQuality(0.7).toOutputStream(os);
@@ -103,7 +103,7 @@ private HouseFileMapper houseFileMapper;
         HouseFile fileDesc = houseFileMapper.selectByPrimaryKey(fileId);
         FileMangeService fileManageService = new FileMangeService();
         if (fileDesc != null) {
-            fileManageService.deleteFile(fileDesc.getGroupName(), fileDesc.getRemoteFilename());
+            FileMangeService.deleteFile(fileDesc.getGroupName(), fileDesc.getRemoteFilename());
         }
         houseFileMapper.deleteByPrimaryKey(fileId);
         return builder.body(ResponseUtils.getResponseBody(fileId));

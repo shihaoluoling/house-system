@@ -9,8 +9,10 @@ package com.example.user.center.manual;
  * @Version: $
  */
 public enum  LabelType {
-    AREA("area"),//区域定位标签
-    PRODUCT("product");//产品标签
+    //区域定位标签
+    AREA("area"),
+    //产品标签
+    PRODUCT("product");
     private String paymentTypeName;
 
     LabelType(String paymentTypeName) {

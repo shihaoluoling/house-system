@@ -9,6 +9,9 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * @author MACHENIKE
+ */
 @Component
 public class AuthorityInterceptor extends HandlerInterceptorAdapter {
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());

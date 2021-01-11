@@ -287,7 +287,7 @@ public class LoginController {
                 .andIsDeletedEqualTo((byte) 0);
         List<HouseAuth> houseAuths = houseAuthMapper.selectByExample(houseAuthExample);
         String a;
-        if (houseAuths.get(0).getAuthStatus().equals("0")){
+        if ("0".equals(houseAuths.get(0).getAuthStatus())){
             a = "1";
         } else {
             a = "0";
