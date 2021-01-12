@@ -9,9 +9,9 @@
         <relativePath/>
     </parent>
     <groupId>com.example.admin.center</groupId>
-    <artifactId>house-admin-center</artifactId>
+    <artifactId>hotel-center</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>house-admin-center</name>
+    <name>hotel-center</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>1.8</java.version>
@@ -127,6 +127,11 @@
             <artifactId>json-lib</artifactId>
             <version>2.2.3</version>
             <classifier>jdk15</classifier><!-- 指定jdk版本 -->
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>4.5.9</version>
         </dependency>
         <!-- Json依赖架包下载 -->
     </dependencies>

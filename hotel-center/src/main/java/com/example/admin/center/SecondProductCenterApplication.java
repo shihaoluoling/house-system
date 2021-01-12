@@ -16,7 +16,7 @@ import java.util.Properties;
 @SpringBootApplication
 @EnableFeignClients
 @EnableEurekaClient
-//@MapperScans({@MapperScan("com.example.product.center.dao"),@MapperScan("com.example.product.center.manual.dao")})
+@MapperScans({@MapperScan("com.example.admin.center.dao"),@MapperScan("com.example.admin.center.manual.dao")})
 @EnableTransactionManagement//shiwu
 @EnableScheduling//定时器
 public class SecondProductCenterApplication {
