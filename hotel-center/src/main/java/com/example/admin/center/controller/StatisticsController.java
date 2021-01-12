@@ -96,7 +96,7 @@ public class StatisticsController {
                     .andCreateTimeLessThanOrEqualTo(LocalDateTime.ofInstant(endTime.toInstant(), zoneId));
         }
         long processedNum = hotelOrdersMapper.countByExample(hotelOrdersExample);
-        selectStatistics.setProductNum(productNum);
+        selectStatistics.setProductNum(processedNum);
         //完成
         hotelOrdersExample.clear();
         HotelOrdersExample.Criteria criteria3 = hotelOrdersExample.createCriteria()
