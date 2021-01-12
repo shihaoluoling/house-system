@@ -1,5 +1,9 @@
 package com.example.admin.center.manual.Enum;
 
+/**
+ * @author MACHENIKE
+ */
+
 public enum UserType {
     //小程序微信登录
     WECHART("wechart"),

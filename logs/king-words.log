@@ -713,3 +713,102 @@ java.lang.NullPointerException: null
 2021-01-12 14:37:45.390  INFO 8260 --- [http-nio-7002-exec-4] c.e.a.c.i.AuthorityInterceptor           : /hotel/Order/selectOrder{"num":["2"],"start":["1"],"userId":["1"]}
 2021-01-12 14:37:51.436  INFO 8260 --- [http-nio-7002-exec-5] c.e.a.c.i.AuthorityInterceptor           : /hotel/Order/selectOrder{"num":["3"],"start":["1"],"userId":["1"]}
 2021-01-12 14:37:58.706  INFO 8260 --- [http-nio-7002-exec-7] c.e.a.c.i.AuthorityInterceptor           : /hotel/Order/selectOrder{"num":["4"],"start":["1"],"userId":["1"]}
+2021-01-12 15:16:45.659  INFO 4428 --- [main] c.e.a.c.SecondProductCenterApplication   : No active profile set, falling back to default profiles: default
+2021-01-12 15:16:46.644  INFO 4428 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-12 15:16:46.646  INFO 4428 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-12 15:16:46.703  INFO 4428 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44ms. Found 0 repository interfaces.
+2021-01-12 15:16:47.009  INFO 4428 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=f038f706-72f7-301c-a8f7-f4f141bd854a
+2021-01-12 15:16:47.057  INFO 4428 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$934de284] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-12 15:16:47.106  INFO 4428 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$cce22456] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-12 15:16:47.134  INFO 4428 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$e8fc2753] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-12 15:16:47.473  INFO 4428 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7002 (http)
+2021-01-12 15:16:47.500  INFO 4428 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-12 15:16:47.501  INFO 4428 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
+2021-01-12 15:16:47.506  INFO 4428 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk-11.0.6\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk1.8.0_212\bin;C:\Program Files\Java\jdk1.8.0_212\jre\bin;D:\nodejs\;C:\Users\MACHENIKE\AppData\Local\Microsoft\WindowsApps;C:\Users\MACHENIKE\AppData\Roaming\npm;D:\Microsoft VS Code\bin;.]
+2021-01-12 15:16:47.782  INFO 4428 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/hotel]  : Initializing Spring embedded WebApplicationContext
+2021-01-12 15:16:47.782  INFO 4428 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2104 ms
+2021-01-12 15:16:48.844  INFO 4428 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2021-01-12 15:16:48.940  WARN 4428 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-12 15:16:48.940  INFO 4428 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-12 15:16:48.944  WARN 4428 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-12 15:16:48.944  INFO 4428 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-12 15:16:49.038  INFO 4428 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-12 15:16:49.522  INFO 4428 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2021-01-12 15:16:50.245  INFO 4428 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2021-01-12 15:16:50.268  INFO 4428 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2021-01-12 15:16:50.268  INFO 4428 --- [main] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2021-01-12 15:16:50.273  INFO 4428 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1610435810272 with initial instances count: 0
+2021-01-12 15:16:50.278  INFO 4428 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application hotel-center with eureka with status UP
+2021-01-12 15:16:50.282  INFO 4428 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-01-12 15:16:50.294  INFO 4428 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-01-12 15:16:50.323  INFO 4428 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-01-12 15:16:50.406  WARN 4428 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-12 15:16:50.438  WARN 4428 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-12 15:16:50.463  INFO 4428 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectProductUsingGET_1
+2021-01-12 15:16:50.552  INFO 4428 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7002 (http) with context path '/hotel'
+2021-01-12 15:16:50.556  INFO 4428 --- [main] c.e.a.c.SecondProductCenterApplication   : Started SecondProductCenterApplication in 6.821 seconds (JVM running for 8.5)
+2021-01-12 15:42:08.610  INFO 4428 --- [http-nio-7002-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/hotel]  : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-12 15:42:08.612  INFO 4428 --- [http-nio-7002-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-01-12 15:42:08.624  INFO 4428 --- [http-nio-7002-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 12 ms
+2021-01-12 15:42:08.650  INFO 4428 --- [http-nio-7002-exec-1] c.e.a.c.i.AuthorityInterceptor           : /hotel/swagger-ui.html{}
+2021-01-12 15:42:08.883  INFO 4428 --- [http-nio-7002-exec-2] c.e.a.c.i.AuthorityInterceptor           : /hotel/swagger-resources/configuration/ui{}
+2021-01-12 15:42:08.892  INFO 4428 --- [http-nio-7002-exec-3] c.e.a.c.i.AuthorityInterceptor           : /hotel/webjars/springfox-swagger-ui/favicon-32x32.png{"v":["2.9.2"]}
+2021-01-12 15:42:08.975  INFO 4428 --- [http-nio-7002-exec-4] c.e.a.c.i.AuthorityInterceptor           : /hotel/swagger-resources/configuration/security{}
+2021-01-12 15:42:08.992  INFO 4428 --- [http-nio-7002-exec-5] c.e.a.c.i.AuthorityInterceptor           : /hotel/swagger-resources{}
+2021-01-12 15:42:09.045  INFO 4428 --- [http-nio-7002-exec-7] c.e.a.c.i.AuthorityInterceptor           : /hotel/{}
+2021-01-12 15:42:09.055  INFO 4428 --- [http-nio-7002-exec-7] c.e.a.c.i.AuthorityInterceptor           : /hotel/error{}
+2021-01-12 15:42:09.072  INFO 4428 --- [http-nio-7002-exec-8] c.e.a.c.i.AuthorityInterceptor           : /hotel/csrf{}
+2021-01-12 15:42:09.075  INFO 4428 --- [http-nio-7002-exec-8] c.e.a.c.i.AuthorityInterceptor           : /hotel/error{}
+2021-01-12 15:43:16.514  INFO 4428 --- [http-nio-7002-exec-1] c.e.a.c.i.AuthorityInterceptor           : /hotel/webjars/springfox-swagger-ui/fonts/titillium-web-v6-latin-regular.woff2{}
+2021-01-12 17:17:41.841  INFO 6848 --- [main] c.e.a.c.SecondProductCenterApplication   : No active profile set, falling back to default profiles: default
+2021-01-12 17:17:42.814  INFO 6848 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-12 17:17:42.817  INFO 6848 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-12 17:17:42.869  INFO 6848 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33ms. Found 0 repository interfaces.
+2021-01-12 17:17:43.175  INFO 6848 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8b052efc-ced9-37a7-a9a2-57509b86b29d
+2021-01-12 17:17:43.220  INFO 6848 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$4d4e120e] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-12 17:17:43.273  INFO 6848 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$86e253e0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-12 17:17:43.300  INFO 6848 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$a2fc56dd] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-12 17:17:43.736  INFO 6848 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7002 (http)
+2021-01-12 17:17:43.778  INFO 6848 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-12 17:17:43.778  INFO 6848 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
+2021-01-12 17:17:43.790  INFO 6848 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk-11.0.6\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk1.8.0_212\bin;C:\Program Files\Java\jdk1.8.0_212\jre\bin;D:\nodejs\;C:\Users\MACHENIKE\AppData\Local\Microsoft\WindowsApps;C:\Users\MACHENIKE\AppData\Roaming\npm;D:\Microsoft VS Code\bin;.]
+2021-01-12 17:17:44.091  INFO 6848 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/hotel]  : Initializing Spring embedded WebApplicationContext
+2021-01-12 17:17:44.091  INFO 6848 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2228 ms
+2021-01-12 17:17:45.340  INFO 6848 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2021-01-12 17:17:45.431  WARN 6848 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-12 17:17:45.432  INFO 6848 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-12 17:17:45.437  WARN 6848 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-12 17:17:45.437  INFO 6848 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-12 17:17:45.540  INFO 6848 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-12 17:17:46.097  INFO 6848 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2021-01-12 17:17:46.775  INFO 6848 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2021-01-12 17:17:46.806  INFO 6848 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2021-01-12 17:17:46.806  INFO 6848 --- [main] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2021-01-12 17:17:46.825  INFO 6848 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1610443066823 with initial instances count: 0
+2021-01-12 17:17:46.834  INFO 6848 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application hotel-center with eureka with status UP
+2021-01-12 17:17:46.837  INFO 6848 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-01-12 17:17:46.853  INFO 6848 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-01-12 17:17:46.894  INFO 6848 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-01-12 17:17:46.983  WARN 6848 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-12 17:17:47.021  WARN 6848 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-12 17:17:47.051  INFO 6848 --- [main] .d.s.w.r.o.CachingOperationNameGenerator : Generating unique operation named: selectProductUsingGET_1
+2021-01-12 17:17:47.131  INFO 6848 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7002 (http) with context path '/hotel'
+2021-01-12 17:17:47.135  INFO 6848 --- [main] c.e.a.c.SecondProductCenterApplication   : Started SecondProductCenterApplication in 6.807 seconds (JVM running for 8.581)
+2021-01-12 17:17:56.485  INFO 6848 --- [http-nio-7002-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/hotel]  : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-12 17:17:56.486  INFO 6848 --- [http-nio-7002-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-01-12 17:17:56.495  INFO 6848 --- [http-nio-7002-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2021-01-12 17:17:56.516  INFO 6848 --- [http-nio-7002-exec-1] c.e.a.c.i.AuthorityInterceptor           : /hotel/swagger-ui.html{}
+2021-01-12 17:17:56.788  INFO 6848 --- [http-nio-7002-exec-2] c.e.a.c.i.AuthorityInterceptor           : /hotel/swagger-resources/configuration/ui{}
+2021-01-12 17:17:56.795  INFO 6848 --- [http-nio-7002-exec-5] c.e.a.c.i.AuthorityInterceptor           : /hotel/webjars/springfox-swagger-ui/favicon-32x32.png{"v":["2.9.2"]}
+2021-01-12 17:17:56.880  INFO 6848 --- [http-nio-7002-exec-7] c.e.a.c.i.AuthorityInterceptor           : /hotel/swagger-resources/configuration/security{}
+2021-01-12 17:17:56.891  INFO 6848 --- [http-nio-7002-exec-3] c.e.a.c.i.AuthorityInterceptor           : /hotel/swagger-resources{}
+2021-01-12 17:17:56.952  INFO 6848 --- [http-nio-7002-exec-4] c.e.a.c.i.AuthorityInterceptor           : /hotel/{}
+2021-01-12 17:17:56.967  INFO 6848 --- [http-nio-7002-exec-4] c.e.a.c.i.AuthorityInterceptor           : /hotel/error{}
+2021-01-12 17:17:56.977  INFO 6848 --- [http-nio-7002-exec-8] c.e.a.c.i.AuthorityInterceptor           : /hotel/csrf{}
+2021-01-12 17:17:56.981  INFO 6848 --- [http-nio-7002-exec-8] c.e.a.c.i.AuthorityInterceptor           : /hotel/error{}
+2021-01-12 17:18:05.568  INFO 6848 --- [http-nio-7002-exec-9] c.e.a.c.i.AuthorityInterceptor           : /hotel/Statistics/selectStatistics{}
+2021-01-12 17:18:05.594  WARN 6848 --- [http-nio-7002-exec-9] com.zaxxer.hikari.HikariConfig           : dataSource - idleTimeout is close to or more than maxLifetime, disabling it.
+2021-01-12 17:18:05.594  INFO 6848 --- [http-nio-7002-exec-9] com.zaxxer.hikari.HikariDataSource       : dataSource - Starting...
+2021-01-12 17:18:05.860  INFO 6848 --- [http-nio-7002-exec-9] com.zaxxer.hikari.HikariDataSource       : dataSource - Start completed.
+2021-01-12 17:18:26.134  INFO 6848 --- [http-nio-7002-exec-10] c.e.a.c.i.AuthorityInterceptor           : /hotel/Statistics/selectStatistics{"endTime":["2021-1-1 "],"stateTime":["2021-2-2"]}
+2021-01-12 17:18:47.074  INFO 6848 --- [http-nio-7002-exec-1] c.e.a.c.i.AuthorityInterceptor           : /hotel/Statistics/selectStatistics{"endTime":["2021-2-1 "],"stateTime":["2021-1-2"]}

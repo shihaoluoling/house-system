@@ -134,6 +134,16 @@
             <version>4.5.9</version>
         </dependency>
         <!-- Json依赖架包下载 -->
+        <dependency>
+            <groupId>cn.wanghaomiao</groupId>
+            <artifactId>JsoupXpath</artifactId>
+            <version>2.3.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.49</version>
+        </dependency>
     </dependencies>
 
     <build>

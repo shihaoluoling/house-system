@@ -1,5 +1,9 @@
 package com.example.admin.center.manual.Enum;
 
+/**
+ * @author MACHENIKE
+ */
+
 public enum OrderType {
     //待处理
     PENDING("pending"),
