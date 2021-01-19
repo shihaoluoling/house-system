@@ -31,4 +31,9 @@ public class ProductServiceImpl implements ProductService {
     public List<HotelProduct> selectProduct(String cartCode) {
         return productMapper.selectProduct(cartCode);
     }
+
+    @Override
+    public int quantity() {
+        return productMapper.quantity();
+    }
 }

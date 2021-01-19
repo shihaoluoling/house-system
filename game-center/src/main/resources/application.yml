@@ -2,7 +2,7 @@ spring:
   aop:
     proxy-target-class: true
   application:
-    name: hotel-center
+    name: game-center
   rabbitmq:
     host: 39.100.237.144
     port: 5672
@@ -13,9 +13,9 @@ spring:
   datasource:
     name: dataSource
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://120.78.143.135:3306/hotel?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8&useSSL=false&zeroDateTimeBehavior=CONVERT_TO_NULL&allowPublicKeyRetrieval=true
-    username: root
-    password: root
+    url: jdbc:mysql://39.98.126.20:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8&useSSL=false&zeroDateTimeBehavior=CONVERT_TO_NULL&allowPublicKeyRetrieval=true
+    username: hanfu_admin
+    password: Davin1234!
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
       connection-test-query: select now()
@@ -28,6 +28,15 @@ spring:
       validation-timeout: 300000
       connection-timeout: 60000
       read-only: false
+  redis:
+    database: 0
+    host: 39.100.237.144
+    port: 16379
+    timeout: 10000
+    jedis:
+      pool:
+        max-active: 16
+        max-idle: 4
   task:
     execution:
       pool:
@@ -35,9 +44,9 @@ spring:
         queue-capacity: 100
         keep-alive: 3600s
 server:
-  port: 7002
+  port: 7003
   servlet:
-    context-path: /hotel
+    context-path: /game
 logging:
   file: ./logs/king-words.log
 eureka:

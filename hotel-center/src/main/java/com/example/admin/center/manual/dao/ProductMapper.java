@@ -21,4 +21,9 @@ public interface ProductMapper {
      *  cartCode 购物车编号
      * */
     List<HotelProduct> selectProduct(@Param("cartCode")String cartCode);
+    /**
+     *扣减库存
+     *  扣减库存
+     * */
+    int quantity();
 }

@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="game-center" />
         <module name="hotel-center" />
         <module name="house-common" />
         <module name="house-user-center" />
@@ -19,6 +20,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="game-center" target="11" />
       <module name="hanfu-web-utils" target="11" />
       <module name="hotel-center" target="1.8" />
       <module name="house-common" target="11" />

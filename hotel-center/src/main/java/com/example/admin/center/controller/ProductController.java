@@ -12,7 +12,6 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -39,8 +38,6 @@ import java.util.List;
 public class ProductController {
     @Autowired
     private HotelProductMapper hotelProductMapper;
-    @Autowired
-    private RedisTemplate<Object,Object> redisTemplate;
     @ApiOperation(value = "添加商品", notes = "添加商品")
     @RequestMapping(value = "/addProduct", method = RequestMethod.POST)
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
@@ -121,7 +118,8 @@ public class ProductController {
         selectProduct.setNums(nums);
         if (start!=null && num!=null){
             start -= 1;
-            hotelProductExample.setOrderByClause("id limit " + start + ","  + num);
+            start = start*10;
+            hotelProductExample.setOrderByClause("id desc limit " + start + ","  + num);
         }
         List<HotelProduct> hotelProducts =
                 hotelProductMapper.selectByExample(hotelProductExample);

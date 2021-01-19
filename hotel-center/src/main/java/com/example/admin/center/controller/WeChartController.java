@@ -18,7 +18,6 @@ import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,8 +55,6 @@ import java.util.*;
 @RequestMapping("/WeChart")
 @CrossOrigin
 public class WeChartController {
-    @Autowired
-    private RedisTemplate<Object,Object> redisTemplate;
     @Autowired
     private HotelAuthMapper hotelAuthMapper;
     @Autowired
@@ -200,7 +197,8 @@ public class WeChartController {
         selectAuths.setNums(nums);
         if (start!=null && num!=null) {
             start -= 1;
-            hotelAuthExample.setOrderByClause("id limit " + start + "," + num);
+            start = start*10;
+            hotelAuthExample.setOrderByClause("id desc limit " + start + "," + num);
         }
         List<HotelAuth> hotelAuths =
                 hotelAuthMapper.selectByExample(hotelAuthExample);
@@ -225,7 +223,8 @@ public class WeChartController {
         selectUser.setNums(nums);
         if (start!=null && num!=null) {
             start -= 1;
-            hotelUserExample.setOrderByClause("id limit " + start + "," + num);
+            start = start*10;
+            hotelUserExample.setOrderByClause("id desc limit " + start + "," + num);
         }
         List<HotelUser> hotelUsers =
                 hotelUserMapper.selectByExample(hotelUserExample);
@@ -276,7 +275,7 @@ public class WeChartController {
 
 
     @RequestMapping(path = "/wechart", method = RequestMethod.GET)
-    @ApiOperation(value = "微信登录", notes = "微信登录")
+    @ApiOperation(value = "微信登录小程序", notes = "微信登录")
     public ResponseEntity<JSONObject> wxLogin(@RequestParam(value = "code", required = false) String code,
                                               @RequestParam(value = "appName", required = false) String appName,
                                               @RequestParam(value = "encryptedData", required = false) String encryptedData,
@@ -295,17 +294,17 @@ public class WeChartController {
         HotelUser hotelUser = CollectionUtils.isEmpty(auths) ? register(openid, sessionKey, encryptedData, iv) : hotelUserMapper.selectByPrimaryKey(auths.get(0).getUserId());
 
         String skey = UUID.randomUUID().toString();
-        String skey_redis = String.valueOf(redisTemplate.opsForValue().get(openid));
-        if (!StringUtils.isEmpty(skey_redis)) {
-            redisTemplate.delete(skey_redis);
-            skey = UUID.randomUUID().toString();
-        }
+//        String skey_redis = String.valueOf(redisTemplate.opsForValue().get(openid));
+//        if (!StringUtils.isEmpty(skey_redis)) {
+//            redisTemplate.delete(skey_redis);
+//            skey = UUID.randomUUID().toString();
+//        }
 
         JSONObject sessionObj = new JSONObject();
         sessionObj.put("openId", openid);
         sessionObj.put("sessionKey", sessionKey);
-        redisTemplate.opsForValue().set(skey, sessionObj.toJSONString());
-        redisTemplate.opsForValue().set(openid, skey);
+//        redisTemplate.opsForValue().set(skey, sessionObj.toJSONString());
+//        redisTemplate.opsForValue().set(openid, skey);
         Encrypt encrypt = new Encrypt();
         String token = encrypt.getToken(true, hotelUser.getId(), "user", 0);
         response.addHeader("token", token);
@@ -398,8 +397,10 @@ public class WeChartController {
         hotelUser.setRealName(realName);
         hotelUser.setSex(sex);
         hotelUser.setPhone(phone);
-        hotelUser.setRegion(region);
-        hotelUser.setAddress(address);
+        hotelUser.setIdentityRegion(region);
+//        hotelUser.setRegion(region);
+        hotelUser.setIdentityAddress(address);
+//        hotelUser.setAddress(address);
         ZoneId zoneId = ZoneId.systemDefault();
         hotelUser.setBirthDay(LocalDateTime.ofInstant(birthDay.toInstant(), zoneId));
         hotelUserMapper.updateByPrimaryKeySelective(hotelUser);
