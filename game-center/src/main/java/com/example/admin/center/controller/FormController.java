@@ -6,7 +6,9 @@ import com.example.admin.center.dao.GameFormItemMapper;
 import com.example.admin.center.dao.GameFormMapper;
 import com.example.admin.center.manual.Enum.AuthLogin;
 import com.example.admin.center.manual.Enum.Login;
+import com.example.admin.center.manual.JSON.SelectForm;
 import com.example.admin.center.model.*;
+import com.example.admin.center.service.FormService;
 import com.house.utils.response.handler.ResponseEntity;
 import com.house.utils.response.handler.ResponseUtils;
 import io.swagger.annotations.Api;
@@ -48,6 +50,8 @@ public class FormController {
     @Autowired
     private GameFormItemBeMapper gameFormItemBeMapper;
 
+    @Autowired
+    private FormService formService;
 
     @ApiOperation(value = "添加表单项", notes = "添加表单项")
     @RequestMapping(value = "/addFormItem", method = RequestMethod.POST)
@@ -142,7 +146,7 @@ public class FormController {
         gameFormMapper.insertSelective(gameForm);
         //给表单加表单项
         if (formItems.length != 0){
-            for (int i = 0; i<=formItems.length; i++){
+            for (int i = 1; i<=formItems.length; i++){
                 GameFormItemBe gameFormItemBe = new GameFormItemBe();
                 gameFormItemBe.setFormId(gameForm.getId());
                 gameFormItemBe.setFormItemId(formItems[i]);
@@ -154,5 +158,95 @@ public class FormController {
             }
         }
         return builder.body(ResponseUtils.getResponseBody(0));
+    }
+
+    @ApiOperation(value = "修改表单", notes = "修改表单")
+    @RequestMapping(value = "/updateForm", method = RequestMethod.POST)
+    @Transactional(rollbackFor = {RuntimeException.class, Error.class})
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", name = "name", value = "表单名称", required = true, type = "Integer"),
+    })
+    public ResponseEntity<JSONObject> updateForm(
+            Integer formId,
+            String name,
+            Integer[] formItems,
+            HttpServletResponse response
+    ) throws Exception {
+        ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
+        //新增表单
+        GameForm gameForm = new GameForm();
+        gameForm.setId(formId);
+        gameForm.setName(name);
+        gameForm.setModifyTime(LocalDateTime.now());
+        gameFormMapper.updateByPrimaryKeySelective(gameForm);
+        //给表单加表单项
+        if (formItems.length != 0){
+            for (int i = 1; i<=formItems.length; i++){
+                GameFormItemBe gameFormItemBe = new GameFormItemBe();
+                gameFormItemBe.setFormId(gameForm.getId());
+                gameFormItemBe.setFormItemId(formItems[i]);
+                gameFormItemBe.setSort(i);
+                gameFormItemBe.setCreateTime(LocalDateTime.now());
+                gameFormItemBe.setModifyTime(LocalDateTime.now());
+                gameFormItemBe.setIsDeleted((short) 0);
+                gameFormItemBeMapper.insertSelective(gameFormItemBe);
+            }
+        }
+        return builder.body(ResponseUtils.getResponseBody(0));
+    }
+
+    @ApiOperation(value = "删除表单", notes = "删除表单")
+    @RequestMapping(value = "/deleteForm", method = RequestMethod.POST)
+    @Transactional(rollbackFor = {RuntimeException.class, Error.class})
+    public ResponseEntity<JSONObject> deleteForm(
+            Integer formId,
+            HttpServletResponse response
+    ) throws Exception {
+        ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
+        //新增表单
+        GameForm gameForm = new GameForm();
+        gameForm.setId(formId);
+        gameForm.setIsDeleted((short) 1);
+        gameFormMapper.updateByPrimaryKeySelective(gameForm);
+        return builder.body(ResponseUtils.getResponseBody(0));
+    }
+
+    @ApiOperation(value = "查询表单", notes = "查询表单")
+    @RequestMapping(value = "/selectForm", method = RequestMethod.GET)
+    @Transactional(rollbackFor = {RuntimeException.class, Error.class})
+    public ResponseEntity<JSONObject> selectForm(
+            Integer start,
+            Integer num,
+            HttpServletResponse response
+    ) throws Exception {
+        ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
+        //新增表单
+        GameFormExample gameFormExample = new GameFormExample();
+        gameFormExample.createCriteria()
+                .andIsDeletedEqualTo((short) 0);
+        //总数
+        SelectForm selectForm = new SelectForm();
+        long nums = gameFormMapper.countByExample(gameFormExample);
+        selectForm.setNums(nums);
+        if (start!=null && num!=null){
+            //mysql 从0开始算数据,前端从1开始
+            start -= 1;
+            //转化成分页从第start开始,num条
+            start = start*10;
+            gameFormExample.setOrderByClause("id desc limit " + start + ","  + num);
+        }
+        List<GameForm> gameForms = gameFormMapper.selectByExample(gameFormExample);
+        selectForm.setGameForms(gameForms);
+        return builder.body(ResponseUtils.getResponseBody(selectForm));
+    }
+
+    @ApiOperation(value = "查询表单下的表单项", notes = "查询表单下的表单项")
+    @RequestMapping(value = "/selectFormItem", method = RequestMethod.GET)
+    public ResponseEntity<JSONObject> selectFormItem(
+            Integer formId,
+            HttpServletResponse response
+    ) throws Exception {
+        ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
+        return builder.body(ResponseUtils.getResponseBody(formService.selectFormItem(formId)));
     }
 }

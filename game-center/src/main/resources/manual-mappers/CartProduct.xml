@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.admin.center.manual.dao.FormMapper">
+    <resultMap id="BaseResultMap" type="com.example.admin.center.manual.model.FormItem">
+        <result column="id" jdbcType="INTEGER" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="type" jdbcType="VARCHAR" property="type"/>
+        <result column="formRemark" jdbcType="VARCHAR" property="form_remark"/>
+        <result column="sort" jdbcType="INTEGER" property="sort"/>
+    </resultMap>
+
+
+	<select id="selectFormItem" resultMap="BaseResultMap">
+SELECT
+	h2.id,
+	h2.NAME,
+	h2.type,
+	h2.form_remark,
+	h1.sort
+FROM
+	game_form_item_be h1
+	LEFT JOIN game_form_item h2 ON h1.form_item_id = h2.id
+WHERE
+	h1.form_id = #{formId}
+ORDER BY
+	h1.sort ASC
+    </select>
+
+</mapper>
