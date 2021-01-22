@@ -5,7 +5,7 @@
         <result column="id" jdbcType="INTEGER" property="id"/>
         <result column="name" jdbcType="VARCHAR" property="name"/>
         <result column="type" jdbcType="VARCHAR" property="type"/>
-        <result column="formRemark" jdbcType="VARCHAR" property="form_remark"/>
+        <result column="form_remark" jdbcType="VARCHAR" property="formRemark"/>
         <result column="sort" jdbcType="INTEGER" property="sort"/>
     </resultMap>
 

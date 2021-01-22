@@ -21,6 +21,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,6 +61,9 @@ public class AuthController {
 
     @Autowired
     private GameUserMapper gameUserMapper;
+
+    @Autowired
+    private RedisTemplate<Object,Object> redisTemplate;
     @RequestMapping(path = "/code", method = RequestMethod.POST)
     @ApiOperation(value = "发送验证码", notes = "发送验证码")
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
@@ -75,7 +79,7 @@ public class AuthController {
                 Jedis jedis = new Jedis();
                 jedis = jedisPool.getResource();
                 jedis.set(phone+"game", String.valueOf(code));
-                jedis.expire(phone, 300);
+                jedis.expire(phone+"game", 300);
                 if (jedis != null) {
                     jedis.close();
                 }
@@ -111,6 +115,7 @@ public class AuthController {
             System.out.println("code+++++++++++"+code);
             System.out.println("passwd+++++++++++"+passwd);
             if(jedis!=null) {
+                jedis.del(phone+"game");
                 jedis.close();
             }
             if(StringUtils.isEmpty(passwd)) {
@@ -348,6 +353,7 @@ public class AuthController {
             String realName,
             String file,
             String phone,
+            String password,
             HttpServletResponse response
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
@@ -375,6 +381,10 @@ public class AuthController {
         GameAuth gameAuth = new GameAuth();
         gameAuth.setModifyDate(LocalDateTime.now());
         gameAuth.setAuthKey(phone);
+        if (password!=null){
+            BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder();
+            gameAuth.setPassword(bcryptPasswordEncoder.encode(password));
+        }
                 gameAuthMapper.updateByExampleSelective(gameAuth,hotelAuthExample);
 
         GameUser gameUser  = new GameUser();
@@ -410,47 +420,67 @@ public class AuthController {
             response.sendError(1000,"用户名存在");
             return builder.body(ResponseUtils.getResponseBody(1));
         } else {
-            GameUser hotelUser = new GameUser();
-            hotelUser.setPhone(phone);
-            hotelUser.setRealName(phone);
-            hotelUser.setCreateDate(LocalDateTime.now());
-            hotelUser.setModifyDate(LocalDateTime.now());
-            hotelUser.setIsDeleted((byte) 0);
-            hotelUser.setUserType(UserType.WECHART.getAuthType());
-            gameUserMapper.insertSelective(hotelUser);
-            GameAuth hotelAuth = new GameAuth();
-            hotelAuth.setEncodeType(AuthLogin.APP.getLogin());
-            hotelAuth.setUserId(hotelUser.getId());
-            hotelAuth.setAuthKey(phone);
-            hotelAuth.setAuthStatus((byte) 0);
-            hotelAuth.setAuthType(Login.ADMIN.getLogin());
-            hotelAuth.setCreateDate(LocalDateTime.now());
-            hotelAuth.setModifyDate(LocalDateTime.now());
-            hotelAuth.setIsDeleted((byte) 0);
-            BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder();
-            hotelAuth.setPassword(bcryptPasswordEncoder.encode(String.valueOf(123456)));
-            gameAuthMapper.insertSelective(hotelAuth);
-            hotelAuth.setId(null);
-            hotelAuth.setAuthType(Login.PHONE.getLogin());
-            hotelAuth.setPassword(null);
-            hotelAuth.setAuthKey(phone);
-            gameAuthMapper.insertSelective(hotelAuth);
+            Jedis jedis = new Jedis();
+            jedis = jedisPool.getResource();
+            String code = jedis.get(phone+"game");
+            System.out.println("code+++++++++++"+code);
+            System.out.println("passwd+++++++++++"+password);
+            if(jedis!=null) {
+                jedis.del(phone+"game");
+                jedis.close();
+            }
+            if(StringUtils.isEmpty(password)) {
+                return builder.body(ResponseUtils.getResponseBody("验证码为null"));
+            }else {
+                if(password.equals(code)) {
+                    GameUser hotelUser = new GameUser();
+                    hotelUser.setPhone(phone);
+                    hotelUser.setRealName(phone);
+                    hotelUser.setCreateDate(LocalDateTime.now());
+                    hotelUser.setModifyDate(LocalDateTime.now());
+                    hotelUser.setIsDeleted((byte) 0);
+                    hotelUser.setUserType(UserType.WECHART.getAuthType());
+                    gameUserMapper.insertSelective(hotelUser);
+                    GameAuth hotelAuth = new GameAuth();
+                    hotelAuth.setEncodeType(AuthLogin.APP.getLogin());
+                    hotelAuth.setUserId(hotelUser.getId());
+                    hotelAuth.setAuthKey(phone);
+                    hotelAuth.setAuthStatus((byte) 0);
+                    hotelAuth.setAuthType(Login.ADMIN.getLogin());
+                    hotelAuth.setCreateDate(LocalDateTime.now());
+                    hotelAuth.setModifyDate(LocalDateTime.now());
+                    hotelAuth.setIsDeleted((byte) 0);
+                    BCryptPasswordEncoder bcryptPasswordEncoder = new BCryptPasswordEncoder();
+                    hotelAuth.setPassword(bcryptPasswordEncoder.encode(String.valueOf(123456)));
+                    gameAuthMapper.insertSelective(hotelAuth);
+                    hotelAuth.setId(null);
+                    hotelAuth.setAuthType(Login.PHONE.getLogin());
+                    hotelAuth.setPassword(null);
+                    hotelAuth.setAuthKey(phone);
+                    gameAuthMapper.insertSelective(hotelAuth);
+                    return builder.body(ResponseUtils.getResponseBody(0));
+                }else {
+                    return builder.body(ResponseUtils.getResponseBody("验证码不正确"));
+                }
+            }
         }
-        return builder.body(ResponseUtils.getResponseBody(0));
     }
 
     @RequestMapping(value = "/selectUser", method = RequestMethod.GET)
     @ApiOperation(value = "查询用户", notes = "查询用户")
     public ResponseEntity<JSONObject> selectUser(HttpServletRequest request,Integer start,
-                                                 Integer num, HttpServletResponse response) throws Exception {
+                                                 Integer num, HttpServletResponse response,
+                                                 Integer userId) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder();
         GameUserExample gameUserExample = new GameUserExample();
-        gameUserExample.createCriteria()
+        GameUserExample.Criteria criteria = gameUserExample.createCriteria()
                 //前台登录
                 .andUserTypeEqualTo(UserType.WECHART.getAuthType())
                 .andIsDeletedEqualTo((byte) 0);
         SelectUser selectUser = new SelectUser();
-
+        if (userId!=null){
+            criteria.andIdEqualTo(userId);
+        }
         long nums = gameUserMapper.countByExample(gameUserExample);
         selectUser.setNums(nums);
         if (start!=null && num!=null){
@@ -464,4 +494,5 @@ public class AuthController {
         selectUser.setGameUsers(gameUsers);
         return builder.body(ResponseUtils.getResponseBody(selectUser));
     }
+
 }

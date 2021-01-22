@@ -7,6 +7,7 @@ import com.example.admin.center.dao.GameFormMapper;
 import com.example.admin.center.manual.Enum.AuthLogin;
 import com.example.admin.center.manual.Enum.Login;
 import com.example.admin.center.manual.JSON.SelectForm;
+import com.example.admin.center.manual.model.FormItem;
 import com.example.admin.center.model.*;
 import com.example.admin.center.service.FormService;
 import com.house.utils.response.handler.ResponseEntity;
@@ -146,7 +147,7 @@ public class FormController {
         gameFormMapper.insertSelective(gameForm);
         //给表单加表单项
         if (formItems.length != 0){
-            for (int i = 1; i<=formItems.length; i++){
+            for (int i = 0; i<formItems.length; i++){
                 GameFormItemBe gameFormItemBe = new GameFormItemBe();
                 gameFormItemBe.setFormId(gameForm.getId());
                 gameFormItemBe.setFormItemId(formItems[i]);
@@ -181,7 +182,7 @@ public class FormController {
         gameFormMapper.updateByPrimaryKeySelective(gameForm);
         //给表单加表单项
         if (formItems.length != 0){
-            for (int i = 1; i<=formItems.length; i++){
+            for (int i = 0; i<formItems.length; i++){
                 GameFormItemBe gameFormItemBe = new GameFormItemBe();
                 gameFormItemBe.setFormId(gameForm.getId());
                 gameFormItemBe.setFormItemId(formItems[i]);
@@ -247,6 +248,7 @@ public class FormController {
             HttpServletResponse response
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
-        return builder.body(ResponseUtils.getResponseBody(formService.selectFormItem(formId)));
+        List<FormItem> formItems = formService.selectFormItem(formId);
+        return builder.body(ResponseUtils.getResponseBody(formItems));
     }
 }

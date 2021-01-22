@@ -10,7 +10,9 @@ public enum OrderType {
     //已跟进
     PROCESSED("processed"),
     //完成
-    COMPLETE("complete");
+    COMPLETE("complete"),
+    //驳回
+    REJECT("reject");
 
     private String orderType;
     OrderType(String orderType) {

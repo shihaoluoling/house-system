@@ -77,7 +77,7 @@ public class BookController {
         gameUserBookExample.createCriteria()
                 .andUserIdEqualTo(userId)
                 .andIsDeletedEqualTo((byte) 0);
-        List<GameUserBook> gameUserBooks = gameUserBookMapper.selectByExample(gameUserBookExample);
+        List<GameUserBook> gameUserBooks = gameUserBookMapper.selectByExampleWithBLOBs(gameUserBookExample);
         return builder.body(ResponseUtils.getResponseBody(gameUserBooks.get(0)));
     }
 }

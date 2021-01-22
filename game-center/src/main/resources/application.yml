@@ -3,18 +3,13 @@ spring:
     proxy-target-class: true
   application:
     name: game-center
-  rabbitmq:
-    host: 39.100.237.144
-    port: 5672
-    username: sw
-    password: Davin1203!
   main:
     allow-bean-definition-overriding: true
   datasource:
     name: dataSource
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://39.98.126.20:3306/test?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8&useSSL=false&zeroDateTimeBehavior=CONVERT_TO_NULL&allowPublicKeyRetrieval=true
-    username: hanfu_admin
+    url: jdbc:mysql://39.99.157.7:3306/game?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8&useSSL=false&zeroDateTimeBehavior=CONVERT_TO_NULL&allowPublicKeyRetrieval=true
+    username: root
     password: Davin1234!
     driver-class-name: com.mysql.cj.jdbc.Driver
     hikari:
@@ -30,8 +25,9 @@ spring:
       read-only: false
   redis:
     database: 0
-    host: 39.100.237.144
-    port: 16379
+    host: 39.99.157.7
+    port: 6379
+    password: 123456
     timeout: 10000
     jedis:
       pool:

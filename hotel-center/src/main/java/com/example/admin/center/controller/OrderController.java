@@ -257,10 +257,35 @@ private String createCartCode() {
     })
     public ResponseEntity<JSONObject> createOrder(String cartCode,HttpServletResponse response) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
+
         //计算总额
         List<CartProduct> cartProducts = new ArrayList<>();
+        //用户信息
+        HotelUser hotelUser = new HotelUser();
         synchronized (this){
             cartProducts = productService.selectCart(cartCode);
+            if (cartProducts.size()==0){
+                response.sendError(1002,"购物车为空");
+                return builder.body(ResponseUtils.getResponseBody(1));
+            }
+            hotelUser = hotelUserMapper.selectByPrimaryKey(cartProducts.get(0).getUserId());
+            //判断用户提交的上一个订单是否已经处理,未处理不能提交
+            HotelOrdersExample hotelOrdersExample = new HotelOrdersExample();
+            System.out.println(hotelUser.getId());
+            hotelOrdersExample.createCriteria().andUserIdEqualTo(hotelUser.getId())
+            .andIsDeletedEqualTo((byte) 0);
+            hotelOrdersExample.setOrderByClause("id asc");
+            List<HotelOrders> hotelOrders = hotelOrdersMapper.selectByExample(hotelOrdersExample);
+            if (hotelOrders.size() !=0){
+                System.out.println(hotelOrders.get(hotelOrders.size()-1).getOrderStatus());
+                if (!hotelOrders.get(hotelOrders.size()-1).getOrderStatus().equals(OrderType.COMPLETE.getOrderType())
+                        &&!hotelOrders.get(hotelOrders.size()-1).getOrderStatus().equals(OrderType.REJECT.getOrderType())){
+                    response.sendError(1001,"上次提交的订单还未处理");
+                    return builder.body(ResponseUtils.getResponseBody(1));
+                }
+            }
+
+
 //            cartProducts.forEach(cartProduct -> {
             //库存校验
                 for (CartProduct cartProduct:cartProducts){
@@ -283,8 +308,6 @@ private String createCartCode() {
             double amount = cartProducts.stream()
                     .mapToDouble(a->Double.valueOf(a.getQuantity()) * a.getPrice().doubleValue())
                     .sum();
-            //用户信息
-            HotelUser hotelUser = hotelUserMapper.selectByPrimaryKey(cartProducts.get(0).getUserId());
             //创建订单
             HotelOrders hotelOrders = new HotelOrders();
             hotelOrders.setOrderCode(getC(UUID.randomUUID().toString()));
@@ -295,7 +318,7 @@ private String createCartCode() {
             hotelOrders.setIsDeleted((byte) 0);
             hotelOrders.setAmount(new BigDecimal(amount));
             //用户信息
-            String userBuilder = (hotelUser.getNickName() == null ? "name" : hotelUser.getNickName()) +
+            String userBuilder = (hotelUser.getNickName() == null ? "name" : hotelUser.getRealName()) +
                     "+" +
                     (hotelUser.getSex() == null ? "sex" : (hotelUser.getSex() == 0 ? "女" : "男")) +
                     "+" +

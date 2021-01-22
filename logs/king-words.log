@@ -1,63 +1,588 @@
-2021-01-20 10:02:02.592  INFO 14936 --- [main] c.e.a.c.SecondProductCenterApplication   : No active profile set, falling back to default profiles: default
-2021-01-20 10:02:03.544  INFO 14936 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
-2021-01-20 10:02:03.546  INFO 14936 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
-2021-01-20 10:02:03.615  INFO 14936 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 52ms. Found 0 repository interfaces.
-2021-01-20 10:02:03.879  INFO 14936 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=bc282faa-a873-390c-960d-d4f1dbf38140
-2021-01-20 10:02:03.920  INFO 14936 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$1d0f9f8d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-01-20 10:02:03.965  INFO 14936 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$56a3e15f] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-01-20 10:02:03.990  INFO 14936 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$72bde45c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-01-20 10:02:04.314  INFO 14936 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7003 (http)
-2021-01-20 10:02:04.340  INFO 14936 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2021-01-20 10:02:04.340  INFO 14936 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
-2021-01-20 10:02:04.348  INFO 14936 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk-11.0.6\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk-11.0.6\bin;D:\nodejs\;D:\Program Files\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin;C:\Users\MACHENIKE\AppData\Local\Microsoft\WindowsApps;C:\Users\MACHENIKE\AppData\Roaming\npm;D:\Microsoft VS Code\bin;.]
-2021-01-20 10:02:04.610  INFO 14936 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/game]   : Initializing Spring embedded WebApplicationContext
-2021-01-20 10:02:04.611  INFO 14936 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1996 ms
-2021-01-20 10:02:04.686  INFO 14936 --- [main] c.e.a.c.config.RedisCacheConfiguration   : JedisPool注入成功！！
-2021-01-20 10:02:04.689  INFO 14936 --- [main] c.e.a.c.config.RedisCacheConfiguration   : redis地址：39.100.237.144:16379
-2021-01-20 10:02:05.446  INFO 14936 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
-2021-01-20 10:02:05.542  WARN 14936 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2021-01-20 10:02:05.543  INFO 14936 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2021-01-20 10:02:05.547  WARN 14936 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
-2021-01-20 10:02:05.547  INFO 14936 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
-2021-01-20 10:02:05.636  INFO 14936 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2021-01-20 10:02:06.463  INFO 14936 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
-2021-01-20 10:02:07.885  INFO 14936 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
-2021-01-20 10:02:07.946  INFO 14936 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
-2021-01-20 10:02:07.946  INFO 14936 --- [main] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
-2021-01-20 10:02:07.959  INFO 14936 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1611108127956 with initial instances count: 0
-2021-01-20 10:02:07.970  INFO 14936 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application game-center with eureka with status UP
-2021-01-20 10:02:07.975  INFO 14936 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
-2021-01-20 10:02:08.005  INFO 14936 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
-2021-01-20 10:02:08.076  INFO 14936 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
-2021-01-20 10:02:08.392  WARN 14936 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
-2021-01-20 10:02:08.412  WARN 14936 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
-2021-01-20 10:02:08.554  INFO 14936 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7003 (http) with context path '/game'
-2021-01-20 10:02:08.566  INFO 14936 --- [main] c.e.a.c.SecondProductCenterApplication   : Started SecondProductCenterApplication in 7.625 seconds (JVM running for 9.636)
-2021-01-20 10:02:58.405  INFO 14936 --- [http-nio-7003-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/game]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2021-01-20 10:02:58.407  INFO 14936 --- [http-nio-7003-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2021-01-20 10:02:58.419  INFO 14936 --- [http-nio-7003-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
-2021-01-20 10:02:58.444  INFO 14936 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/swagger-ui.html{}
-2021-01-20 10:02:58.497  INFO 14936 --- [http-nio-7003-exec-2] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/springfox.css{"v":["2.9.2"]}
-2021-01-20 10:02:58.497  INFO 14936 --- [http-nio-7003-exec-6] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/springfox.js{"v":["2.9.2"]}
-2021-01-20 10:02:58.497  INFO 14936 --- [http-nio-7003-exec-3] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/swagger-ui.css{"v":["2.9.2"]}
-2021-01-20 10:02:58.497  INFO 14936 --- [http-nio-7003-exec-4] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/swagger-ui-bundle.js{"v":["2.9.2"]}
-2021-01-20 10:02:58.497  INFO 14936 --- [http-nio-7003-exec-5] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/swagger-ui-standalone-preset.js{"v":["2.9.2"]}
-2021-01-20 10:02:58.766  INFO 14936 --- [http-nio-7003-exec-7] c.e.a.c.i.AuthorityInterceptor           : /game/swagger-resources/configuration/ui{}
-2021-01-20 10:02:58.843  INFO 14936 --- [http-nio-7003-exec-8] c.e.a.c.i.AuthorityInterceptor           : /game/swagger-resources/configuration/security{}
-2021-01-20 10:02:58.851  INFO 14936 --- [http-nio-7003-exec-9] c.e.a.c.i.AuthorityInterceptor           : /game/swagger-resources{}
-2021-01-20 10:02:58.895  INFO 14936 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/{}
-2021-01-20 10:02:58.906  INFO 14936 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/error{}
-2021-01-20 10:02:58.943  INFO 14936 --- [http-nio-7003-exec-2] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/fonts/titillium-web-v6-latin-700.woff2{}
-2021-01-20 10:02:58.943  INFO 14936 --- [http-nio-7003-exec-6] c.e.a.c.i.AuthorityInterceptor           : /game/csrf{}
-2021-01-20 10:02:58.949  INFO 14936 --- [http-nio-7003-exec-6] c.e.a.c.i.AuthorityInterceptor           : /game/error{}
-2021-01-20 10:02:59.203  INFO 14936 --- [http-nio-7003-exec-3] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/fonts/open-sans-v15-latin-700.woff2{}
-2021-01-20 10:02:59.204  INFO 14936 --- [http-nio-7003-exec-5] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/fonts/source-code-pro-v7-latin-300.woff2{}
-2021-01-20 10:02:59.204  INFO 14936 --- [http-nio-7003-exec-4] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/fonts/open-sans-v15-latin-regular.woff2{}
-2021-01-20 10:02:59.205  INFO 14936 --- [http-nio-7003-exec-7] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/fonts/titillium-web-v6-latin-600.woff2{}
-2021-01-20 10:03:01.312  INFO 14936 --- [http-nio-7003-exec-8] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/fonts/source-code-pro-v7-latin-600.woff2{}
-2021-01-20 10:03:02.723  INFO 14936 --- [http-nio-7003-exec-9] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/fonts/titillium-web-v6-latin-regular.woff2{}
-2021-01-20 10:03:04.589  INFO 14936 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/Statistics/selectStatistics{}
-2021-01-20 10:03:04.608  WARN 14936 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariConfig           : dataSource - idleTimeout is close to or more than maxLifetime, disabling it.
-2021-01-20 10:03:04.608  INFO 14936 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariDataSource       : dataSource - Starting...
-2021-01-20 10:03:04.883  INFO 14936 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariDataSource       : dataSource - Start completed.
-2021-01-20 10:03:31.627  INFO 14936 --- [http-nio-7003-exec-7] c.e.a.c.i.AuthorityInterceptor           : /game/Statistics/selectStatistics{"endTime":["2020-1-1"],"stateTime":["2021-1-20"]}
+2021-01-22 14:09:26.331  INFO 10672 --- [main] c.e.a.c.SecondProductCenterApplication   : No active profile set, falling back to default profiles: default
+2021-01-22 14:09:28.416  INFO 10672 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-22 14:09:28.432  INFO 10672 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-22 14:09:28.509  INFO 10672 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 40ms. Found 0 repository interfaces.
+2021-01-22 14:09:28.806  INFO 10672 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=fe71b0ce-81d8-3fc8-8b2b-f07a4c3685a5
+2021-01-22 14:09:28.849  INFO 10672 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$f4329a43] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:09:28.891  INFO 10672 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2dc6dc15] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:09:28.916  INFO 10672 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$49e0df12] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:09:29.268  INFO 10672 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7003 (http)
+2021-01-22 14:09:29.296  INFO 10672 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-22 14:09:29.297  INFO 10672 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
+2021-01-22 14:09:29.306  INFO 10672 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk-11.0.6\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk-11.0.6\bin;D:\nodejs\;D:\Program Files\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin;C:\Users\MACHENIKE\AppData\Local\Microsoft\WindowsApps;C:\Users\MACHENIKE\AppData\Roaming\npm;D:\Microsoft VS Code\bin;.]
+2021-01-22 14:09:29.573  INFO 10672 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/game]   : Initializing Spring embedded WebApplicationContext
+2021-01-22 14:09:29.573  INFO 10672 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3216 ms
+2021-01-22 14:09:29.647  INFO 10672 --- [main] c.e.a.c.config.RedisCacheConfiguration   : JedisPool注入成功！！
+2021-01-22 14:09:29.650  INFO 10672 --- [main] c.e.a.c.config.RedisCacheConfiguration   : redis地址：39.99.157.7:6379
+2021-01-22 14:09:30.702  INFO 10672 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2021-01-22 14:09:30.815  WARN 10672 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-22 14:09:30.815  INFO 10672 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-22 14:09:30.820  WARN 10672 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-22 14:09:30.820  INFO 10672 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-22 14:09:30.905  INFO 10672 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 14:09:31.446  INFO 10672 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2021-01-22 14:09:32.224  INFO 10672 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2021-01-22 14:09:32.261  INFO 10672 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2021-01-22 14:09:32.261  INFO 10672 --- [main] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2021-01-22 14:09:32.277  INFO 10672 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1611295772273 with initial instances count: 0
+2021-01-22 14:09:32.282  INFO 10672 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application game-center with eureka with status UP
+2021-01-22 14:09:32.287  INFO 10672 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-01-22 14:09:32.316  INFO 10672 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-01-22 14:09:32.375  INFO 10672 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-01-22 14:09:32.620  WARN 10672 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-22 14:09:32.630  WARN 10672 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-22 14:09:32.707  INFO 10672 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7003 (http) with context path '/game'
+2021-01-22 14:09:32.710  INFO 10672 --- [main] c.e.a.c.SecondProductCenterApplication   : Started SecondProductCenterApplication in 7.887 seconds (JVM running for 9.357)
+2021-01-22 14:09:38.859  INFO 10672 --- [http-nio-7003-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/game]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-22 14:09:38.861  INFO 10672 --- [http-nio-7003-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-01-22 14:09:38.872  INFO 10672 --- [http-nio-7003-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2021-01-22 14:09:38.896  INFO 10672 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/swagger-ui.html{}
+2021-01-22 14:09:38.959  INFO 10672 --- [http-nio-7003-exec-3] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/swagger-ui.css{"v":["2.9.2"]}
+2021-01-22 14:09:38.962  INFO 10672 --- [http-nio-7003-exec-6] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/springfox.js{"v":["2.9.2"]}
+2021-01-22 14:09:38.959  INFO 10672 --- [http-nio-7003-exec-2] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/springfox.css{"v":["2.9.2"]}
+2021-01-22 14:09:38.962  INFO 10672 --- [http-nio-7003-exec-4] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/swagger-ui-bundle.js{"v":["2.9.2"]}
+2021-01-22 14:09:38.963  INFO 10672 --- [http-nio-7003-exec-5] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/swagger-ui-standalone-preset.js{"v":["2.9.2"]}
+2021-01-22 14:09:39.261  INFO 10672 --- [http-nio-7003-exec-7] c.e.a.c.i.AuthorityInterceptor           : /game/swagger-resources/configuration/ui{}
+2021-01-22 14:09:39.324  INFO 10672 --- [http-nio-7003-exec-8] c.e.a.c.i.AuthorityInterceptor           : /game/swagger-resources/configuration/security{}
+2021-01-22 14:09:39.333  INFO 10672 --- [http-nio-7003-exec-9] c.e.a.c.i.AuthorityInterceptor           : /game/swagger-resources{}
+2021-01-22 14:09:39.379  INFO 10672 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/{}
+2021-01-22 14:09:39.393  INFO 10672 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/error{}
+2021-01-22 14:09:39.439  INFO 10672 --- [http-nio-7003-exec-2] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/fonts/titillium-web-v6-latin-700.woff2{}
+2021-01-22 14:09:39.439  INFO 10672 --- [http-nio-7003-exec-3] c.e.a.c.i.AuthorityInterceptor           : /game/csrf{}
+2021-01-22 14:09:39.446  INFO 10672 --- [http-nio-7003-exec-3] c.e.a.c.i.AuthorityInterceptor           : /game/error{}
+2021-01-22 14:09:39.717  INFO 10672 --- [http-nio-7003-exec-5] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/fonts/source-code-pro-v7-latin-300.woff2{}
+2021-01-22 14:09:39.717  INFO 10672 --- [http-nio-7003-exec-6] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/fonts/open-sans-v15-latin-700.woff2{}
+2021-01-22 14:09:39.717  INFO 10672 --- [http-nio-7003-exec-7] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/fonts/titillium-web-v6-latin-600.woff2{}
+2021-01-22 14:09:39.718  INFO 10672 --- [http-nio-7003-exec-4] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/fonts/open-sans-v15-latin-regular.woff2{}
+2021-01-22 14:09:41.702  INFO 10672 --- [http-nio-7003-exec-8] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/fonts/source-code-pro-v7-latin-600.woff2{}
+2021-01-22 14:09:47.419  INFO 10672 --- [http-nio-7003-exec-9] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/fonts/titillium-web-v6-latin-regular.woff2{}
+2021-01-22 14:09:53.100  INFO 10672 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/code{"phone":["17612219746"]}
+2021-01-22 14:09:53.120  WARN 10672 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariConfig           : dataSource - idleTimeout is close to or more than maxLifetime, disabling it.
+2021-01-22 14:09:53.120  INFO 10672 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariDataSource       : dataSource - Starting...
+2021-01-22 14:09:53.404  INFO 10672 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariDataSource       : dataSource - Start completed.
+2021-01-22 14:09:53.866 ERROR 10672 --- [http-nio-7003-exec-1] c.e.a.c.r.h.GlobalExceptionHandler       : unknow exception:
+
+redis.clients.jedis.exceptions.JedisDataException: NOAUTH Authentication required.
+	at redis.clients.jedis.Protocol.processError(Protocol.java:130) ~[jedis-2.9.1.jar:na]
+	at redis.clients.jedis.Protocol.process(Protocol.java:164) ~[jedis-2.9.1.jar:na]
+	at redis.clients.jedis.Protocol.read(Protocol.java:218) ~[jedis-2.9.1.jar:na]
+	at redis.clients.jedis.Connection.readProtocolWithCheckingBroken(Connection.java:341) ~[jedis-2.9.1.jar:na]
+	at redis.clients.jedis.Connection.getStatusCodeReply(Connection.java:240) ~[jedis-2.9.1.jar:na]
+	at redis.clients.jedis.Jedis.set(Jedis.java:122) ~[jedis-2.9.1.jar:na]
+	at com.example.admin.center.controller.AuthController.code(AuthController.java:81) ~[classes/:na]
+	at com.example.admin.center.controller.AuthController$$FastClassBySpringCGLIB$$5eaf3f8d.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:749) ~[spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:294) ~[spring-tx-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:98) ~[spring-tx-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:688) ~[spring-aop-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at com.example.admin.center.controller.AuthController$$EnhancerBySpringCGLIB$$1f14f693.code(<generated>) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:189) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:102) ~[spring-webmvc-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:800) ~[spring-webmvc-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1038) ~[spring-webmvc-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:942) ~[spring-webmvc-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1005) ~[spring-webmvc-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:908) ~[spring-webmvc-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:660) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:882) ~[spring-webmvc-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:99) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:92) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.springframework.web.filter.HiddenHttpMethodFilter.doFilterInternal(HiddenHttpMethodFilter.java:93) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:200) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:107) ~[spring-web-5.1.5.RELEASE.jar:5.1.5.RELEASE]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:200) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:490) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:408) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:834) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1415) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.16.jar:9.0.16]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2021-01-22 14:09:53.869  INFO 10672 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/error{"phone":["17612219746"]}
+2021-01-22 14:20:17.607  INFO 3056 --- [main] c.e.a.c.SecondProductCenterApplication   : No active profile set, falling back to default profiles: default
+2021-01-22 14:20:18.667  INFO 3056 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-22 14:20:18.670  INFO 3056 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-22 14:20:18.736  INFO 3056 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 50ms. Found 0 repository interfaces.
+2021-01-22 14:20:19.074  INFO 3056 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=fe71b0ce-81d8-3fc8-8b2b-f07a4c3685a5
+2021-01-22 14:20:19.126  INFO 3056 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$f29f62b9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:20:19.178  INFO 3056 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2c33a48b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:20:19.206  INFO 3056 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$484da788] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:20:19.557  INFO 3056 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7003 (http)
+2021-01-22 14:20:19.583  INFO 3056 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-22 14:20:19.583  INFO 3056 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
+2021-01-22 14:20:19.589  INFO 3056 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk-11.0.6\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk-11.0.6\bin;D:\nodejs\;D:\Program Files\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin;C:\Users\MACHENIKE\AppData\Local\Microsoft\WindowsApps;C:\Users\MACHENIKE\AppData\Roaming\npm;D:\Microsoft VS Code\bin;.]
+2021-01-22 14:20:19.924  INFO 3056 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/game]   : Initializing Spring embedded WebApplicationContext
+2021-01-22 14:20:19.924  INFO 3056 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2300 ms
+2021-01-22 14:20:20.000  INFO 3056 --- [main] c.e.a.c.config.RedisCacheConfiguration   : JedisPool注入成功！！
+2021-01-22 14:20:20.003  INFO 3056 --- [main] c.e.a.c.config.RedisCacheConfiguration   : redis地址：39.99.157.7:6379
+2021-01-22 14:20:21.131  INFO 3056 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2021-01-22 14:20:21.247  WARN 3056 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-22 14:20:21.248  INFO 3056 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-22 14:20:21.252  WARN 3056 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-22 14:20:21.252  INFO 3056 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-22 14:20:21.345  INFO 3056 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 14:20:21.845  INFO 3056 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2021-01-22 14:20:22.468  INFO 3056 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2021-01-22 14:20:22.488  INFO 3056 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2021-01-22 14:20:22.488  INFO 3056 --- [main] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2021-01-22 14:20:22.493  INFO 3056 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1611296422492 with initial instances count: 0
+2021-01-22 14:20:22.498  INFO 3056 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application game-center with eureka with status UP
+2021-01-22 14:20:22.501  INFO 3056 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-01-22 14:20:22.511  INFO 3056 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-01-22 14:20:22.537  INFO 3056 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-01-22 14:20:22.693  WARN 3056 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-22 14:20:22.701  WARN 3056 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-22 14:20:22.763  INFO 3056 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7003 (http) with context path '/game'
+2021-01-22 14:20:22.766  INFO 3056 --- [main] c.e.a.c.SecondProductCenterApplication   : Started SecondProductCenterApplication in 6.773 seconds (JVM running for 8.073)
+2021-01-22 14:20:30.153  INFO 3056 --- [http-nio-7003-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/game]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-22 14:20:30.154  INFO 3056 --- [http-nio-7003-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-01-22 14:20:30.168  INFO 3056 --- [http-nio-7003-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 14 ms
+2021-01-22 14:20:30.192  INFO 3056 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/code{"phone":["17612219746"]}
+2021-01-22 14:20:30.221  WARN 3056 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariConfig           : dataSource - idleTimeout is close to or more than maxLifetime, disabling it.
+2021-01-22 14:20:30.221  INFO 3056 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariDataSource       : dataSource - Starting...
+2021-01-22 14:20:30.443  INFO 3056 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariDataSource       : dataSource - Start completed.
+2021-01-22 14:20:54.783  INFO 3056 --- [http-nio-7003-exec-2] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1084"],"phone":["17612219746"]}
+2021-01-22 14:26:49.163  INFO 11652 --- [main] c.e.a.c.SecondProductCenterApplication   : No active profile set, falling back to default profiles: default
+2021-01-22 14:26:50.094  INFO 11652 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-22 14:26:50.096  INFO 11652 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-22 14:26:50.142  INFO 11652 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 34ms. Found 0 repository interfaces.
+2021-01-22 14:26:50.414  INFO 11652 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=fe71b0ce-81d8-3fc8-8b2b-f07a4c3685a5
+2021-01-22 14:26:50.459  INFO 11652 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$cd59b813] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:26:50.501  INFO 11652 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$6edf9e5] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:26:50.525  INFO 11652 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$2307fce2] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:26:50.842  INFO 11652 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7003 (http)
+2021-01-22 14:26:50.869  INFO 11652 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-22 14:26:50.869  INFO 11652 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
+2021-01-22 14:26:50.876  INFO 11652 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk-11.0.6\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk-11.0.6\bin;D:\nodejs\;D:\Program Files\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin;C:\Users\MACHENIKE\AppData\Local\Microsoft\WindowsApps;C:\Users\MACHENIKE\AppData\Roaming\npm;D:\Microsoft VS Code\bin;.]
+2021-01-22 14:26:51.129  INFO 11652 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/game]   : Initializing Spring embedded WebApplicationContext
+2021-01-22 14:26:51.129  INFO 11652 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1948 ms
+2021-01-22 14:26:51.198  INFO 11652 --- [main] c.e.a.c.config.RedisCacheConfiguration   : JedisPool注入成功！！
+2021-01-22 14:26:51.201  INFO 11652 --- [main] c.e.a.c.config.RedisCacheConfiguration   : redis地址：39.99.157.7:6379
+2021-01-22 14:26:52.057  INFO 11652 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2021-01-22 14:26:52.156  WARN 11652 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-22 14:26:52.156  INFO 11652 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-22 14:26:52.160  WARN 11652 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-22 14:26:52.160  INFO 11652 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-22 14:26:52.241  INFO 11652 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 14:26:52.786  INFO 11652 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2021-01-22 14:26:53.447  INFO 11652 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2021-01-22 14:26:53.470  INFO 11652 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2021-01-22 14:26:53.470  INFO 11652 --- [main] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2021-01-22 14:26:53.475  INFO 11652 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1611296813474 with initial instances count: 0
+2021-01-22 14:26:53.479  INFO 11652 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application game-center with eureka with status UP
+2021-01-22 14:26:53.482  INFO 11652 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-01-22 14:26:53.491  INFO 11652 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-01-22 14:26:53.516  INFO 11652 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-01-22 14:26:53.680  WARN 11652 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-22 14:26:53.692  WARN 11652 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-22 14:26:53.761  INFO 11652 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7003 (http) with context path '/game'
+2021-01-22 14:26:53.764  INFO 11652 --- [main] c.e.a.c.SecondProductCenterApplication   : Started SecondProductCenterApplication in 6.072 seconds (JVM running for 7.856)
+2021-01-22 14:27:04.676  INFO 11652 --- [http-nio-7003-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/game]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-22 14:27:04.677  INFO 11652 --- [http-nio-7003-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-01-22 14:27:04.688  INFO 11652 --- [http-nio-7003-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2021-01-22 14:27:04.706  INFO 11652 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/code{"phone":["17612219746"]}
+2021-01-22 14:27:04.732  WARN 11652 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariConfig           : dataSource - idleTimeout is close to or more than maxLifetime, disabling it.
+2021-01-22 14:27:04.733  INFO 11652 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariDataSource       : dataSource - Starting...
+2021-01-22 14:27:04.955  INFO 11652 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariDataSource       : dataSource - Start completed.
+2021-01-22 14:27:09.833  INFO 11652 --- [http-nio-7003-exec-2] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1220"],"phone":["17612219746"]}
+2021-01-22 14:27:13.643  INFO 11652 --- [http-nio-7003-exec-4] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1220"],"phone":["17612219746"]}
+2021-01-22 14:27:20.867  INFO 11652 --- [http-nio-7003-exec-3] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1220"],"phone":["17612219746"]}
+2021-01-22 14:27:22.202  INFO 11652 --- [http-nio-7003-exec-5] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1220"],"phone":["17612219746"]}
+2021-01-22 14:27:23.364  INFO 11652 --- [http-nio-7003-exec-6] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1220"],"phone":["17612219746"]}
+2021-01-22 14:27:24.596  INFO 11652 --- [http-nio-7003-exec-7] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1220"],"phone":["17612219746"]}
+2021-01-22 14:27:35.232  INFO 11652 --- [http-nio-7003-exec-8] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1220"],"phone":["17612219746"]}
+2021-01-22 14:28:13.653  INFO 12756 --- [main] c.e.a.c.SecondProductCenterApplication   : No active profile set, falling back to default profiles: default
+2021-01-22 14:28:14.555  INFO 12756 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-22 14:28:14.567  INFO 12756 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-22 14:28:14.618  INFO 12756 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35ms. Found 0 repository interfaces.
+2021-01-22 14:28:14.866  INFO 12756 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=fe71b0ce-81d8-3fc8-8b2b-f07a4c3685a5
+2021-01-22 14:28:14.908  INFO 12756 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$62a324fc] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:28:14.955  INFO 12756 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9c3766ce] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:28:14.979  INFO 12756 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$b85169cb] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:28:15.263  INFO 12756 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7003 (http)
+2021-01-22 14:28:15.286  INFO 12756 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-22 14:28:15.286  INFO 12756 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
+2021-01-22 14:28:15.292  INFO 12756 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk-11.0.6\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk-11.0.6\bin;D:\nodejs\;D:\Program Files\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin;C:\Users\MACHENIKE\AppData\Local\Microsoft\WindowsApps;C:\Users\MACHENIKE\AppData\Roaming\npm;D:\Microsoft VS Code\bin;.]
+2021-01-22 14:28:15.547  INFO 12756 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/game]   : Initializing Spring embedded WebApplicationContext
+2021-01-22 14:28:15.547  INFO 12756 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1876 ms
+2021-01-22 14:28:15.623  INFO 12756 --- [main] c.e.a.c.config.RedisCacheConfiguration   : JedisPool注入成功！！
+2021-01-22 14:28:15.626  INFO 12756 --- [main] c.e.a.c.config.RedisCacheConfiguration   : redis地址：39.99.157.7:6379
+2021-01-22 14:28:16.562  INFO 12756 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2021-01-22 14:28:16.648  WARN 12756 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-22 14:28:16.649  INFO 12756 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-22 14:28:16.652  WARN 12756 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-22 14:28:16.653  INFO 12756 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-22 14:28:16.734  INFO 12756 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 14:28:17.282  INFO 12756 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2021-01-22 14:28:17.896  INFO 12756 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2021-01-22 14:28:17.918  INFO 12756 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2021-01-22 14:28:17.918  INFO 12756 --- [main] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2021-01-22 14:28:17.923  INFO 12756 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1611296897922 with initial instances count: 0
+2021-01-22 14:28:17.929  INFO 12756 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application game-center with eureka with status UP
+2021-01-22 14:28:17.932  INFO 12756 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-01-22 14:28:17.942  INFO 12756 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-01-22 14:28:17.969  INFO 12756 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-01-22 14:28:18.143  WARN 12756 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-22 14:28:18.159  WARN 12756 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-22 14:28:18.227  INFO 12756 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7003 (http) with context path '/game'
+2021-01-22 14:28:18.230  INFO 12756 --- [main] c.e.a.c.SecondProductCenterApplication   : Started SecondProductCenterApplication in 6.101 seconds (JVM running for 7.888)
+2021-01-22 14:28:24.243  INFO 12756 --- [http-nio-7003-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/game]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-22 14:28:24.245  INFO 12756 --- [http-nio-7003-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-01-22 14:28:24.254  INFO 12756 --- [http-nio-7003-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2021-01-22 14:28:24.276  INFO 12756 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/code{"phone":["17612219746"]}
+2021-01-22 14:28:24.302  WARN 12756 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariConfig           : dataSource - idleTimeout is close to or more than maxLifetime, disabling it.
+2021-01-22 14:28:24.303  INFO 12756 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariDataSource       : dataSource - Starting...
+2021-01-22 14:28:24.528  INFO 12756 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariDataSource       : dataSource - Start completed.
+2021-01-22 14:28:29.795  INFO 12756 --- [http-nio-7003-exec-2] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:33.203  INFO 12756 --- [http-nio-7003-exec-3] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:40.571  INFO 12756 --- [http-nio-7003-exec-4] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:42.819  INFO 12756 --- [http-nio-7003-exec-5] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:43.466  INFO 12756 --- [http-nio-7003-exec-6] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:43.803  INFO 12756 --- [http-nio-7003-exec-7] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:43.966  INFO 12756 --- [http-nio-7003-exec-8] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:44.135  INFO 12756 --- [http-nio-7003-exec-9] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:44.389  INFO 12756 --- [http-nio-7003-exec-10] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:44.549  INFO 12756 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:44.946  INFO 12756 --- [http-nio-7003-exec-2] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:45.120  INFO 12756 --- [http-nio-7003-exec-3] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:45.338  INFO 12756 --- [http-nio-7003-exec-4] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:45.501  INFO 12756 --- [http-nio-7003-exec-5] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:45.659  INFO 12756 --- [http-nio-7003-exec-6] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:45.805  INFO 12756 --- [http-nio-7003-exec-7] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:46.162  INFO 12756 --- [http-nio-7003-exec-8] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:46.371  INFO 12756 --- [http-nio-7003-exec-9] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:46.511  INFO 12756 --- [http-nio-7003-exec-10] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:46.668  INFO 12756 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:47.004  INFO 12756 --- [http-nio-7003-exec-2] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:47.168  INFO 12756 --- [http-nio-7003-exec-3] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:47.325  INFO 12756 --- [http-nio-7003-exec-4] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:47.505  INFO 12756 --- [http-nio-7003-exec-5] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:47.797  INFO 12756 --- [http-nio-7003-exec-6] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:47.946  INFO 12756 --- [http-nio-7003-exec-7] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:48.116  INFO 12756 --- [http-nio-7003-exec-8] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:28:48.612  INFO 12756 --- [http-nio-7003-exec-9] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1695"],"phone":["17612219746"]}
+2021-01-22 14:29:12.080  INFO 18704 --- [main] c.e.a.c.SecondProductCenterApplication   : No active profile set, falling back to default profiles: default
+2021-01-22 14:29:13.346  INFO 18704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-22 14:29:13.356  INFO 18704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-22 14:29:13.459  INFO 18704 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 73ms. Found 0 repository interfaces.
+2021-01-22 14:29:13.952  INFO 18704 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=fe71b0ce-81d8-3fc8-8b2b-f07a4c3685a5
+2021-01-22 14:29:14.045  INFO 18704 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$75398822] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:29:14.101  INFO 18704 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$aecdc9f4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:29:14.132  INFO 18704 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$cae7ccf1] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:29:14.515  INFO 18704 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7003 (http)
+2021-01-22 14:29:14.558  INFO 18704 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-22 14:29:14.559  INFO 18704 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
+2021-01-22 14:29:14.566  INFO 18704 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk-11.0.6\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk-11.0.6\bin;D:\nodejs\;D:\Program Files\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin;C:\Users\MACHENIKE\AppData\Local\Microsoft\WindowsApps;C:\Users\MACHENIKE\AppData\Roaming\npm;D:\Microsoft VS Code\bin;.]
+2021-01-22 14:29:14.828  INFO 18704 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/game]   : Initializing Spring embedded WebApplicationContext
+2021-01-22 14:29:14.828  INFO 18704 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2730 ms
+2021-01-22 14:29:14.901  INFO 18704 --- [main] c.e.a.c.config.RedisCacheConfiguration   : JedisPool注入成功！！
+2021-01-22 14:29:14.904  INFO 18704 --- [main] c.e.a.c.config.RedisCacheConfiguration   : redis地址：39.99.157.7:6379
+2021-01-22 14:29:16.138  INFO 18704 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2021-01-22 14:29:16.230  WARN 18704 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-22 14:29:16.231  INFO 18704 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-22 14:29:16.235  WARN 18704 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-22 14:29:16.235  INFO 18704 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-22 14:29:16.317  INFO 18704 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 14:29:16.858  INFO 18704 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2021-01-22 14:29:17.522  INFO 18704 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2021-01-22 14:29:17.549  INFO 18704 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2021-01-22 14:29:17.549  INFO 18704 --- [main] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2021-01-22 14:29:17.554  INFO 18704 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1611296957553 with initial instances count: 0
+2021-01-22 14:29:17.560  INFO 18704 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application game-center with eureka with status UP
+2021-01-22 14:29:17.563  INFO 18704 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-01-22 14:29:17.576  INFO 18704 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-01-22 14:29:17.602  INFO 18704 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-01-22 14:29:17.774  WARN 18704 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-22 14:29:17.786  WARN 18704 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-22 14:29:17.858  INFO 18704 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7003 (http) with context path '/game'
+2021-01-22 14:29:17.861  INFO 18704 --- [main] c.e.a.c.SecondProductCenterApplication   : Started SecondProductCenterApplication in 7.359 seconds (JVM running for 9.038)
+2021-01-22 14:29:22.591  INFO 18704 --- [http-nio-7003-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/game]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-22 14:29:22.593  INFO 18704 --- [http-nio-7003-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-01-22 14:29:22.605  INFO 18704 --- [http-nio-7003-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 12 ms
+2021-01-22 14:29:22.624  INFO 18704 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/code{"phone":["17612219746"]}
+2021-01-22 14:29:22.649  WARN 18704 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariConfig           : dataSource - idleTimeout is close to or more than maxLifetime, disabling it.
+2021-01-22 14:29:22.649  INFO 18704 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariDataSource       : dataSource - Starting...
+2021-01-22 14:29:22.876  INFO 18704 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariDataSource       : dataSource - Start completed.
+2021-01-22 14:29:28.310  INFO 18704 --- [http-nio-7003-exec-2] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1434"],"phone":["17612219746"]}
+2021-01-22 14:29:38.981  INFO 18704 --- [http-nio-7003-exec-3] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1434"],"phone":["17612219746"]}
+2021-01-22 14:29:40.118  INFO 18704 --- [http-nio-7003-exec-4] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1434"],"phone":["17612219746"]}
+2021-01-22 14:29:41.160  INFO 18704 --- [http-nio-7003-exec-5] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1434"],"phone":["17612219746"]}
+2021-01-22 14:29:42.124  INFO 18704 --- [http-nio-7003-exec-6] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1434"],"phone":["17612219746"]}
+2021-01-22 14:30:22.668  INFO 18704 --- [http-nio-7003-exec-7] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1434"],"phone":["17612219746"]}
+2021-01-22 14:30:23.453  INFO 18704 --- [http-nio-7003-exec-8] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1434"],"phone":["17612219746"]}
+2021-01-22 14:30:55.552  INFO 16508 --- [main] c.e.a.c.SecondProductCenterApplication   : No active profile set, falling back to default profiles: default
+2021-01-22 14:30:56.407  INFO 16508 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-22 14:30:56.409  INFO 16508 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-22 14:30:56.478  INFO 16508 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 57ms. Found 0 repository interfaces.
+2021-01-22 14:30:56.745  INFO 16508 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=fe71b0ce-81d8-3fc8-8b2b-f07a4c3685a5
+2021-01-22 14:30:56.790  INFO 16508 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$6df9847a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:30:56.833  INFO 16508 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a78dc64c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:30:56.856  INFO 16508 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$c3a7c949] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:30:57.139  INFO 16508 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7003 (http)
+2021-01-22 14:30:57.165  INFO 16508 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-22 14:30:57.166  INFO 16508 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
+2021-01-22 14:30:57.172  INFO 16508 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk-11.0.6\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk-11.0.6\bin;D:\nodejs\;D:\Program Files\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin;C:\Users\MACHENIKE\AppData\Local\Microsoft\WindowsApps;C:\Users\MACHENIKE\AppData\Roaming\npm;D:\Microsoft VS Code\bin;.]
+2021-01-22 14:30:57.420  INFO 16508 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/game]   : Initializing Spring embedded WebApplicationContext
+2021-01-22 14:30:57.420  INFO 16508 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1852 ms
+2021-01-22 14:30:57.495  INFO 16508 --- [main] c.e.a.c.config.RedisCacheConfiguration   : JedisPool注入成功！！
+2021-01-22 14:30:57.497  INFO 16508 --- [main] c.e.a.c.config.RedisCacheConfiguration   : redis地址：39.99.157.7:6379
+2021-01-22 14:30:58.327  INFO 16508 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2021-01-22 14:30:58.422  WARN 16508 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-22 14:30:58.423  INFO 16508 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-22 14:30:58.427  WARN 16508 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-22 14:30:58.427  INFO 16508 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-22 14:30:58.508  INFO 16508 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 14:30:58.951  INFO 16508 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2021-01-22 14:30:59.560  INFO 16508 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2021-01-22 14:30:59.583  INFO 16508 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2021-01-22 14:30:59.583  INFO 16508 --- [main] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2021-01-22 14:30:59.588  INFO 16508 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1611297059587 with initial instances count: 0
+2021-01-22 14:30:59.593  INFO 16508 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application game-center with eureka with status UP
+2021-01-22 14:30:59.595  INFO 16508 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-01-22 14:30:59.605  INFO 16508 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-01-22 14:30:59.630  INFO 16508 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-01-22 14:30:59.784  WARN 16508 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-22 14:30:59.793  WARN 16508 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-22 14:30:59.861  INFO 16508 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7003 (http) with context path '/game'
+2021-01-22 14:30:59.864  INFO 16508 --- [main] c.e.a.c.SecondProductCenterApplication   : Started SecondProductCenterApplication in 5.766 seconds (JVM running for 7.45)
+2021-01-22 14:31:06.663  INFO 16508 --- [http-nio-7003-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/game]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-22 14:31:06.664  INFO 16508 --- [http-nio-7003-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-01-22 14:31:06.676  INFO 16508 --- [http-nio-7003-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 12 ms
+2021-01-22 14:31:06.695  INFO 16508 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/code{"phone":["17612219746"]}
+2021-01-22 14:31:06.719  WARN 16508 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariConfig           : dataSource - idleTimeout is close to or more than maxLifetime, disabling it.
+2021-01-22 14:31:06.720  INFO 16508 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariDataSource       : dataSource - Starting...
+2021-01-22 14:31:09.939  INFO 16508 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariDataSource       : dataSource - Start completed.
+2021-01-22 14:31:15.595  INFO 16508 --- [http-nio-7003-exec-2] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1791"],"phone":["17612219746"]}
+2021-01-22 14:31:17.972  INFO 16508 --- [http-nio-7003-exec-3] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1791"],"phone":["17612219746"]}
+2021-01-22 14:31:23.091  INFO 16508 --- [http-nio-7003-exec-4] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/code{"phone":["17612219746"]}
+2021-01-22 14:31:27.802  INFO 16508 --- [http-nio-7003-exec-5] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1473"],"phone":["17612219746"]}
+2021-01-22 14:31:28.502  INFO 16508 --- [http-nio-7003-exec-6] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1473"],"phone":["17612219746"]}
+2021-01-22 14:31:29.307  INFO 16508 --- [http-nio-7003-exec-7] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1473"],"phone":["17612219746"]}
+2021-01-22 14:31:36.509  INFO 16508 --- [http-nio-7003-exec-8] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/code{"phone":["17612219746"]}
+2021-01-22 14:31:42.062  INFO 16508 --- [http-nio-7003-exec-9] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1736"],"phone":["17612219746"]}
+2021-01-22 14:32:05.832  INFO 16508 --- [http-nio-7003-exec-10] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/code{"phone":["17612219999"]}
+2021-01-22 14:32:10.918  INFO 16508 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1863"],"phone":["17612219999"]}
+2021-01-22 14:32:35.796  INFO 16508 --- [http-nio-7003-exec-2] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/addAppLogin{"password":["1863"],"phone":["17612219999"]}
+2021-01-22 14:32:47.592  INFO 16508 --- [http-nio-7003-exec-3] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1863"],"phone":["17612219999"]}
+2021-01-22 14:33:13.553  INFO 16508 --- [http-nio-7003-exec-4] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/code{"phone":["17612219999"]}
+2021-01-22 14:33:19.468  INFO 16508 --- [http-nio-7003-exec-5] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1694"],"phone":["17612219999"]}
+2021-01-22 14:37:45.906  INFO 2800 --- [main] c.e.a.c.SecondProductCenterApplication   : No active profile set, falling back to default profiles: default
+2021-01-22 14:37:46.785  INFO 2800 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-22 14:37:46.788  INFO 2800 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-22 14:37:46.849  INFO 2800 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49ms. Found 0 repository interfaces.
+2021-01-22 14:37:47.109  INFO 2800 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=fe71b0ce-81d8-3fc8-8b2b-f07a4c3685a5
+2021-01-22 14:37:47.152  INFO 2800 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$f43ef115] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:37:47.195  INFO 2800 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$2dd332e7] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:37:47.218  INFO 2800 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$49ed35e4] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:37:47.497  INFO 2800 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7003 (http)
+2021-01-22 14:37:47.523  INFO 2800 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-22 14:37:47.523  INFO 2800 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
+2021-01-22 14:37:47.530  INFO 2800 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk-11.0.6\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk-11.0.6\bin;D:\nodejs\;D:\Program Files\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin;C:\Users\MACHENIKE\AppData\Local\Microsoft\WindowsApps;C:\Users\MACHENIKE\AppData\Roaming\npm;D:\Microsoft VS Code\bin;.]
+2021-01-22 14:37:47.777  INFO 2800 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/game]   : Initializing Spring embedded WebApplicationContext
+2021-01-22 14:37:47.777  INFO 2800 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1855 ms
+2021-01-22 14:37:47.848  INFO 2800 --- [main] c.e.a.c.config.RedisCacheConfiguration   : JedisPool注入成功！！
+2021-01-22 14:37:47.851  INFO 2800 --- [main] c.e.a.c.config.RedisCacheConfiguration   : redis地址：39.99.157.7:6379
+2021-01-22 14:37:48.695  INFO 2800 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2021-01-22 14:37:48.777  WARN 2800 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-22 14:37:48.777  INFO 2800 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-22 14:37:48.780  WARN 2800 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-22 14:37:48.781  INFO 2800 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-22 14:37:48.858  INFO 2800 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 14:37:49.307  INFO 2800 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2021-01-22 14:37:49.906  INFO 2800 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2021-01-22 14:37:49.927  INFO 2800 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2021-01-22 14:37:49.928  INFO 2800 --- [main] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2021-01-22 14:37:49.932  INFO 2800 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1611297469931 with initial instances count: 0
+2021-01-22 14:37:49.937  INFO 2800 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application game-center with eureka with status UP
+2021-01-22 14:37:49.940  INFO 2800 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-01-22 14:37:49.952  INFO 2800 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-01-22 14:37:49.980  INFO 2800 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-01-22 14:37:50.135  WARN 2800 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-22 14:37:50.147  WARN 2800 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-22 14:37:50.216  INFO 2800 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7003 (http) with context path '/game'
+2021-01-22 14:37:50.219  INFO 2800 --- [main] c.e.a.c.SecondProductCenterApplication   : Started SecondProductCenterApplication in 6.09 seconds (JVM running for 7.897)
+2021-01-22 14:38:06.172  INFO 14888 --- [main] c.e.a.c.SecondProductCenterApplication   : No active profile set, falling back to default profiles: default
+2021-01-22 14:38:07.026  INFO 14888 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-22 14:38:07.028  INFO 14888 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-22 14:38:07.093  INFO 14888 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 46ms. Found 0 repository interfaces.
+2021-01-22 14:38:07.351  INFO 14888 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=fe71b0ce-81d8-3fc8-8b2b-f07a4c3685a5
+2021-01-22 14:38:07.392  INFO 14888 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$263f05b6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:38:07.438  INFO 14888 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$5fd34788] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:38:07.461  INFO 14888 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$7bed4a85] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:38:07.751  INFO 14888 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7003 (http)
+2021-01-22 14:38:07.775  INFO 14888 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-22 14:38:07.775  INFO 14888 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
+2021-01-22 14:38:07.781  INFO 14888 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk-11.0.6\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk-11.0.6\bin;D:\nodejs\;D:\Program Files\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin;C:\Users\MACHENIKE\AppData\Local\Microsoft\WindowsApps;C:\Users\MACHENIKE\AppData\Roaming\npm;D:\Microsoft VS Code\bin;.]
+2021-01-22 14:38:08.030  INFO 14888 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/game]   : Initializing Spring embedded WebApplicationContext
+2021-01-22 14:38:08.031  INFO 14888 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1843 ms
+2021-01-22 14:38:08.106  INFO 14888 --- [main] c.e.a.c.config.RedisCacheConfiguration   : JedisPool注入成功！！
+2021-01-22 14:38:08.109  INFO 14888 --- [main] c.e.a.c.config.RedisCacheConfiguration   : redis地址：39.99.157.7:6379
+2021-01-22 14:38:08.961  INFO 14888 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2021-01-22 14:38:09.044  WARN 14888 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-22 14:38:09.044  INFO 14888 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-22 14:38:09.048  WARN 14888 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-22 14:38:09.048  INFO 14888 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-22 14:38:09.127  INFO 14888 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 14:38:09.627  INFO 14888 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2021-01-22 14:38:10.280  INFO 14888 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2021-01-22 14:38:10.302  INFO 14888 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2021-01-22 14:38:10.302  INFO 14888 --- [main] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2021-01-22 14:38:10.308  INFO 14888 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1611297490307 with initial instances count: 0
+2021-01-22 14:38:10.313  INFO 14888 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application game-center with eureka with status UP
+2021-01-22 14:38:10.316  INFO 14888 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-01-22 14:38:10.328  INFO 14888 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-01-22 14:38:10.356  INFO 14888 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-01-22 14:38:10.521  WARN 14888 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-22 14:38:10.531  WARN 14888 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-22 14:38:10.592  INFO 14888 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7003 (http) with context path '/game'
+2021-01-22 14:38:10.595  INFO 14888 --- [main] c.e.a.c.SecondProductCenterApplication   : Started SecondProductCenterApplication in 5.8 seconds (JVM running for 7.663)
+2021-01-22 14:38:17.664  INFO 14888 --- [http-nio-7003-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/game]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-22 14:38:17.665  INFO 14888 --- [http-nio-7003-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-01-22 14:38:17.677  INFO 14888 --- [http-nio-7003-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 12 ms
+2021-01-22 14:38:17.697  INFO 14888 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/code{"phone":["17612219999"]}
+2021-01-22 14:38:17.724  WARN 14888 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariConfig           : dataSource - idleTimeout is close to or more than maxLifetime, disabling it.
+2021-01-22 14:38:17.724  INFO 14888 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariDataSource       : dataSource - Starting...
+2021-01-22 14:38:17.956  INFO 14888 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariDataSource       : dataSource - Start completed.
+2021-01-22 14:38:23.367  INFO 14888 --- [http-nio-7003-exec-2] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1260"],"phone":["17612219999"]}
+2021-01-22 14:38:35.269  INFO 14888 --- [http-nio-7003-exec-3] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1260"],"phone":["17612219999"]}
+2021-01-22 14:38:37.045  INFO 14888 --- [http-nio-7003-exec-4] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1260"],"phone":["17612219999"]}
+2021-01-22 14:38:48.600  INFO 14888 --- [http-nio-7003-exec-5] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/code{"phone":["17612219999"]}
+2021-01-22 14:39:04.051  INFO 14888 --- [http-nio-7003-exec-6] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/code{"phone":["17612218888"]}
+2021-01-22 14:39:15.595  INFO 14888 --- [http-nio-7003-exec-7] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/addAppLogin{"password":["1827"],"phone":["17612218888"]}
+2021-01-22 14:39:18.415  INFO 14888 --- [http-nio-7003-exec-8] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/addAppLogin{"password":["1828"],"phone":["17612218888"]}
+2021-01-22 14:39:22.197  INFO 14888 --- [http-nio-7003-exec-9] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/addAppLogin{"password":["1828"],"phone":["17612218888"]}
+2021-01-22 14:39:27.189  INFO 14888 --- [http-nio-7003-exec-10] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/code{"phone":["17612218888"]}
+2021-01-22 14:39:32.840  INFO 14888 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/addAppLogin{"password":["1914"],"phone":["17612218888"]}
+2021-01-22 14:39:58.412  INFO 14888 --- [http-nio-7003-exec-2] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/addLogin{"password":["123456"],"username":["17612219746"]}
+2021-01-22 14:40:25.068  INFO 14888 --- [http-nio-7003-exec-3] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/Login{"password":["123456"],"type":["app"],"username":["17612219746"]}
+2021-01-22 14:40:31.916  INFO 14888 --- [http-nio-7003-exec-4] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/addLogin{"password":["123456"],"username":["17612219746"]}
+2021-01-22 14:40:32.003  INFO 14888 --- [http-nio-7003-exec-4] c.e.a.c.i.AuthorityInterceptor           : /game/error{"password":["123456"],"username":["17612219746"]}
+2021-01-22 14:42:05.444  INFO 14888 --- [http-nio-7003-exec-5] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/selectUser{}
+2021-01-22 14:44:28.855  INFO 14404 --- [main] c.e.a.c.SecondProductCenterApplication   : No active profile set, falling back to default profiles: default
+2021-01-22 14:44:29.801  INFO 14404 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-22 14:44:29.804  INFO 14404 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-22 14:44:29.871  INFO 14404 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 41ms. Found 0 repository interfaces.
+2021-01-22 14:44:30.171  INFO 14404 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=fe71b0ce-81d8-3fc8-8b2b-f07a4c3685a5
+2021-01-22 14:44:30.219  INFO 14404 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$9767a88b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:44:30.265  INFO 14404 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d0fbea5d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:44:30.289  INFO 14404 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$ed15ed5a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:44:30.577  INFO 14404 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7003 (http)
+2021-01-22 14:44:30.613  INFO 14404 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-22 14:44:30.613  INFO 14404 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
+2021-01-22 14:44:30.620  INFO 14404 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk-11.0.6\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk-11.0.6\bin;D:\nodejs\;D:\Program Files\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin;C:\Users\MACHENIKE\AppData\Local\Microsoft\WindowsApps;C:\Users\MACHENIKE\AppData\Roaming\npm;D:\Microsoft VS Code\bin;.]
+2021-01-22 14:44:30.876  INFO 14404 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/game]   : Initializing Spring embedded WebApplicationContext
+2021-01-22 14:44:30.876  INFO 14404 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 2005 ms
+2021-01-22 14:44:30.950  INFO 14404 --- [main] c.e.a.c.config.RedisCacheConfiguration   : JedisPool注入成功！！
+2021-01-22 14:44:30.953  INFO 14404 --- [main] c.e.a.c.config.RedisCacheConfiguration   : redis地址：39.99.157.7:6379
+2021-01-22 14:44:31.815  INFO 14404 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2021-01-22 14:44:31.898  WARN 14404 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-22 14:44:31.898  INFO 14404 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-22 14:44:31.902  WARN 14404 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-22 14:44:31.903  INFO 14404 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-22 14:44:31.986  INFO 14404 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 14:44:32.466  INFO 14404 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2021-01-22 14:44:33.081  INFO 14404 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2021-01-22 14:44:33.103  INFO 14404 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2021-01-22 14:44:33.103  INFO 14404 --- [main] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2021-01-22 14:44:33.109  INFO 14404 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1611297873108 with initial instances count: 0
+2021-01-22 14:44:33.115  INFO 14404 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application game-center with eureka with status UP
+2021-01-22 14:44:33.118  INFO 14404 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-01-22 14:44:33.127  INFO 14404 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-01-22 14:44:33.155  INFO 14404 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-01-22 14:44:33.323  WARN 14404 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-22 14:44:33.335  WARN 14404 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-22 14:44:33.399  INFO 14404 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7003 (http) with context path '/game'
+2021-01-22 14:44:33.402  INFO 14404 --- [main] c.e.a.c.SecondProductCenterApplication   : Started SecondProductCenterApplication in 6.835 seconds (JVM running for 9.745)
+2021-01-22 14:45:12.157  INFO 5512 --- [main] c.e.a.c.SecondProductCenterApplication   : No active profile set, falling back to default profiles: default
+2021-01-22 14:45:13.039  INFO 5512 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-01-22 14:45:13.041  INFO 5512 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-01-22 14:45:13.102  INFO 5512 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49ms. Found 0 repository interfaces.
+2021-01-22 14:45:13.355  INFO 5512 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=fe71b0ce-81d8-3fc8-8b2b-f07a4c3685a5
+2021-01-22 14:45:13.398  INFO 5512 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration' of type [org.springframework.amqp.rabbit.annotation.RabbitBootstrapConfiguration$$EnhancerBySpringCGLIB$$61463c54] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:45:13.440  INFO 5512 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$9ada7e26] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:45:13.464  INFO 5512 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration' of type [org.springframework.cloud.autoconfigure.ConfigurationPropertiesRebinderAutoConfiguration$$EnhancerBySpringCGLIB$$b6f48123] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-01-22 14:45:13.785  INFO 5512 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 7003 (http)
+2021-01-22 14:45:13.812  INFO 5512 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-01-22 14:45:13.812  INFO 5512 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.16]
+2021-01-22 14:45:13.818  INFO 5512 --- [main] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk-11.0.6\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk-11.0.6\bin;D:\nodejs\;D:\Program Files\maven\apache-maven-3.6.3-bin\apache-maven-3.6.3\bin;C:\Users\MACHENIKE\AppData\Local\Microsoft\WindowsApps;C:\Users\MACHENIKE\AppData\Roaming\npm;D:\Microsoft VS Code\bin;.]
+2021-01-22 14:45:14.063  INFO 5512 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/game]   : Initializing Spring embedded WebApplicationContext
+2021-01-22 14:45:14.063  INFO 5512 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1889 ms
+2021-01-22 14:45:14.132  INFO 5512 --- [main] c.e.a.c.config.RedisCacheConfiguration   : JedisPool注入成功！！
+2021-01-22 14:45:14.135  INFO 5512 --- [main] c.e.a.c.config.RedisCacheConfiguration   : redis地址：39.99.157.7:6379
+2021-01-22 14:45:14.966  INFO 5512 --- [main] pertySourcedRequestMappingHandlerMapping : Mapped URL path [/v2/api-docs] onto method [public org.springframework.http.ResponseEntity<springfox.documentation.spring.web.json.Json> springfox.documentation.swagger2.web.Swagger2Controller.getDocumentation(java.lang.String,javax.servlet.http.HttpServletRequest)]
+2021-01-22 14:45:15.049  WARN 5512 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-22 14:45:15.049  INFO 5512 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-22 14:45:15.052  WARN 5512 --- [main] c.n.c.sources.URLConfigurationSource     : No URLs will be polled as dynamic configuration sources.
+2021-01-22 14:45:15.053  INFO 5512 --- [main] c.n.c.sources.URLConfigurationSource     : To enable URLs as dynamic configuration sources, define System property archaius.configurationSource.additionalUrls or make config.properties available on classpath.
+2021-01-22 14:45:15.130  INFO 5512 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-01-22 14:45:15.574  INFO 5512 --- [main] o.s.s.c.ThreadPoolTaskScheduler          : Initializing ExecutorService 'taskScheduler'
+2021-01-22 14:45:16.177  INFO 5512 --- [main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2021-01-22 14:45:16.201  INFO 5512 --- [main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2021-01-22 14:45:16.201  INFO 5512 --- [main] com.netflix.discovery.DiscoveryClient    : Client configured to neither register nor query for data.
+2021-01-22 14:45:16.206  INFO 5512 --- [main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1611297916205 with initial instances count: 0
+2021-01-22 14:45:16.212  INFO 5512 --- [main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application game-center with eureka with status UP
+2021-01-22 14:45:16.214  INFO 5512 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Context refreshed
+2021-01-22 14:45:16.224  INFO 5512 --- [main] d.s.w.p.DocumentationPluginsBootstrapper : Found 1 custom documentation plugin(s)
+2021-01-22 14:45:16.253  INFO 5512 --- [main] s.d.s.w.s.ApiListingReferenceScanner     : Scanning for api listing references
+2021-01-22 14:45:16.416  WARN 5512 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-22 14:45:16.425  WARN 5512 --- [main] s.d.s.w.r.p.ParameterDataTypeReader      : Trying to infer dataType java.lang.Integer[]
+2021-01-22 14:45:16.492  INFO 5512 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 7003 (http) with context path '/game'
+2021-01-22 14:45:16.495  INFO 5512 --- [main] c.e.a.c.SecondProductCenterApplication   : Started SecondProductCenterApplication in 5.76 seconds (JVM running for 7.431)
+2021-01-22 14:45:25.246  INFO 5512 --- [http-nio-7003-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/game]   : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-01-22 14:45:25.247  INFO 5512 --- [http-nio-7003-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-01-22 14:45:25.258  INFO 5512 --- [http-nio-7003-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2021-01-22 14:45:25.277  INFO 5512 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/code{"phone":["17612218888"]}
+2021-01-22 14:45:25.301  WARN 5512 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariConfig           : dataSource - idleTimeout is close to or more than maxLifetime, disabling it.
+2021-01-22 14:45:25.301  INFO 5512 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariDataSource       : dataSource - Starting...
+2021-01-22 14:45:25.557  INFO 5512 --- [http-nio-7003-exec-1] com.zaxxer.hikari.HikariDataSource       : dataSource - Start completed.
+2021-01-22 14:45:39.061  INFO 5512 --- [http-nio-7003-exec-2] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1319"],"phone":["17612218888"]}
+2021-01-22 14:45:40.793  INFO 5512 --- [http-nio-7003-exec-3] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/phoneLogin{"passwd":["1319"],"phone":["17612218888"]}
+2021-01-22 14:45:52.295  INFO 5512 --- [http-nio-7003-exec-4] c.e.a.c.i.AuthorityInterceptor           : /game/swagger-ui.html{}
+2021-01-22 14:45:52.592  INFO 5512 --- [http-nio-7003-exec-5] c.e.a.c.i.AuthorityInterceptor           : /game/swagger-resources/configuration/ui{}
+2021-01-22 14:45:52.596  INFO 5512 --- [http-nio-7003-exec-6] c.e.a.c.i.AuthorityInterceptor           : /game/webjars/springfox-swagger-ui/favicon-32x32.png{"v":["2.9.2"]}
+2021-01-22 14:45:52.648  INFO 5512 --- [http-nio-7003-exec-7] c.e.a.c.i.AuthorityInterceptor           : /game/swagger-resources/configuration/security{}
+2021-01-22 14:45:52.656  INFO 5512 --- [http-nio-7003-exec-8] c.e.a.c.i.AuthorityInterceptor           : /game/swagger-resources{}
+2021-01-22 14:45:52.702  INFO 5512 --- [http-nio-7003-exec-10] c.e.a.c.i.AuthorityInterceptor           : /game/{}
+2021-01-22 14:45:52.720  INFO 5512 --- [http-nio-7003-exec-10] c.e.a.c.i.AuthorityInterceptor           : /game/error{}
+2021-01-22 14:45:52.734  INFO 5512 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/csrf{}
+2021-01-22 14:45:52.737  INFO 5512 --- [http-nio-7003-exec-1] c.e.a.c.i.AuthorityInterceptor           : /game/error{}
+2021-01-22 14:45:57.099  INFO 5512 --- [http-nio-7003-exec-2] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/selectUser{"userId":["1"]}
+2021-01-22 14:46:01.163  INFO 5512 --- [http-nio-7003-exec-3] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/selectUser{"userId":["2"]}
+2021-01-22 14:46:04.249  INFO 5512 --- [http-nio-7003-exec-4] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/selectUser{"userId":["1"]}
+2021-01-22 14:46:25.302  INFO 5512 --- [http-nio-7003-exec-6] c.e.a.c.i.AuthorityInterceptor           : /game/Auth/selectUser{"userId":["4"]}

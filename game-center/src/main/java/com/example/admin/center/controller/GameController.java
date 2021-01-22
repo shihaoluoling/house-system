@@ -102,6 +102,7 @@ public class GameController {
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
         GameCenter gameCenter = new GameCenter();
+        gameCenter.setIsDeleted((short) 1);
         gameCenter.setId(id);
         gameCenter.setModifyTime(LocalDateTime.now());
         gameCenterMapper.updateByPrimaryKeySelective(gameCenter);
