@@ -1,5 +1,6 @@
 package com.example.admin.center.manual.JSON;
 
+import com.example.admin.center.manual.model.User;
 import com.example.admin.center.model.GameUser;
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class SelectUser {
      *
      *
      */
-    private List<GameUser> gameUsers;
+    private List<User> Users;
 
     public long getNums() {
         return nums;
@@ -31,11 +32,11 @@ public class SelectUser {
         this.nums = nums;
     }
 
-    public List<GameUser> getGameUsers() {
-        return gameUsers;
+    public List<User> getUsers() {
+        return Users;
     }
 
-    public void setGameUsers(List<GameUser> gameUsers) {
-        this.gameUsers = gameUsers;
+    public void setUsers(List<User> users) {
+        Users = users;
     }
 }

@@ -4,11 +4,9 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.user.center.dao.HouseAuthMapper;
 import com.example.user.center.dao.HouseUserMapper;
 import com.example.user.center.manual.Login;
+import com.example.user.center.manual.SelectUser;
 import com.example.user.center.manual.UserType;
-import com.example.user.center.model.HouseAuth;
-import com.example.user.center.model.HouseAuthExample;
-import com.example.user.center.model.HouseSystem;
-import com.example.user.center.model.HouseUser;
+import com.example.user.center.model.*;
 import com.example.user.utils.Message;
 import com.house.common.utils.Encrypt;
 import com.house.utils.response.handler.ResponseEntity;
@@ -31,6 +29,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -318,5 +317,44 @@ public class LoginController {
         houseSystem.setModifyDate(LocalDateTime.now());
         houseSystem.setIsDeleted((byte) 0);
         return builder.body(ResponseUtils.getResponseBody(0));
+    }
+
+    @RequestMapping(value = "/loginSelect", method = RequestMethod.GET)
+    @ApiOperation(value = "登录查询", notes = "登录查询")
+    public ResponseEntity<JSONObject> loginSelect(
+    ) throws Exception {
+        ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder();
+        HouseUserExample houseUserExample = new HouseUserExample();
+        houseUserExample.createCriteria().andUserTypeEqualTo(UserType.ADMIN.getPaymentTypeName())
+                .andIsDeletedEqualTo((byte) 0);
+        List<HouseUser> houseUsers =
+                houseUserMapper.selectByExample(houseUserExample);
+        List<SelectUser> selectUsers = new ArrayList<>();
+        houseUsers.forEach(houseUser -> {
+            SelectUser selectUser = new SelectUser();
+            selectUser.setUserId(houseUser.getId());
+            selectUser.setEmail(houseUser.getEmail());
+            HouseAuthExample houseAuthExample = new HouseAuthExample();
+            houseAuthExample.createCriteria()
+                    .andIsDeletedEqualTo((byte) 0)
+                    .andAuthTypeEqualTo(Login.PHONE.getPaymentTypeName())
+                    .andUserIdEqualTo(houseUser.getId());
+
+            List<HouseAuth> houseAuth = houseAuthMapper.selectByExample(houseAuthExample);
+            if (houseAuth.size() !=0){
+                selectUser.setPhone(houseAuth.get(0).getAuthKey());
+            }
+            houseAuthExample.clear();
+            houseAuthExample.createCriteria()
+                    .andIsDeletedEqualTo((byte) 0)
+                    .andAuthTypeEqualTo(Login.ADMIN.getPaymentTypeName())
+                    .andUserIdEqualTo(houseUser.getId());
+            houseAuth = houseAuthMapper.selectByExample(houseAuthExample);
+            if (houseAuth.size() !=0){
+                selectUser.setUserName(houseAuth.get(0).getAuthKey());
+            }
+            selectUsers.add(selectUser);
+        });
+        return builder.body(ResponseUtils.getResponseBody(selectUsers));
     }
 }

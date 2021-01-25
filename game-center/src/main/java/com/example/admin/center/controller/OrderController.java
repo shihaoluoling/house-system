@@ -77,6 +77,7 @@ public class OrderController {
     })
     public ResponseEntity<JSONObject> addOrder(Integer userId
             , String orderDetail,
+                                                   String gameName,
                                                    HttpServletResponse response
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
@@ -91,6 +92,7 @@ public class OrderController {
         gameOrders.setCreateTime(LocalDateTime.now());
         gameOrders.setModifyTime(LocalDateTime.now());
         gameOrders.setIsDeleted((byte) 0);
+        gameOrders.setHfRemark(gameName);
         gameOrdersMapper.insertSelective(gameOrders);
         return builder.body(ResponseUtils.getResponseBody(0));
     }
@@ -152,7 +154,7 @@ public class OrderController {
             //mysql 从0开始算数据,前端从1开始
             start -= 1;
             //转化成分页从第start开始,num条
-            start = start*10;
+            start = start*num;
             gameOrdersExample.setOrderByClause("id desc limit " + start + ","  + num);
         }
         List<GameOrders> gameOrders = gameOrdersMapper.selectByExampleWithBLOBs(gameOrdersExample);

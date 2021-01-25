@@ -126,7 +126,7 @@ public class GameController {
             //mysql 从0开始算数据,前端从1开始
             start -= 1;
             //转化成分页从第start开始,num条
-            start = start*10;
+            start = start*num;
             gameCenterExample.setOrderByClause("id desc limit " + start + ","  + num);
         }
         List<GameCenter> selectGameList = gameCenterMapper.selectByExample(gameCenterExample);

@@ -2,16 +2,15 @@ package com.example.admin.center.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.admin.center.dao.GameAuthMapper;
+import com.example.admin.center.dao.GameUserBookMapper;
 import com.example.admin.center.dao.GameUserMapper;
 import com.example.admin.center.manual.Enum.AuthLogin;
 import com.example.admin.center.manual.Enum.Login;
 import com.example.admin.center.manual.Enum.UserType;
 import com.example.admin.center.manual.JSON.SelectAuth;
 import com.example.admin.center.manual.JSON.SelectUser;
-import com.example.admin.center.model.GameAuth;
-import com.example.admin.center.model.GameAuthExample;
-import com.example.admin.center.model.GameUser;
-import com.example.admin.center.model.GameUserExample;
+import com.example.admin.center.manual.model.User;
+import com.example.admin.center.model.*;
 import com.example.admin.center.utils.Message;
 import com.house.common.utils.Encrypt;
 import com.house.utils.response.handler.ResponseEntity;
@@ -33,6 +32,7 @@ import redis.clients.jedis.JedisPool;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -64,6 +64,9 @@ public class AuthController {
 
     @Autowired
     private RedisTemplate<Object,Object> redisTemplate;
+
+    @Autowired
+    private GameUserBookMapper gameUserBookMapper;
     @RequestMapping(path = "/code", method = RequestMethod.POST)
     @ApiOperation(value = "发送验证码", notes = "发送验证码")
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
@@ -293,7 +296,7 @@ public class AuthController {
             //mysql 从0开始算数据,前端从1开始
             start -= 1;
             //转化成分页从第start开始,num条
-            start = start*10;
+            start = start*num;
             gameAuthExample.setOrderByClause("id desc limit " + start + ","  + num);
         }
         List<GameAuth> gameAuths = gameAuthMapper.selectByExample(gameAuthExample);
@@ -487,11 +490,27 @@ public class AuthController {
             //mysql 从0开始算数据,前端从1开始
             start -= 1;
             //转化成分页从第start开始,num条
-            start = start*10;
+            start = start*num;
             gameUserExample.setOrderByClause("id desc limit " + start + ","  + num);
         }
         List<GameUser> gameUsers = gameUserMapper.selectByExample(gameUserExample);
-        selectUser.setGameUsers(gameUsers);
+        List<User> users = new ArrayList<>();
+        gameUsers.forEach(gameUser -> {
+            User user = new User();
+            user.setUserId(gameUser.getId());
+            user.setPhone(gameUser.getPhone());
+            user.setRealName(gameUser.getRealName());
+            user.setUserType(gameUser.getUserType());
+            user.setFile(gameUser.getFile());
+            GameUserBookExample gameUserBookExample = new GameUserBookExample();
+            gameUserBookExample.createCriteria()
+                    .andUserIdEqualTo(gameUser.getId())
+                    .andIsDeletedEqualTo((byte) 0);
+            List<GameUserBook> gameUserBooks = gameUserBookMapper.selectByExampleWithBLOBs(gameUserBookExample);
+            user.setGameUserBooks(gameUserBooks);
+            users.add(user);
+        });
+        selectUser.setUsers(users);
         return builder.body(ResponseUtils.getResponseBody(selectUser));
     }
 

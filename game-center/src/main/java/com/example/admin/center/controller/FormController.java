@@ -125,7 +125,15 @@ public class FormController {
         }
         return builder.body(ResponseUtils.getResponseBody(0));
     }
-
+    @ApiOperation(value = "查询表单项", notes = "查询表单项")
+    @RequestMapping(value = "/selectItem", method = RequestMethod.GET)
+    public ResponseEntity<JSONObject> selectItem(
+            Integer formItemId
+    ) throws Exception {
+        ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
+        GameFormItem gameFormItem = gameFormItemMapper.selectByPrimaryKey(formItemId);
+        return builder.body(ResponseUtils.getResponseBody(gameFormItem));
+    }
     @ApiOperation(value = "添加表单", notes = "添加表单")
     @RequestMapping(value = "/addForm", method = RequestMethod.POST)
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
@@ -233,7 +241,7 @@ public class FormController {
             //mysql 从0开始算数据,前端从1开始
             start -= 1;
             //转化成分页从第start开始,num条
-            start = start*10;
+            start = start*num;
             gameFormExample.setOrderByClause("id desc limit " + start + ","  + num);
         }
         List<GameForm> gameForms = gameFormMapper.selectByExample(gameFormExample);
