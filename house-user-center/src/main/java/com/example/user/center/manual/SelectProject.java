@@ -16,7 +16,7 @@ import java.util.Map;
 public class SelectProject {
     private Integer projectId;//项目id
     private String projectName;//项目名称
-    private String developersName;//开发商
+    private List<String> developersName;//开发商
     private Map<String, List<String>> LandType;//土地和下面的楼盘
 
 
@@ -36,11 +36,11 @@ public class SelectProject {
         this.projectName = projectName;
     }
 
-    public String getDevelopersName() {
+    public List<String> getDevelopersName() {
         return developersName;
     }
 
-    public void setDevelopersName(String developersName) {
+    public void setDevelopersName(List<String> developersName) {
         this.developersName = developersName;
     }
 

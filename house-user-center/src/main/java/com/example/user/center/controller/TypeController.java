@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.user.center.dao.*;
 import com.example.user.center.manual.SelectType;
 import com.example.user.center.manual.TypePictureEnum;
+import com.example.user.center.manual.model.HomeType;
 import com.example.user.center.model.*;
 import com.house.utils.response.handler.ResponseEntity;
 import com.house.utils.response.handler.ResponseUtils;
@@ -337,13 +338,20 @@ HouseTypeConstituteGroupExample houseTypeConstituteGroupExample = new HouseTypeC
             List<HouseTypeConstituteGroup> houseTypeConstituteGroups =
                     houseTypeConstituteGroupMapper.selectByExample(houseTypeConstituteGroupExample);
             if (houseTypeConstituteGroups.size()!=0){
-                Map<String,Object> map = new HashMap<>();
+//                Map<String,HouseTypeConstituteGroup> map = new HashMap<>();
+                List<HomeType> homeTypes = new ArrayList<>();
                 houseTypeConstituteGroups.forEach(houseTypeConstituteGroup -> {
+                    HomeType homeType = new HomeType();
                     HouseTypeConstitute houseTypeConstitute =
                             houseTypeConstituteMapper.selectByPrimaryKey(houseTypeConstituteGroup.getConstituteId());
-                    map.put(houseTypeConstitute.getConstituteName(),houseTypeConstituteGroup.getValue());
+                    homeType.setTypeId(houseTypeConstituteGroup.getTypeId());
+                    homeType.setConstituteId(houseTypeConstituteGroup.getConstituteId());
+                    homeType.setValue(houseTypeConstituteGroup.getValue());
+                    homeType.setTypeName(houseTypeConstitute.getConstituteName());
+                    homeTypes.add(homeType);
+//                    map.put(houseTypeConstitute.getConstituteName(),houseTypeConstituteGroup.getValue());
                 });
-                selectType.setConstitute(map);
+                selectType.setConstitute(homeTypes);
             }
             //供求比
             selectType.setRatio(houseType.getTransaction().doubleValue()/houseType.getSupply().doubleValue());

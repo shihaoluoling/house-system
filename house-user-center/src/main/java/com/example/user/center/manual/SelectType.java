@@ -1,5 +1,8 @@
 package com.example.user.center.manual;
 
+import com.example.user.center.manual.model.HomeType;
+import com.example.user.center.model.HouseTypeConstituteGroup;
+
 import java.util.List;
 import java.util.Map;
 
@@ -31,7 +34,7 @@ public class SelectType {
     private Double livingWide;//起居室面宽
     private Double masterWide;//主卧面宽
     private Double guestWide;//客卧面宽
-    private Map constitute;//房间组成
+    private List<HomeType> constitute;//房间组成
     private Double ratio;//供求比
 
     public Integer getTypeId() {
@@ -162,11 +165,11 @@ public class SelectType {
         this.guestWide = guestWide;
     }
 
-    public Map getConstitute() {
+    public List<HomeType> getConstitute() {
         return constitute;
     }
 
-    public void setConstitute(Map constitute) {
+    public void setConstitute(List<HomeType> constitute) {
         this.constitute = constitute;
     }
 

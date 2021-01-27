@@ -357,4 +357,28 @@ public class LoginController {
         });
         return builder.body(ResponseUtils.getResponseBody(selectUsers));
     }
+
+    @RequestMapping(value = "/loginDelete", method = RequestMethod.GET)
+    @ApiOperation(value = "删除用户登录", notes = "删除登录")
+    public ResponseEntity<JSONObject> loginDelete(
+            Integer userId
+    ) throws Exception {
+        ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder();
+
+        //用户
+        HouseUser houseUser = new HouseUser();
+        houseUser.setId(userId);
+        houseUser.setModifyDate(LocalDateTime.now());
+        houseUser.setIsDeleted((byte) 1);
+        houseUserMapper.updateByPrimaryKeySelective(houseUser);
+        //授权
+        HouseAuthExample houseAuthExample = new HouseAuthExample();
+        houseAuthExample.createCriteria().andUserIdEqualTo(userId)
+                .andIsDeletedEqualTo((byte) 0);
+        HouseAuth houseAuth = new HouseAuth();
+        houseAuth.setIsDeleted((byte) 1);
+        houseAuth.setModifyDate(LocalDateTime.now());
+        houseAuthMapper.updateByExampleSelective(houseAuth,houseAuthExample);
+        return builder.body(ResponseUtils.getResponseBody(0));
+    }
 }

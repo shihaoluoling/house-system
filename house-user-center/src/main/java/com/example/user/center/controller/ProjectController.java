@@ -144,6 +144,9 @@ public class ProjectController {
                     houseLandMapper.selectByExample(houseLandExample);
             //土地
             if (houseLands.size()!=0){
+                //受让方
+                List<String> developers = houseLands.stream().map(HouseLand::getTransfer).collect(Collectors.toList());
+                selectProject.setDevelopersName(developers);
                 Map<String, List<String>> map = new HashMap<>();
                 houseLands.forEach(houseLand -> {
                     //某一个土地下的所有楼盘

@@ -123,7 +123,7 @@
         <!--</table>-->
 <!--&lt;!&ndash;户型&ndash;&gt;-->
         <!--<table schema="user_center" tableName="house_type"-->
-               <!--domainObjectName="HouseType">-->
+               <!--domainObjectName="HomeType">-->
             <!--<property name="useActualColumnNames" value="false"/>-->
             <!--<generatedKey column="id" sqlStatement="mysql"-->
                           <!--identity="true"/>-->
