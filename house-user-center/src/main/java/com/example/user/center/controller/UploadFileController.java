@@ -10,22 +10,15 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import net.coobird.thumbnailator.Thumbnails;
 import org.apache.commons.io.IOUtils;
-import org.apache.pdfbox.text.PDFTextStripper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.time.LocalDateTime;
 
 /**
@@ -141,7 +134,7 @@ private HouseFileMapper houseFileMapper;
 //        String localname=ip.getHostName();
 //        String localip=ip.getHostAddress();
 //        String s = "https://swcloud.tjsichuang.cn:1444/second/user/File/getPicture?id=";
-        String s = "http://192.168.1.128:7004/user/File/getFile?id=";
+        String s = "http://39.98.126.20:7004/user/File/getFile?id=";
         return builder.body(ResponseUtils.getResponseBody(s+String.valueOf(fileDesc.getId())));
     }
     @ApiOperation(value = "获取文件", notes = "获取图片")
@@ -163,5 +156,27 @@ private HouseFileMapper houseFileMapper;
             IOUtils.write(file, outputStream);
             outputStream.close();
         }
+    }
+
+    @PostMapping("/file/upload")
+    public String fileUpload(@RequestParam("files")MultipartFile[] files){
+        String filePath = "";
+        // 多文件上传
+        for (MultipartFile file : files){
+            // 上传简单文件名
+            String originalFilename = file.getOriginalFilename();
+            // 存储路径
+            filePath = new StringBuilder("C:\\Users\\MACHENIKE\\Desktop")
+                    .append(System.currentTimeMillis())
+                    .append(originalFilename)
+                    .toString();
+            try {
+                // 保存文件
+                file.transferTo(new File(filePath));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return filePath;
     }
 }

@@ -226,11 +226,14 @@ private HousePlateMapper housePlateMapper;
             HousePlateLabelExample housePlateLabelExample = new HousePlateLabelExample();
             housePlateLabelExample.createCriteria().andPlateIdEqualTo(housePlate.getId())
                     .andIsDeletedEqualTo((byte) 0);
+            //
+            System.out.println(housePlate.getId());
             List<HousePlateLabel> housePlateLabels =
             housePlateLabelMapper.selectByExample(housePlateLabelExample);
             if (housePlateLabels.size()!=0){
                 Set<Integer> labels = housePlateLabels.stream()
-                        .map(HousePlateLabel::getId).collect(Collectors.toSet());
+                        .map(HousePlateLabel::getLabelId).collect(Collectors.toSet());
+                System.out.println(labels);
                 HouseLabelExample houseLabelExample = new HouseLabelExample();
                 houseLabelExample.createCriteria()
                         .andIdIn(Lists.newArrayList(labels))
