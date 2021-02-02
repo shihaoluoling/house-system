@@ -90,7 +90,7 @@ public class ProjectController {
         houseProject.setProjectName(projectName);
         houseProject.setDevelopersName(developersName);
         houseProject.setModifyDate(LocalDateTime.now());
-        houseProjectMapper.insertSelective(houseProject);
+        houseProjectMapper.updateByPrimaryKeySelective(houseProject);
         return builder.body(ResponseUtils.getResponseBody(0));
     }
 

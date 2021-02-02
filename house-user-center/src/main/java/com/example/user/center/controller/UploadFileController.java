@@ -9,6 +9,8 @@ import com.house.utils.response.handler.ResponseUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import net.coobird.thumbnailator.Thumbnails;
+import org.apache.commons.io.IOUtils;
+import org.apache.pdfbox.text.PDFTextStripper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -107,5 +109,59 @@ private HouseFileMapper houseFileMapper;
         }
         houseFileMapper.deleteByPrimaryKey(fileId);
         return builder.body(ResponseUtils.getResponseBody(fileId));
+    }
+
+    @ApiOperation(value = "上传文件", notes = "上传图片")
+    @RequestMapping(value = "/fileUpLoadFile", method = RequestMethod.POST)
+    public ResponseEntity<JSONObject> fileUpLoadFile(MultipartFile file) throws Exception {
+        ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
+        //获取文件的原始名称
+        String originalFilename = file.getOriginalFilename();
+        System.out.println(originalFilename);
+        //获取最后一个.的位置
+        int lastIndexOf = originalFilename.lastIndexOf(".");
+        //获取文件的后缀名 .xxx
+        String suffix = originalFilename.substring(lastIndexOf+1);
+        String arr[];
+//        FileMangeService fileMangeService = new FileMangeService();
+        arr = FileMangeService.uploadFile(file.getBytes(), String.valueOf("-1"));
+        HouseFile fileDesc = new HouseFile();
+        //todo 保存文件后缀名
+        fileDesc.setFileName(file.getName());
+        fileDesc.setSuffix(suffix);
+        fileDesc.setGroupName(arr[0]);
+        fileDesc.setRemoteFilename(arr[1]);
+        fileDesc.setUserId(-1);
+        fileDesc.setCreateTime(LocalDateTime.now());
+        fileDesc.setModifyTime(LocalDateTime.now());
+        fileDesc.setIsDeleted((short) 0);
+        houseFileMapper.insert(fileDesc);
+//        InetAddress ip = null;
+//        ip=ip.getLocalHost();
+//        String localname=ip.getHostName();
+//        String localip=ip.getHostAddress();
+//        String s = "https://swcloud.tjsichuang.cn:1444/second/user/File/getPicture?id=";
+        String s = "http://192.168.1.128:7004/user/File/getFile?id=";
+        return builder.body(ResponseUtils.getResponseBody(s+String.valueOf(fileDesc.getId())));
+    }
+    @ApiOperation(value = "获取文件", notes = "获取图片")
+    @RequestMapping(value = "/getFile", method = RequestMethod.GET)
+    public void getFile(Integer id, HttpServletResponse response) throws Exception {
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        HouseFile fileDesc = houseFileMapper.selectByPrimaryKey(id);
+        if (fileDesc == null) {
+            throw new Exception("file not exists");
+        }
+        response.addHeader("Content-Type", "application/"+fileDesc.getSuffix()+";charset=UTF-8");
+//        FileMangeService fileManageService = new FileMangeService();
+        synchronized (LOCK) {
+            byte[] file = FileMangeService.downloadFile(fileDesc.getGroupName(), fileDesc.getRemoteFilename());
+//            ByteArrayInputStream stream = new ByteArrayInputStream(file);
+//            PDFTextStripper stripper = new PDFTextStripper();
+            OutputStream outputStream = response.getOutputStream();
+//            ImageIO.write(readImg, "png", outputStream);
+            IOUtils.write(file, outputStream);
+            outputStream.close();
+        }
     }
 }

@@ -164,46 +164,46 @@
                           <!--identity="true"/>-->
         <!--</table>-->
         <!--楼号表-->
-        <table schema="user_center" tableName="house_tower_no"
-               domainObjectName="HouseTowerNo">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
-        <!--库表-->
-        <table schema="user_center" tableName="house_library"
-               domainObjectName="HouseLibrary">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
-        <!--楼号-库表-->
-        <table schema="user_center" tableName="house_tower_library"
-               domainObjectName="HouseTowerLibrary">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
-        <!--库分类表-->
-        <table schema="user_center" tableName="house_library_category"
-               domainObjectName="HouseLibraryCategory">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
-        <!--分类文本表-->
-        <table schema="user_center" tableName="house_library_category_text"
-               domainObjectName="HouseLibraryCategoryText">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
-        <!--楼库-分类表-->
-        <table schema="user_center" tableName="house_tower_library_category"
-               domainObjectName="HouseTowerLibraryCategory">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
+        <!--<table schema="user_center" tableName="house_tower_no"-->
+               <!--domainObjectName="HouseTowerNo">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
+        <!--&lt;!&ndash;库表&ndash;&gt;-->
+        <!--<table schema="user_center" tableName="house_library"-->
+               <!--domainObjectName="HouseLibrary">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
+        <!--&lt;!&ndash;楼号-库表&ndash;&gt;-->
+        <!--<table schema="user_center" tableName="house_tower_library"-->
+               <!--domainObjectName="HouseTowerLibrary">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
+        <!--&lt;!&ndash;库分类表&ndash;&gt;-->
+        <!--<table schema="user_center" tableName="house_library_category"-->
+               <!--domainObjectName="HouseLibraryCategory">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
+        <!--&lt;!&ndash;分类文本表&ndash;&gt;-->
+        <!--<table schema="user_center" tableName="house_library_category_text"-->
+               <!--domainObjectName="HouseLibraryCategoryText">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
+        <!--&lt;!&ndash;楼库-分类表&ndash;&gt;-->
+        <!--<table schema="user_center" tableName="house_tower_library_category"-->
+               <!--domainObjectName="HouseTowerLibraryCategory">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
     </context>
 </generatorConfiguration>

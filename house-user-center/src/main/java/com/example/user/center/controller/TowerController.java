@@ -1,9 +1,8 @@
 package com.example.user.center.controller;
 
 import com.alibaba.fastjson.JSONObject;
-import com.example.user.center.dao.HouseLibraryMapper;
-import com.example.user.center.dao.HouseTowerLibraryMapper;
-import com.example.user.center.dao.HouseTowerNoMapper;
+import com.example.user.center.dao.*;
+import com.example.user.center.manual.SelectLibraryCategory;
 import com.example.user.center.model.*;
 import com.google.common.collect.Lists;
 import com.house.utils.response.handler.ResponseEntity;
@@ -23,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletResponse;
 import java.nio.file.OpenOption;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,6 +54,17 @@ public class TowerController {
      */
     @Autowired
     private HouseTowerLibraryMapper houseTowerLibraryMapper;
+
+    /**
+     * @param houseLibraryCategoryMapper 分类
+     * */
+    @Autowired
+    HouseLibraryCategoryMapper houseLibraryCategoryMapper;
+    /**
+     * @param houseLibraryCategoryTextMapper 分类下的文本
+     * */
+    @Autowired
+    private HouseLibraryCategoryTextMapper houseLibraryCategoryTextMapper;
     @ApiOperation(value = "新建楼号", notes = "新建楼号")
     @RequestMapping(value = "/addTower", method = RequestMethod.POST)
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
@@ -99,7 +110,7 @@ public class TowerController {
                         response.sendError(501,"此楼号已经有此库了");
                         return builder.body(ResponseUtils.getResponseBody(1));
                     } else {
-                        //添加
+                        //TODO 添加
                             for (Integer libraryId : libraryIds){
                                 HouseTowerLibrary houseTowerLibrary = new HouseTowerLibrary();
                                 houseTowerLibrary.setLibraryId(libraryId);
@@ -213,5 +224,193 @@ public class TowerController {
         List<HouseLibrary> houseLibraries =
                 houseLibraryMapper.selectByExample(houseLibraryExample);
         return builder.body(ResponseUtils.getResponseBody(houseLibraries));
+    }
+    @ApiOperation(value = "查询库仓详情", notes = "查询库仓详情")
+    @RequestMapping(value = "/selectLibraryDetails", method = RequestMethod.GET)
+    @Transactional(rollbackFor = {RuntimeException.class, Error.class})
+    public ResponseEntity<JSONObject> selectLibraryDetails(Integer libraryId) throws Exception {
+        ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
+        //TODO 先查询出一级分类
+        HouseLibraryCategoryExample houseLibraryCategoryExample = new HouseLibraryCategoryExample();
+        houseLibraryCategoryExample.createCriteria()
+                .andIsDeletedEqualTo((byte) 0)
+                .andLibraryIdEqualTo(libraryId)
+                .andLevelEqualTo(1)
+                .andParentCategoryIdEqualTo(0);
+        List<HouseLibraryCategory> houseLibraryCategories =
+                houseLibraryCategoryMapper.selectByExample(houseLibraryCategoryExample);
+        //TODO 一级分类
+
+        List<SelectLibraryCategory> selectLibraryCategories = new ArrayList<>();
+        houseLibraryCategories.forEach(houseLibraryCategory -> {
+
+            //TODO 一级分类信息
+            SelectLibraryCategory selectLibraryCategory = new SelectLibraryCategory();
+            selectLibraryCategory.setCategoryId(houseLibraryCategory.getId());
+            selectLibraryCategory.setLevel(houseLibraryCategory.getLevel());
+            selectLibraryCategory.setCategoryName(houseLibraryCategory.getCategoryName());
+            selectLibraryCategory.setIsAddText(houseLibraryCategory.getIsAddText());
+            selectLibraryCategory.setIsLast(houseLibraryCategory.getIsLast());
+            //TODO 二级分类
+            HouseLibraryCategoryExample houseLibraryCategoryExample1 = new HouseLibraryCategoryExample();
+            houseLibraryCategoryExample1.createCriteria()
+                    .andIsDeletedEqualTo((byte) 0)
+                    .andLibraryIdEqualTo(libraryId)
+                    .andLevelEqualTo(2)
+                    .andParentCategoryIdEqualTo(houseLibraryCategory.getId());
+            List<HouseLibraryCategory> houseLibraryCategories1 =
+                    houseLibraryCategoryMapper.selectByExample(houseLibraryCategoryExample1);
+            List<SelectLibraryCategory> selectLibraryCategories1 = new ArrayList<>();
+            houseLibraryCategories1.forEach(houseLibraryCategory1 -> {
+                //
+                SelectLibraryCategory selectLibraryCategory1 = new SelectLibraryCategory();
+                selectLibraryCategory1.setCategoryId(houseLibraryCategory1.getId());
+                selectLibraryCategory1.setCategoryName(houseLibraryCategory1.getCategoryName());
+                selectLibraryCategory1.setLevel(houseLibraryCategory1.getLevel());
+                selectLibraryCategory1.setIsAddText(houseLibraryCategory1.getIsAddText());
+                selectLibraryCategory1.setIsLast(houseLibraryCategory1.getIsLast());
+                //TODO 三级分类
+                HouseLibraryCategoryExample houseLibraryCategoryExample2 = new HouseLibraryCategoryExample();
+                houseLibraryCategoryExample2.createCriteria()
+                        .andIsDeletedEqualTo((byte) 0)
+                        .andLibraryIdEqualTo(libraryId)
+                        .andLevelEqualTo(3)
+                        .andParentCategoryIdEqualTo(houseLibraryCategory1.getId());
+                List<HouseLibraryCategory> houseLibraryCategories2 =
+                        houseLibraryCategoryMapper.selectByExample(houseLibraryCategoryExample2);
+                //todo 展示分类
+                List<SelectLibraryCategory> selectLibraryCategories2 = new ArrayList<>();
+                houseLibraryCategories2.forEach(houseLibraryCategory2 -> {
+                    //
+                    SelectLibraryCategory selectLibraryCategory2 = new SelectLibraryCategory();
+                    selectLibraryCategory2.setCategoryId(houseLibraryCategory2.getId());
+                    selectLibraryCategory2.setCategoryName(houseLibraryCategory2.getCategoryName());
+                    selectLibraryCategory2.setLevel(houseLibraryCategory2.getLevel());
+                    selectLibraryCategory2.setIsAddText(houseLibraryCategory2.getIsAddText());
+                    selectLibraryCategory2.setIsLast(houseLibraryCategory2.getIsLast());
+                    //TODO 四级分类
+                    HouseLibraryCategoryExample houseLibraryCategoryExample3 = new HouseLibraryCategoryExample();
+                    houseLibraryCategoryExample3.createCriteria()
+                            .andIsDeletedEqualTo((byte) 0)
+                            .andLibraryIdEqualTo(libraryId)
+                            .andLevelEqualTo(4)
+                            .andParentCategoryIdEqualTo(houseLibraryCategory2.getId());
+                    List<HouseLibraryCategory> houseLibraryCategories3 =
+                            houseLibraryCategoryMapper.selectByExample(houseLibraryCategoryExample3);
+                    //todo 展示分类
+                    List<SelectLibraryCategory> selectLibraryCategories3 = new ArrayList<>();
+                    houseLibraryCategories3.forEach(houseLibraryCategory3 -> {
+                        //
+                        SelectLibraryCategory selectLibraryCategory3 = new SelectLibraryCategory();
+                        selectLibraryCategory3.setCategoryId(houseLibraryCategory3.getId());
+                        selectLibraryCategory3.setCategoryName(houseLibraryCategory3.getCategoryName());
+                        selectLibraryCategory3.setLevel(houseLibraryCategory3.getLevel());
+                        selectLibraryCategory3.setIsAddText(houseLibraryCategory3.getIsAddText());
+                        selectLibraryCategory3.setIsLast(houseLibraryCategory3.getIsLast());
+                        selectLibraryCategories3.add(selectLibraryCategory3);
+                    });
+                    // todo 三级
+                    selectLibraryCategory2.setSelectLibraryCategories(selectLibraryCategories3);
+                    selectLibraryCategories2.add(selectLibraryCategory2);
+                });
+                //todo 二级
+                selectLibraryCategory1.setSelectLibraryCategories(selectLibraryCategories2);
+                selectLibraryCategories1.add(selectLibraryCategory1);
+            });
+            //todo 一级
+            selectLibraryCategory.setSelectLibraryCategories(selectLibraryCategories1);
+            selectLibraryCategories.add(selectLibraryCategory);
+        });
+        return builder.body(ResponseUtils.getResponseBody(selectLibraryCategories));
+    }
+
+    @ApiOperation(value = "添加分类", notes = "添加分类")
+    @RequestMapping(value = "/addLibraryaddCategory", method = RequestMethod.POST)
+    @Transactional(rollbackFor = {RuntimeException.class, Error.class})
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", name = "libraryId", value = "库id", required = true, type = "Integer"),
+            @ApiImplicitParam(paramType = "query", name = "categoryName", value = "类名称", required = true, type = "String"),
+            @ApiImplicitParam(paramType = "query", name = "parentCategoryId", value = "上级类目id 顶级传0", required = true, type = "Integer"),
+            @ApiImplicitParam(paramType = "query", name = "text", value = "文本或者图片", required = true, type = "String"),
+            @ApiImplicitParam(paramType = "query", name = "type", value = "文本或者图片类型", required = true, type = "String"),
+    })
+    public ResponseEntity<JSONObject> addLibraryaddCategory(
+                                                            Integer libraryId,
+                                                            String categoryName,
+                                                            Integer parentCategoryId,
+                                                            String text,
+                                                            String type,
+                                                            HttpServletResponse response
+                                                            ) throws Exception {
+        ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
+        if (parentCategoryId!=0){
+            //todo 添加的不是一级分类
+            HouseLibraryCategory houseLibraryCategory = houseLibraryCategoryMapper.selectByPrimaryKey(parentCategoryId);
+            //todo 添加的分类下有文本或者图片
+            if (text!=null){
+                //todo 添加的上级分类有文本或者图片，不能添加下级分类
+                if (houseLibraryCategory.getIsAddText() == 0){
+                    response.sendError(1000,"此分类下有文本");
+                    return builder.body(ResponseUtils.getResponseBody(1));
+                }
+            }
+            if (houseLibraryCategory.getLevel() == 4){
+                response.sendError(1001,"此分类是四级分类");
+                return builder.body(ResponseUtils.getResponseBody(1));
+            }
+            HouseLibraryCategory houseLibraryCategory1 = new HouseLibraryCategory();
+            houseLibraryCategory1.setLibraryId(houseLibraryCategory.getLibraryId());
+            houseLibraryCategory1.setCategoryName(categoryName);
+            houseLibraryCategory1.setParentCategoryId(parentCategoryId);
+            houseLibraryCategory1.setLevel(houseLibraryCategory.getLevel()+1);
+            houseLibraryCategory1.setIsDeleted((byte) 0);
+            houseLibraryCategory1.setCreateDate(LocalDateTime.now());
+            houseLibraryCategory1.setModifyDate(LocalDateTime.now());
+            houseLibraryCategoryMapper.insertSelective(houseLibraryCategory1);
+            //todo 类目文本
+            if (text != null){
+                HouseLibraryCategoryText houseLibraryCategoryText = new HouseLibraryCategoryText();
+                houseLibraryCategoryText.setLibraryCategoryId(houseLibraryCategory1.getId());
+                houseLibraryCategoryText.setText(text);
+                houseLibraryCategoryText.setType(type);
+                houseLibraryCategoryText.setIsDeleted((byte) 0);
+                houseLibraryCategoryText.setCreateDate(LocalDateTime.now());
+                houseLibraryCategoryText.setModifyDate(LocalDateTime.now());
+                houseLibraryCategoryTextMapper.insertSelective(houseLibraryCategoryText);
+            }
+        } else {
+            //todo 如果添加的是一级分类
+            HouseLibraryCategory houseLibraryCategory = new HouseLibraryCategory();
+            houseLibraryCategory.setLibraryId(libraryId);
+            houseLibraryCategory.setCategoryName(categoryName);
+            houseLibraryCategory.setParentCategoryId(0);
+            houseLibraryCategory.setLevel(1);
+            houseLibraryCategory.setIsDeleted((byte) 0);
+            houseLibraryCategory.setCreateDate(LocalDateTime.now());
+            houseLibraryCategory.setModifyDate(LocalDateTime.now());
+            if (text != null){
+                // todo 0添加了文本 0最后一个类目
+                houseLibraryCategory.setIsAddText((byte) 0);
+                houseLibraryCategory.setIsLast((byte) 0);
+            } else {
+                // todo 1没有添加了文本 1不是最后一个类目
+                houseLibraryCategory.setIsAddText((byte) 1);
+                houseLibraryCategory.setIsLast((byte) 0);
+            }
+            // todo 添加类目
+            houseLibraryCategoryMapper.insertSelective(houseLibraryCategory);
+            //todo 类目文本
+            if (text != null){
+                HouseLibraryCategoryText houseLibraryCategoryText = new HouseLibraryCategoryText();
+                houseLibraryCategoryText.setLibraryCategoryId(houseLibraryCategory.getId());
+                houseLibraryCategoryText.setText(text);
+                houseLibraryCategoryText.setType(type);
+                houseLibraryCategoryText.setIsDeleted((byte) 0);
+                houseLibraryCategoryText.setCreateDate(LocalDateTime.now());
+                houseLibraryCategoryText.setModifyDate(LocalDateTime.now());
+                houseLibraryCategoryTextMapper.insertSelective(houseLibraryCategoryText);
+            }
+        }
+        return builder.body(ResponseUtils.getResponseBody(0));
     }
 }

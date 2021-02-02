@@ -155,7 +155,7 @@ public class TypeController {
             @ApiImplicitParam(paramType = "query", name = "southWide", value = "南向总面宽", required = true, type = "Double"),
             @ApiImplicitParam(paramType = "query", name = "livingWide", value = "起居室面宽", required = true, type = "Double"),
             @ApiImplicitParam(paramType = "query", name = "guestWide", value = "客卧面宽", required = true, type = "Double"),
-            @ApiImplicitParam(paramType = "query", name = "constitute", value = "组成", required = true, type = "String"),
+            @ApiImplicitParam(paramType = "query", name = "constitute", value = "组成", required = false, type = "String"),
     })
     public ResponseEntity<JSONObject> updateType(
             @RequestParam(name = "houseName") String houseName,
@@ -168,7 +168,7 @@ public class TypeController {
             @RequestParam(name = "masterWide") Double masterWide,
             @RequestParam(name = "livingWide") Double livingWide,
             @RequestParam(name = "guestWide") Double guestWide,
-            @RequestParam(name = "constitute") String constitute,
+            String constitute,
             @RequestParam(name = "houseFiles") String[] houseFiles,//户型图
             HttpServletResponse response
     ) throws Exception {
@@ -188,23 +188,25 @@ public class TypeController {
         houseType.setCreateDate(LocalDateTime.now());
         houseType.setModifyDate(LocalDateTime.now());
         houseType.setIsDeleted((byte) 0);
-        houseTypeMapper.insertSelective(houseType);
-        Map mapTypes = JSON.parseObject(constitute);
-        //constituteId 房间组成id, value对应参数值
-        for (Object obj : mapTypes.keySet()){
-            System.out.println("key为："+obj+"值为："+mapTypes.get(obj));
-            HouseTypeConstituteGroupExample houseTypeConstituteGroupExample = new HouseTypeConstituteGroupExample();
-            houseTypeConstituteGroupExample.createCriteria()
-                    .andConstituteIdEqualTo((Integer) obj)
-                    .andIsDeletedEqualTo((byte) 0)
-            .andTypeIdEqualTo(houseType.getId());
-            HouseTypeConstituteGroup houseTypeConstituteGroup = new HouseTypeConstituteGroup();
-            houseTypeConstituteGroup.setConstituteId((Integer) obj);
-            houseTypeConstituteGroup.setTypeId(houseType.getId());
-            houseTypeConstituteGroup.setValue((Double) mapTypes.get(obj));
-            houseTypeConstituteGroup.setModifyDate(LocalDateTime.now());
-            houseTypeConstituteGroupMapper.updateByExampleSelective(houseTypeConstituteGroup,houseTypeConstituteGroupExample);
+        houseTypeMapper.updateByPrimaryKeySelective(houseType);
+        if (constitute != null){
+            Map mapTypes = JSON.parseObject(constitute);
+            //constituteId 房间组成id, value对应参数值
+            for (Object obj : mapTypes.keySet()){
+                System.out.println("key为："+obj+"值为："+mapTypes.get(obj));
+                HouseTypeConstituteGroupExample houseTypeConstituteGroupExample = new HouseTypeConstituteGroupExample();
+                houseTypeConstituteGroupExample.createCriteria()
+                        .andConstituteIdEqualTo(Integer.parseInt(obj.toString()))
+                        .andIsDeletedEqualTo((byte) 0)
+                        .andTypeIdEqualTo(houseType.getId());
+                HouseTypeConstituteGroup houseTypeConstituteGroup = new HouseTypeConstituteGroup();
+                houseTypeConstituteGroup.setConstituteId(Integer.parseInt(obj.toString()));
+                houseTypeConstituteGroup.setTypeId(houseType.getId());
+                houseTypeConstituteGroup.setValue(Double.valueOf(mapTypes.get(obj).toString()));
+                houseTypeConstituteGroup.setModifyDate(LocalDateTime.now());
+                houseTypeConstituteGroupMapper.updateByExampleSelective(houseTypeConstituteGroup,houseTypeConstituteGroupExample);
 //            houseTypeConstituteGroup.set
+            }
         }
         if (houseFiles.length != 0){
             for (String file : houseFiles){
@@ -347,7 +349,9 @@ HouseTypeConstituteGroupExample houseTypeConstituteGroupExample = new HouseTypeC
                     homeType.setTypeId(houseTypeConstituteGroup.getTypeId());
                     homeType.setConstituteId(houseTypeConstituteGroup.getConstituteId());
                     homeType.setValue(houseTypeConstituteGroup.getValue());
-                    homeType.setTypeName(houseTypeConstitute.getConstituteName());
+                    if (houseTypeConstitute!=null){
+                        homeType.setTypeName(houseTypeConstitute.getConstituteName());
+                    }
                     homeTypes.add(homeType);
 //                    map.put(houseTypeConstitute.getConstituteName(),houseTypeConstituteGroup.getValue());
                 });
