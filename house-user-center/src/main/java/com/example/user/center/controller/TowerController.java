@@ -29,6 +29,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * @author shihao
@@ -94,6 +96,47 @@ public class TowerController {
         houseTower.setModifyDate(LocalDateTime.now());
         houseTower.setIsDeleted((byte) 0);
         houseTowerNoMapper.insertSelective(houseTower);
+        if (synchronizationNo!=null){
+            // todo同步库
+            HouseTowerLibraryExample houseTowerLibraryExample = new HouseTowerLibraryExample();
+            houseTowerLibraryExample.createCriteria()
+                    .andTowerNoIdEqualTo(houseTower.getId())
+                    .andIsDeletedEqualTo((byte) 0);
+            List<HouseTowerLibrary> houseTowerLibrarys = houseTowerLibraryMapper.selectByExample(houseTowerLibraryExample);
+            Set<Integer> libraryIds = houseTowerLibrarys.stream().map(HouseTowerLibrary::getLibraryId).collect(Collectors.toSet());
+            for (Integer libraryId : libraryIds){
+                HouseTowerLibrary houseTowerLibrary = new HouseTowerLibrary();
+                houseTowerLibrary.setIsDeleted((byte) 0);
+                houseTowerLibrary.setModifyDate(LocalDateTime.now());
+                houseTowerLibrary.setCreateDate(LocalDateTime.now());
+                houseTowerLibrary.setIsDeleted((byte) 0);
+                houseTowerLibrary.setTowerNoId(houseTower.getId());
+                houseTowerLibrary.setLibraryId(libraryId);
+                houseTowerLibraryMapper.insertSelective(houseTowerLibrary);
+                // todo 同步楼号库分类
+                HouseTowerLibraryCategoryExample houseTowerLibraryCategoryExample = new HouseTowerLibraryCategoryExample();
+                houseTowerLibraryCategoryExample.createCriteria()
+                        .andIsDeletedEqualTo((byte) 0)
+                        .andTowerLibraryIdEqualTo(libraryId);
+                List<HouseTowerLibraryCategory> houseTowerLibraryCategories = houseTowerLibraryCategoryMapper.selectByExample(houseTowerLibraryCategoryExample);
+                Set<Integer> categoryIds = houseTowerLibraryCategories.stream()
+                        .map(HouseTowerLibraryCategory::getLibraryCategoryId).collect(Collectors.toSet());
+                // todo 添加
+                if (categoryIds.size() !=0 ){
+                    for (Integer category : categoryIds){
+                        HouseTowerLibraryCategory houseTowerLibraryCategory = new HouseTowerLibraryCategory();
+                        houseTowerLibraryCategory.setTowerLibraryId(houseTowerLibrary.getId());
+                        houseTowerLibraryCategory.setLibraryCategoryId(category);
+                        houseTowerLibraryCategory.setCreateDate(LocalDateTime.now());
+                        houseTowerLibraryCategory.setModifyDate(LocalDateTime.now());
+                        houseTowerLibraryCategory.setIsDeleted((byte) 0);
+                        houseTowerLibraryCategoryMapper.insertSelective(houseTowerLibraryCategory);
+                    }
+                }
+
+            }
+
+        }
         return builder.body(ResponseUtils.getResponseBody(0));
     }
     @ApiOperation(value = "查询", notes = "查询")
