@@ -36,6 +36,23 @@ public class SelectLibraryCategory {
      */
     private List<SelectLibraryCategory> selectLibraryCategories;
 
+    /**
+     * 文本或文件地址
+     * @return
+     */
+    private String text;
+
+    /**
+     * 类型
+     * @return
+     */
+    private TextTypeEnum type;
+
+    /**
+     * 楼号查询时是否选中 0选1否
+     * @return
+     */
+    private Integer pitch;
     public Integer getCategoryId() {
         return categoryId;
     }
@@ -82,5 +99,29 @@ public class SelectLibraryCategory {
 
     public void setSelectLibraryCategories(List<SelectLibraryCategory> selectLibraryCategories) {
         this.selectLibraryCategories = selectLibraryCategories;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public TextTypeEnum getType() {
+        return type;
+    }
+
+    public void setType(TextTypeEnum type) {
+        this.type = type;
+    }
+
+    public Integer getPitch() {
+        return pitch;
+    }
+
+    public void setPitch(Integer pitch) {
+        this.pitch = pitch;
     }
 }
