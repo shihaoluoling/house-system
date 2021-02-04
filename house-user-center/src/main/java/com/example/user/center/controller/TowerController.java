@@ -24,12 +24,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
+import java.lang.reflect.Array;
 import java.nio.file.OpenOption;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -206,7 +204,33 @@ public class TowerController {
                                 return builder.body(ResponseUtils.getResponseBody(houseTowerLibrary.getId()));
                     }
 }
-
+    /**
+     * 添加楼号的库
+     * @param libraryIds 库id数组
+     * @param towerId 楼号id
+     */
+    @ApiOperation(value = "查询楼号的库", notes = "查询楼号的库")
+    @RequestMapping(value = "/SelectTowerLibrary", method = RequestMethod.POST)
+    @Transactional(rollbackFor = {RuntimeException.class, Error.class})
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", name = "towerId", value = "楼号id", required = true, type = "Integer"),
+    })
+    public ResponseEntity<JSONObject> SelectTowerLibrary(Integer towerId,
+                                                   HttpServletResponse response) throws Exception{
+        ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
+        HouseTowerLibraryExample houseTowerLibraryExample = new HouseTowerLibraryExample();
+        houseTowerLibraryExample.createCriteria()
+                .andIsDeletedEqualTo((byte) 0)
+                .andTowerNoIdEqualTo(towerId);
+        List<HouseTowerLibrary> houseTowerLibraries = houseTowerLibraryMapper.selectByExample(houseTowerLibraryExample);
+        Set<Integer> LibrarieIds = houseTowerLibraries.stream()
+                .map(HouseTowerLibrary::getLibraryId).collect(Collectors.toSet());
+        HouseLibraryExample houseLibraryExample = new HouseLibraryExample();
+        houseLibraryExample.createCriteria()
+                .andIdIn(Lists.newArrayList(LibrarieIds));
+            List<HouseLibrary> houseLibraries = houseLibraryMapper.selectByExample(houseLibraryExample);
+        return builder.body(ResponseUtils.getResponseBody(houseLibraries));
+    }
     /**
      * 楼号的库添加分类
      * @param towerLibrarys 楼号和库的实体id

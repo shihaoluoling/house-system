@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.constraints.Max;
 import java.lang.reflect.Array;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author shihao
@@ -62,10 +60,6 @@ public class TestController {
         double[] side = {0,0,0,0};
         //z 距离
         double z = 0;
-        //最长两个坐标点
-        List<double[]> max = new ArrayList<>();
-        double maxX1 = 0;
-        double maxY2 = 0;
         for (int i = 0; i<abcd.size();i++){
             if (i!=3){
                 double x1 = abcd.get(i)[0];
