@@ -634,8 +634,8 @@ public class TowerController {
             @ApiImplicitParam(paramType = "query", name = "libraryId", value = "库id", required = true, type = "Integer"),
             @ApiImplicitParam(paramType = "query", name = "categoryName", value = "类名称", required = true, type = "String"),
             @ApiImplicitParam(paramType = "query", name = "parentCategoryId", value = "上级类目id 顶级传0", required = true, type = "Integer"),
-            @ApiImplicitParam(paramType = "query", name = "text", value = "文本或者图片", required = true, type = "String"),
-            @ApiImplicitParam(paramType = "query", name = "type", value = "文本或者图片类型", required = true, type = "String"),
+            @ApiImplicitParam(paramType = "query", name = "text", value = "文本或者图片", required = false, type = "String"),
+            @ApiImplicitParam(paramType = "query", name = "type", value = "文本或者图片类型", required = false, type = "String"),
     })
     public ResponseEntity<JSONObject> addLibraryaddCategory(
                                                             Integer libraryId,
@@ -669,13 +669,18 @@ public class TowerController {
             houseLibraryCategory1.setIsDeleted((byte) 0);
             houseLibraryCategory1.setCreateDate(LocalDateTime.now());
             houseLibraryCategory1.setModifyDate(LocalDateTime.now());
-
-            //todo 类目文本
+            // todo 1没有添加了文本 1不是最后一个类目
             if (text != null){
                 // todo 0添加了文本 0最后一个类目
-                houseLibraryCategory.setIsAddText((byte) 0);
-                houseLibraryCategory.setIsLast((byte) 0);
-
+                houseLibraryCategory1.setIsAddText((byte) 0);
+                houseLibraryCategory1.setIsLast((byte) 0);
+            } else {
+                houseLibraryCategory1.setIsAddText((byte) 1);
+                houseLibraryCategory1.setIsLast((byte) 1);
+            }
+            houseLibraryCategoryMapper.insertSelective(houseLibraryCategory1);
+            //todo 类目文本
+            if (text != null){
                 HouseLibraryCategoryText houseLibraryCategoryText = new HouseLibraryCategoryText();
                 houseLibraryCategoryText.setLibraryCategoryId(houseLibraryCategory1.getId());
                 houseLibraryCategoryText.setText(text);
@@ -684,12 +689,8 @@ public class TowerController {
                 houseLibraryCategoryText.setCreateDate(LocalDateTime.now());
                 houseLibraryCategoryText.setModifyDate(LocalDateTime.now());
                 houseLibraryCategoryTextMapper.insertSelective(houseLibraryCategoryText);
-            }  else {
-                // todo 1没有添加了文本 1不是最后一个类目
-                houseLibraryCategory.setIsAddText((byte) 1);
-                houseLibraryCategory.setIsLast((byte) 0);
             }
-            houseLibraryCategoryMapper.insertSelective(houseLibraryCategory1);
+
         } else {
             //todo 如果添加的是一级分类
             HouseLibraryCategory houseLibraryCategory = new HouseLibraryCategory();

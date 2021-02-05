@@ -1,5 +1,6 @@
 package com.example.user.center.controller;
 
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.house.utils.response.handler.ResponseEntity;
 import com.house.utils.response.handler.ResponseUtils;
@@ -32,29 +33,30 @@ public class TestController {
     @ApiOperation(value = "排查", notes = "排查")
     @RequestMapping(value = "/check", method = RequestMethod.GET)
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
-    public ResponseEntity<JSONObject> check() throws Exception {
+    public ResponseEntity<JSONObject> check(String coord) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
-        double[] a = {5,10};
-        double[] b = {5,25};
-        double[] c = {30,25};
-        double[] d = {30,10};
-        List<double[]> abcd = new ArrayList<>();
-        abcd.add(a);
-        abcd.add(b);
-        abcd.add(c);
-        abcd.add(d);
-        List<double[]> efgh = new ArrayList<>();
-        double[] e = {5,30};
-        double[] f = {5,45};
-        double[] g = {20,45};
-        double[] h = {20,30};
-        efgh.add(e);
-        efgh.add(f);
-        efgh.add(g);
-        efgh.add(h);
+        JSONArray jsonArray= JSONArray.parseArray(coord);
+//        double[] a = {5,10};
+//        double[] b = {5,25};
+//        double[] c = {30,25};
+//        double[] d = {30,10};
+//        List<double[]> abcd = new ArrayList<>();
+//        abcd.add(a);
+//        abcd.add(b);
+//        abcd.add(c);
+//        abcd.add(d);
+//        List<double[]> efgh = new ArrayList<>();
+//        double[] e = {5,30};
+//        double[] f = {5,45};
+//        double[] g = {20,45};
+//        double[] h = {20,30};
+//        efgh.add(e);
+//        efgh.add(f);
+//        efgh.add(g);
+//        efgh.add(h);
 
 
-        return builder.body(ResponseUtils.getResponseBody(sides(efgh)));
+        return builder.body(ResponseUtils.getResponseBody(0));
     }
     public double[] sides(List<double[]> abcd){
         double[] side = {0,0,0,0};
