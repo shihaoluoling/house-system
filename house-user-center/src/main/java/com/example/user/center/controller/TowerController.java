@@ -137,6 +137,22 @@ public class TowerController {
         }
         return builder.body(ResponseUtils.getResponseBody(0));
     }
+
+    @ApiOperation(value = "删除楼号", notes = "删除楼号")
+    @RequestMapping(value = "/deleteTower", method = RequestMethod.POST)
+    @Transactional(rollbackFor = {RuntimeException.class, Error.class})
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "query", name = "towerId", value = "楼号id", required = true, type = "Integer"),
+    })
+    public ResponseEntity<JSONObject> deleteTower(Integer towerId) throws Exception {
+        ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
+        HouseTowerNo houseTowerNo = new HouseTowerNo();
+        houseTowerNo.setIsDeleted((byte) 1);
+        houseTowerNo.setModifyDate(LocalDateTime.now());
+        houseTowerNo.setId(towerId);
+        houseTowerNoMapper.updateByPrimaryKeySelective(houseTowerNo);
+        return builder.body(ResponseUtils.getResponseBody(0));
+    }
     @ApiOperation(value = "查询", notes = "查询")
     @RequestMapping(value = "/selectTower", method = RequestMethod.GET)
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
