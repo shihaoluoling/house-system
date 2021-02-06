@@ -145,8 +145,8 @@ public class ProjectController {
             //土地
             if (houseLands.size()!=0){
                 //受让方
-                List<String> developers = houseLands.stream().map(HouseLand::getTransfer).collect(Collectors.toList());
-                selectProject.setDevelopersName(developers);
+//                List<String> developers = houseLands.stream().map(HouseLand::getTransfer).collect(Collectors.toList());
+//                selectProject.setDevelopersName(developers);
                 Map<String, List<String>> map = new HashMap<>();
                 houseLands.forEach(houseLand -> {
                     //某一个土地下的所有楼盘
@@ -157,6 +157,9 @@ public class ProjectController {
                     List<HousePremises> housePremises = housePremisesMapper.selectByExample(housePremisesExample);
                     //楼盘筛选
                     if (housePremises.size()!=0){
+                        //开发商
+                        List<String> developers1 = housePremises.stream().map(HousePremises::getDevelopersName).collect(Collectors.toList());
+                        selectProject.setDevelopersName(developers1);
                         List<String> PremisesName =  housePremises.stream()
                                 .map(HousePremises::getPremisesName).collect(Collectors.toList());
                         map.put(houseLand.getLandName(),PremisesName);
