@@ -10,7 +10,7 @@
 
     <select id="select" resultMap="BaseResultMap">
     SELECT
-	h1.id,
+	h1.id tower_id,
 	h1.tower_no,
 	h1.premises_id,
 	h1.synchronization_no
