@@ -6,8 +6,10 @@ import com.example.user.center.manual.CategoryIsText;
 import com.example.user.center.manual.SelectLibraryCategory;
 import com.example.user.center.manual.SelectTower;
 import com.example.user.center.manual.TextTypeEnum;
+import com.example.user.center.manual.model.Tower;
 import com.example.user.center.manual.model.TowerLibrary;
 import com.example.user.center.model.*;
+import com.example.user.center.service.TowerService;
 import com.google.common.collect.Lists;
 import com.house.utils.response.handler.ResponseEntity;
 import com.house.utils.response.handler.ResponseUtils;
@@ -78,6 +80,8 @@ public class TowerController {
 
     @Autowired
     private HousePremisesMapper housePremisesMapper;
+    @Autowired
+    private TowerService towerService;
     @ApiOperation(value = "新建楼号", notes = "新建楼号")
     @RequestMapping(value = "/addTower", method = RequestMethod.POST)
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
@@ -158,21 +162,18 @@ public class TowerController {
     @RequestMapping(value = "/selectTower", method = RequestMethod.GET)
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     public ResponseEntity<JSONObject> selectTower(
-            Integer projectId,//项目id
+            Integer premisesId,//楼盘id
             Integer plateId,//板块id
             String typeName,//楼号名称
             Integer adminId//区域id
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
-        HouseTowerNoExample houseTowerNoExample = new HouseTowerNoExample();
-        houseTowerNoExample.createCriteria()
-                .andIsDeletedEqualTo((byte) 0);
-        List<HouseTowerNo> houseTowerNos =
-                houseTowerNoMapper.selectByExample(houseTowerNoExample);
+        List<Tower> houseTowerNos =
+                towerService.select(premisesId,plateId,typeName,adminId);
         List<SelectTower> selectTowers = new ArrayList<>();
         houseTowerNos.forEach(houseTowerNo -> {
             SelectTower selectTower = new SelectTower();
-            selectTower.setTowerId(houseTowerNo.getId());
+            selectTower.setTowerId(houseTowerNo.getTowerId());
             selectTower.setTowerName(houseTowerNo.getTowerNo());
             selectTower.setPremisesId(houseTowerNo.getPremisesId());
             if (houseTowerNo.getPremisesId()!=null){

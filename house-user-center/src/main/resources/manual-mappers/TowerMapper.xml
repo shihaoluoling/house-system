@@ -21,8 +21,17 @@ FROM
 	LEFT JOIN house_plate h4 ON h3.plate_id = h4.id
 	LEFT JOIN house_administrative h5 ON h4.administrative_id = h5.id
 	where h1.is_deleted = 0
-        <if test="projectId != null">
-            and #{projectId} =
+        <if test="premisesId != null">
+            and #{premisesId} = h2.id
+        </if>
+        <if test="plateId != null">
+            and #{plateId} = h4.id
+        </if>
+        <if test="adminId != null">
+            and #{adminId} = h5.id
+        </if>
+        <if test="typeName != null">
+            and h1.tower_no LIKE concat('%',#{typeName},'%')
         </if>
     </select>
 </mapper>

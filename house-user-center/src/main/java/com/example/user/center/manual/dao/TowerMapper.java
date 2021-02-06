@@ -16,10 +16,11 @@ import java.util.List;
 public interface TowerMapper {
     /**
      *楼号查询
-     * @param projectId 项目id
+     * @param premisesId 楼盘id
      * @param plateId 板块id
      * @param typeName 楼号名称
      * @param adminId 区域id
+     * @return Tower
      * */
-    List<Tower> select(@Param("projectId")Integer projectId,@Param("plateId")Integer plateId,@Param("typeName")String typeName,@Param("adminId")Integer adminId);
+    List<Tower> select(@Param("premisesId")Integer premisesId,@Param("plateId")Integer plateId,@Param("typeName")String typeName,@Param("adminId")Integer adminId);
 }
