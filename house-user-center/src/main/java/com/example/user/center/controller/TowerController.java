@@ -293,6 +293,7 @@ public class TowerController {
                     houseTowerLibraryCategory.setCreateDate(LocalDateTime.now());
                     houseTowerLibraryCategory.setModifyDate(LocalDateTime.now());
                     houseTowerLibraryCategory.setIsDeleted((byte) 0);
+                    houseTowerLibraryCategoryMapper.insertSelective(houseTowerLibraryCategory);
                 }
             }
 

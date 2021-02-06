@@ -3272,3 +3272,13 @@ Caused by: java.sql.SQLSyntaxErrorException: You have an error in your SQL synta
 2021-02-06 10:43:17.753  WARN 11240 --- [http-nio-7004-exec-1] com.zaxxer.hikari.HikariConfig           : dataSource - idleTimeout is close to or more than maxLifetime, disabling it.
 2021-02-06 10:43:17.753  INFO 11240 --- [http-nio-7004-exec-1] com.zaxxer.hikari.HikariDataSource       : dataSource - Starting...
 2021-02-06 10:43:17.996  INFO 11240 --- [http-nio-7004-exec-1] com.zaxxer.hikari.HikariDataSource       : dataSource - Start completed.
+2021-02-06 10:48:08.845  INFO 11240 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2021-02-06 10:53:08.847  INFO 11240 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2021-02-06 10:58:08.848  INFO 11240 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2021-02-06 11:03:08.850  INFO 11240 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2021-02-06 11:08:08.852  INFO 11240 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2021-02-06 11:13:08.853  INFO 11240 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2021-02-06 11:18:08.855  INFO 11240 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2021-02-06 11:23:08.856  INFO 11240 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2021-02-06 11:28:08.858  INFO 11240 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2021-02-06 11:33:08.859  INFO 11240 --- [AsyncResolver-bootstrap-executor-0] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
