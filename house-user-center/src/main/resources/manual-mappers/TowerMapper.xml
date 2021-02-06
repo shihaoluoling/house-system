@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.user.center.manual.dao.TowerMapper">
+    <resultMap id="BaseResultMap" type="com.example.user.center.manual.model.Tower">
+        <result column="tower_id" jdbcType="INTEGER" property="towerId"/>
+        <result column="tower_no" jdbcType="VARCHAR" property="towerNo"/>
+        <result column="premises_id" jdbcType="INTEGER" property="premisesId"/>
+        <result column="synchronization_no" jdbcType="INTEGER" property="synchronizationNo"/>
+    </resultMap>
+
+    <select id="select" resultMap="BaseResultMap">
+    SELECT
+	h1.id,
+	h1.tower_no,
+	h1.premises_id,
+	h1.synchronization_no
+FROM
+	house_tower_no h1
+	LEFT JOIN house_premises h2 ON h1.premises_id = h2.id
+	LEFT JOIN house_land h3 ON h2.land_id = h3.id
+	LEFT JOIN house_plate h4 ON h3.plate_id = h4.id
+	LEFT JOIN house_administrative h5 ON h4.administrative_id = h5.id
+	where h1.is_deleted = 0
+        <if test="projectId != null">
+            and #{projectId} =
+        </if>
+    </select>
+</mapper>

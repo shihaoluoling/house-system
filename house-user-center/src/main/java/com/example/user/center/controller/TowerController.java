@@ -6,6 +6,7 @@ import com.example.user.center.manual.CategoryIsText;
 import com.example.user.center.manual.SelectLibraryCategory;
 import com.example.user.center.manual.SelectTower;
 import com.example.user.center.manual.TextTypeEnum;
+import com.example.user.center.manual.model.TowerLibrary;
 import com.example.user.center.model.*;
 import com.google.common.collect.Lists;
 import com.house.utils.response.handler.ResponseEntity;
@@ -156,7 +157,12 @@ public class TowerController {
     @ApiOperation(value = "查询", notes = "查询")
     @RequestMapping(value = "/selectTower", method = RequestMethod.GET)
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
-    public ResponseEntity<JSONObject> selectTower() throws Exception {
+    public ResponseEntity<JSONObject> selectTower(
+            Integer projectId,//项目id
+            Integer plateId,//板块id
+            String typeName,//楼号名称
+            Integer adminId//区域id
+    ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
         HouseTowerNoExample houseTowerNoExample = new HouseTowerNoExample();
         houseTowerNoExample.createCriteria()
@@ -239,13 +245,20 @@ public class TowerController {
                 .andIsDeletedEqualTo((byte) 0)
                 .andTowerNoIdEqualTo(towerId);
         List<HouseTowerLibrary> houseTowerLibraries = houseTowerLibraryMapper.selectByExample(houseTowerLibraryExample);
-        Set<Integer> LibrarieIds = houseTowerLibraries.stream()
-                .map(HouseTowerLibrary::getLibraryId).collect(Collectors.toSet());
-        HouseLibraryExample houseLibraryExample = new HouseLibraryExample();
-        houseLibraryExample.createCriteria()
-                .andIdIn(Lists.newArrayList(LibrarieIds));
-            List<HouseLibrary> houseLibraries = houseLibraryMapper.selectByExample(houseLibraryExample);
-        return builder.body(ResponseUtils.getResponseBody(houseLibraries));
+        List<TowerLibrary> towerLibraries = new ArrayList<>();
+        houseTowerLibraries.forEach(houseTowerLibrary -> {
+            HouseLibrary houseLibrary = houseLibraryMapper.selectByPrimaryKey(houseTowerLibrary.getLibraryId());
+            TowerLibrary towerLibrary = new TowerLibrary();
+            towerLibrary.setId(houseLibrary.getId());
+            towerLibrary.setCreateDate(houseLibrary.getCreateDate());
+                    towerLibrary.setIsDeleted(houseLibrary.getIsDeleted());
+            towerLibrary.setLibraryName(houseLibrary.getLibraryName());
+                    towerLibrary.setModifyDate(houseLibrary.getModifyDate());
+            towerLibrary.setState(houseLibrary.getState());
+                    towerLibrary.setTowerLibrarys(houseTowerLibrary.getId());
+            towerLibraries.add(towerLibrary);
+        });
+        return builder.body(ResponseUtils.getResponseBody(towerLibraries));
     }
     /**
      * 楼号的库添加分类

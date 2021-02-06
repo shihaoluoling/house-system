@@ -275,8 +275,11 @@ public class TypeController {
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
         HouseTypeExample houseTypeExample = new HouseTypeExample();
-        houseTypeExample.createCriteria()
+        HouseTypeExample.Criteria criteria = houseTypeExample.createCriteria()
                 .andIsDeletedEqualTo((byte) 0);
+        if (typeName!=null){
+            criteria.andHouseNameLike("%"+typeName+"%");
+        }
         List<HouseType> houseTypes =
                 houseTypeMapper.selectByExample(houseTypeExample);
         List<SelectType> selectTypes = new ArrayList<>();
