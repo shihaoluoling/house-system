@@ -288,7 +288,7 @@ public class TowerController {
                     houseTowerLibraryCategoryMapper.deleteByExample(houseTowerLibraryCategoryExample);
                 } else {
                     HouseTowerLibraryCategory houseTowerLibraryCategory = new HouseTowerLibraryCategory();
-                    houseTowerLibraryCategory.setLibraryCategoryId(towerLibrarys);
+                    houseTowerLibraryCategory.setTowerLibraryId(towerLibrarys);
                     houseTowerLibraryCategory.setLibraryCategoryId(categoryId);
                     houseTowerLibraryCategory.setCreateDate(LocalDateTime.now());
                     houseTowerLibraryCategory.setModifyDate(LocalDateTime.now());
