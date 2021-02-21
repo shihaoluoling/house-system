@@ -157,7 +157,7 @@ public class ProjectController {
                     List<HousePremises> housePremises = housePremisesMapper.selectByExample(housePremisesExample);
                     //楼盘筛选
                     if (housePremises.size()!=0){
-                        //开发商
+                        //开发商名称
                         List<String> developers1 = housePremises.stream().map(HousePremises::getDevelopersName).collect(Collectors.toList());
                         selectProject.setDevelopersName(developers1);
                         List<String> PremisesName =  housePremises.stream()

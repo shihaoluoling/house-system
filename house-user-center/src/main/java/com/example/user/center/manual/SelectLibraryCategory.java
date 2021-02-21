@@ -1,5 +1,7 @@
 package com.example.user.center.manual;
 
+import com.example.user.center.model.HouseLibraryCategoryText;
+
 import java.util.List;
 
 /**
@@ -40,13 +42,7 @@ public class SelectLibraryCategory {
      * 文本或文件地址
      * @return
      */
-    private String text;
-
-    /**
-     * 类型
-     * @return
-     */
-    private TextTypeEnum type;
+    private List<HouseLibraryCategoryText> houseLibraryCategoryTexts;
 
     /**
      * 楼号查询时是否选中 0选1否
@@ -101,20 +97,12 @@ public class SelectLibraryCategory {
         this.selectLibraryCategories = selectLibraryCategories;
     }
 
-    public String getText() {
-        return text;
+    public List<HouseLibraryCategoryText> getHouseLibraryCategoryTexts() {
+        return houseLibraryCategoryTexts;
     }
 
-    public void setText(String text) {
-        this.text = text;
-    }
-
-    public TextTypeEnum getType() {
-        return type;
-    }
-
-    public void setType(TextTypeEnum type) {
-        this.type = type;
+    public void setHouseLibraryCategoryTexts(List<HouseLibraryCategoryText> houseLibraryCategoryTexts) {
+        this.houseLibraryCategoryTexts = houseLibraryCategoryTexts;
     }
 
     public Integer getPitch() {

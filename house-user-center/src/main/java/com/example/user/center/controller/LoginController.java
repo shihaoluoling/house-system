@@ -2,6 +2,7 @@ package com.example.user.center.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.example.user.center.dao.HouseAuthMapper;
+import com.example.user.center.dao.HouseSystemMapper;
 import com.example.user.center.dao.HouseUserMapper;
 import com.example.user.center.manual.Login;
 import com.example.user.center.manual.SelectUser;
@@ -56,6 +57,8 @@ public class LoginController {
     //用户
     @Autowired
     private HouseUserMapper houseUserMapper;
+    @Autowired
+    HouseSystemMapper houseSystemMapper;
     @ApiOperation(value = "账号密码登录", notes = "账号密码登录")
     @RequestMapping(value = "/adminLogin", method = RequestMethod.GET)
     @ApiImplicitParams({
@@ -313,12 +316,21 @@ public class LoginController {
         houseSystem.setSystemName(name);
         houseSystem.setLogo(login);
         houseSystem.setBottomCopyright(BottomCopyright);
-        houseSystem.setCreateDate(LocalDateTime.now());
         houseSystem.setModifyDate(LocalDateTime.now());
         houseSystem.setIsDeleted((byte) 0);
+        houseSystemMapper.updateByPrimaryKeySelective(houseSystem);
         return builder.body(ResponseUtils.getResponseBody(0));
     }
-
+    @RequestMapping(value = "/systemSelect", method = RequestMethod.POST)
+    @ApiOperation(value = "系统设置查詢", notes = "系统设置查詢")
+    public ResponseEntity<JSONObject> systemSelect(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder();
+        HouseSystemExample houseSystemExample = new HouseSystemExample();
+        houseSystemExample.createCriteria()
+                .andIsDeletedEqualTo((byte) 0);
+        List<HouseSystem> houseSystems = houseSystemMapper.selectByExample(houseSystemExample);
+        return builder.body(ResponseUtils.getResponseBody(houseSystems));
+    }
     @RequestMapping(value = "/loginSelect", method = RequestMethod.GET)
     @ApiOperation(value = "登录查询", notes = "登录查询")
     public ResponseEntity<JSONObject> loginSelect(

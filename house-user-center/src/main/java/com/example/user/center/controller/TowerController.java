@@ -229,7 +229,7 @@ public class TowerController {
 }
     /**
      * 添加楼号的库
-     * @param libraryIds 库id数组
+     * @param
      * @param towerId 楼号id
      */
     @ApiOperation(value = "查询楼号的库", notes = "查询楼号的库")
@@ -264,7 +264,7 @@ public class TowerController {
     /**
      * 楼号的库添加分类
      * @param towerLibrarys 楼号和库的实体id
-     * @param type 取消或者添加分类
+     * @param
      */
     @ApiOperation(value = "添加取消楼号的库", notes = "添加取消楼号的库")
     @RequestMapping(value = "/towerLibraryCategory", method = RequestMethod.POST)
@@ -458,10 +458,7 @@ public class TowerController {
                         .andIsDeletedEqualTo((byte) 0);
                 List<HouseLibraryCategoryText> houseLibraryCategoryTexts =
                         houseLibraryCategoryTextMapper.selectByExampleWithBLOBs(houseLibraryCategoryTextExample);
-                if (houseLibraryCategoryTexts.size() != 0){
-                    selectLibraryCategory.setText(houseLibraryCategoryTexts.get(0).getText());
-                    selectLibraryCategory.setType(TextTypeEnum.getTextTypeEnum(houseLibraryCategoryTexts.get(0).getType()));
-                }
+                selectLibraryCategory.setHouseLibraryCategoryTexts(houseLibraryCategoryTexts);
             }
 
             //TODO 二级分类
@@ -512,10 +509,7 @@ public class TowerController {
                             .andIsDeletedEqualTo((byte) 0);
                     List<HouseLibraryCategoryText> houseLibraryCategoryTexts =
                             houseLibraryCategoryTextMapper.selectByExampleWithBLOBs(houseLibraryCategoryTextExample);
-                    if (houseLibraryCategoryTexts.size() != 0){
-                        selectLibraryCategory1.setText(houseLibraryCategoryTexts.get(0).getText());
-                        selectLibraryCategory1.setType(TextTypeEnum.getTextTypeEnum(houseLibraryCategoryTexts.get(0).getType()));
-                    }
+                    selectLibraryCategory.setHouseLibraryCategoryTexts(houseLibraryCategoryTexts);
                 }
                 //TODO 三级分类
                 HouseLibraryCategoryExample houseLibraryCategoryExample2 = new HouseLibraryCategoryExample();
@@ -566,10 +560,7 @@ public class TowerController {
                                 .andIsDeletedEqualTo((byte) 0);
                         List<HouseLibraryCategoryText> houseLibraryCategoryTexts =
                                 houseLibraryCategoryTextMapper.selectByExampleWithBLOBs(houseLibraryCategoryTextExample);
-                        if (houseLibraryCategoryTexts.size() != 0){
-                            selectLibraryCategory2.setText(houseLibraryCategoryTexts.get(0).getText());
-                            selectLibraryCategory2.setType(TextTypeEnum.getTextTypeEnum(houseLibraryCategoryTexts.get(0).getType()));
-                        }
+                        selectLibraryCategory.setHouseLibraryCategoryTexts(houseLibraryCategoryTexts);
                     }
                     //TODO 四级分类
                     HouseLibraryCategoryExample houseLibraryCategoryExample3 = new HouseLibraryCategoryExample();
@@ -620,10 +611,7 @@ public class TowerController {
                                     .andIsDeletedEqualTo((byte) 0);
                             List<HouseLibraryCategoryText> houseLibraryCategoryTexts =
                                     houseLibraryCategoryTextMapper.selectByExampleWithBLOBs(houseLibraryCategoryTextExample);
-                            if (houseLibraryCategoryTexts.size() != 0){
-                                selectLibraryCategory3.setText(houseLibraryCategoryTexts.get(0).getText());
-                                selectLibraryCategory3.setType(TextTypeEnum.getTextTypeEnum(houseLibraryCategoryTexts.get(0).getType()));
-                            }
+                            selectLibraryCategory.setHouseLibraryCategoryTexts(houseLibraryCategoryTexts);
                         }
                         selectLibraryCategories3.add(selectLibraryCategory3);
                     });
@@ -656,7 +644,8 @@ public class TowerController {
                                                             Integer libraryId,
                                                             String categoryName,
                                                             Integer parentCategoryId,
-                                                            String text,
+                                                            String[] text,
+                                                            String[] Ttext,
                                                             String type,
                                                             HttpServletResponse response
                                                             ) throws Exception {
@@ -665,10 +654,10 @@ public class TowerController {
             //todo 添加的不是一级分类
             HouseLibraryCategory houseLibraryCategory = houseLibraryCategoryMapper.selectByPrimaryKey(parentCategoryId);
             //todo 添加的分类下有文本或者图片
-            if (text!=null){
+            if (text.length!=0||Ttext.length != 0){
                 //todo 添加的上级分类有文本或者图片，不能添加下级分类
                 if (houseLibraryCategory.getIsAddText() == 0){
-                    response.sendError(1000,"此分类下有文本");
+                    response.sendError(1000,"此分类下有富文本");
                     return builder.body(ResponseUtils.getResponseBody(1));
                 }
             }
@@ -685,7 +674,7 @@ public class TowerController {
             houseLibraryCategory1.setCreateDate(LocalDateTime.now());
             houseLibraryCategory1.setModifyDate(LocalDateTime.now());
             // todo 1没有添加了文本 1不是最后一个类目
-            if (text != null){
+            if (text.length != 0||Ttext.length != 0){
                 // todo 0添加了文本 0最后一个类目
                 houseLibraryCategory1.setIsAddText((byte) 0);
                 houseLibraryCategory1.setIsLast((byte) 0);
@@ -695,15 +684,30 @@ public class TowerController {
             }
             houseLibraryCategoryMapper.insertSelective(houseLibraryCategory1);
             //todo 类目文本
-            if (text != null){
-                HouseLibraryCategoryText houseLibraryCategoryText = new HouseLibraryCategoryText();
-                houseLibraryCategoryText.setLibraryCategoryId(houseLibraryCategory1.getId());
-                houseLibraryCategoryText.setText(text);
-                houseLibraryCategoryText.setType(type);
-                houseLibraryCategoryText.setIsDeleted((byte) 0);
-                houseLibraryCategoryText.setCreateDate(LocalDateTime.now());
-                houseLibraryCategoryText.setModifyDate(LocalDateTime.now());
-                houseLibraryCategoryTextMapper.insertSelective(houseLibraryCategoryText);
+            if (text.length != 0){
+                for (String a : text){
+                    HouseLibraryCategoryText houseLibraryCategoryText = new HouseLibraryCategoryText();
+                    houseLibraryCategoryText.setLibraryCategoryId(houseLibraryCategory1.getId());
+                    houseLibraryCategoryText.setText(a);
+                    houseLibraryCategoryText.setType(TextTypeEnum.TEXT.getTextTypeType());
+                    houseLibraryCategoryText.setIsDeleted((byte) 0);
+                    houseLibraryCategoryText.setCreateDate(LocalDateTime.now());
+                    houseLibraryCategoryText.setModifyDate(LocalDateTime.now());
+                    houseLibraryCategoryTextMapper.insertSelective(houseLibraryCategoryText);
+                }
+            }
+            //todo 文件
+            if (Ttext.length != 0){
+                for (String a : Ttext){
+                    HouseLibraryCategoryText houseLibraryCategoryText = new HouseLibraryCategoryText();
+                    houseLibraryCategoryText.setLibraryCategoryId(houseLibraryCategory1.getId());
+                    houseLibraryCategoryText.setText(a);
+                    houseLibraryCategoryText.setType(TextTypeEnum.PDF.getTextTypeType());
+                    houseLibraryCategoryText.setIsDeleted((byte) 0);
+                    houseLibraryCategoryText.setCreateDate(LocalDateTime.now());
+                    houseLibraryCategoryText.setModifyDate(LocalDateTime.now());
+                    houseLibraryCategoryTextMapper.insertSelective(houseLibraryCategoryText);
+                }
             }
 
         } else {
@@ -716,7 +720,7 @@ public class TowerController {
             houseLibraryCategory.setIsDeleted((byte) 0);
             houseLibraryCategory.setCreateDate(LocalDateTime.now());
             houseLibraryCategory.setModifyDate(LocalDateTime.now());
-            if (text != null){
+            if (text.length != 0||Ttext.length != 0){
                 // todo 0添加了文本 0最后一个类目
                 houseLibraryCategory.setIsAddText((byte) 0);
                 houseLibraryCategory.setIsLast((byte) 0);
@@ -728,15 +732,30 @@ public class TowerController {
             // todo 添加类目
             houseLibraryCategoryMapper.insertSelective(houseLibraryCategory);
             //todo 类目文本
-            if (text != null){
-                HouseLibraryCategoryText houseLibraryCategoryText = new HouseLibraryCategoryText();
-                houseLibraryCategoryText.setLibraryCategoryId(houseLibraryCategory.getId());
-                houseLibraryCategoryText.setText(text);
-                houseLibraryCategoryText.setType(type);
-                houseLibraryCategoryText.setIsDeleted((byte) 0);
-                houseLibraryCategoryText.setCreateDate(LocalDateTime.now());
-                houseLibraryCategoryText.setModifyDate(LocalDateTime.now());
-                houseLibraryCategoryTextMapper.insertSelective(houseLibraryCategoryText);
+            if (text.length != 0||Ttext.length != 0){
+                for (String a : text){
+                    HouseLibraryCategoryText houseLibraryCategoryText = new HouseLibraryCategoryText();
+                    houseLibraryCategoryText.setLibraryCategoryId(houseLibraryCategory.getId());
+                    houseLibraryCategoryText.setText(a);
+                    houseLibraryCategoryText.setType(TextTypeEnum.TEXT.getTextTypeType());
+                    houseLibraryCategoryText.setIsDeleted((byte) 0);
+                    houseLibraryCategoryText.setCreateDate(LocalDateTime.now());
+                    houseLibraryCategoryText.setModifyDate(LocalDateTime.now());
+                    houseLibraryCategoryTextMapper.insertSelective(houseLibraryCategoryText);
+                }
+            }
+            //todo 文件
+            if (Ttext.length != 0){
+                for (String a : Ttext){
+                    HouseLibraryCategoryText houseLibraryCategoryText = new HouseLibraryCategoryText();
+                    houseLibraryCategoryText.setLibraryCategoryId(houseLibraryCategory.getId());
+                    houseLibraryCategoryText.setText(a);
+                    houseLibraryCategoryText.setType(TextTypeEnum.PDF.getTextTypeType());
+                    houseLibraryCategoryText.setIsDeleted((byte) 0);
+                    houseLibraryCategoryText.setCreateDate(LocalDateTime.now());
+                    houseLibraryCategoryText.setModifyDate(LocalDateTime.now());
+                    houseLibraryCategoryTextMapper.insertSelective(houseLibraryCategoryText);
+                }
             }
         }
         return builder.body(ResponseUtils.getResponseBody(0));
@@ -756,7 +775,8 @@ public class TowerController {
             Integer categoryId,
             Integer parentCategoryId,
             String categoryName,
-            String text,
+            String[] text,
+            String[] Ttext,
             String type,
             HttpServletResponse response
     ) throws Exception {
@@ -769,10 +789,13 @@ public class TowerController {
                     .andParentCategoryIdEqualTo(categoryId);
             List<HouseLibraryCategory> houseLibraryCategories =
                     houseLibraryCategoryMapper.selectByExample(houseLibraryCategoryExample);
-            if (houseLibraryCategories.size()!=0){
-                response.sendError(1000,"此分类下还有分类,不能添加文本");
-                return builder.body(ResponseUtils.getResponseBody(1));
+            if(text.length!=0||Ttext.length!=0){
+                if (houseLibraryCategories.size()!=0){
+                    response.sendError(1000,"此分类下还有分类,不能添加文本");
+                    return builder.body(ResponseUtils.getResponseBody(1));
+                }
             }
+
             //todo 上级分类是否有文本,有不能加下级分类
             HouseLibraryCategory houseLibraryCategory = new HouseLibraryCategory();
             if (parentCategoryId != 0){
@@ -797,24 +820,33 @@ public class TowerController {
             houseLibraryCategory.setCategoryName(categoryName);
             houseLibraryCategory.setModifyDate(LocalDateTime.now());
 
-            // todo 检查是否已近存在文本,有修改没有添加
-        if (text != null){
+            // todo 添加文本
+        if (text.length!=0){
             //todo 设置此分类是否最后一个分类
             houseLibraryCategory.setIsAddText((byte) 0);
             houseLibraryCategory.setIsLast((byte) 0);
-            //
-            HouseLibraryCategoryTextExample houseLibraryCategoryTextExample = new HouseLibraryCategoryTextExample();
-            houseLibraryCategoryTextExample.createCriteria()
-                    .andLibraryCategoryIdEqualTo(categoryId)
-                    .andIsDeletedEqualTo((byte) 0);
-            HouseLibraryCategoryText houseLibraryCategoryText = new HouseLibraryCategoryText();
-            houseLibraryCategoryText.setModifyDate(LocalDateTime.now());
-            houseLibraryCategoryText.setType(type);
-            houseLibraryCategoryText.setText(text);
-            houseLibraryCategoryText.setLibraryCategoryId(categoryId);
-            //
-            int a = houseLibraryCategoryTextMapper.updateByExampleSelective(houseLibraryCategoryText,houseLibraryCategoryTextExample);
-            if (a<1){
+            for (String a : text){
+                HouseLibraryCategoryText houseLibraryCategoryText = new HouseLibraryCategoryText();
+                houseLibraryCategoryText.setModifyDate(LocalDateTime.now());
+                houseLibraryCategoryText.setType(TextTypeEnum.TEXT.getTextTypeType());
+                houseLibraryCategoryText.setText(a);
+                houseLibraryCategoryText.setLibraryCategoryId(categoryId);
+                houseLibraryCategoryText.setCreateDate(LocalDateTime.now());
+                houseLibraryCategoryText.setIsDeleted((byte) 0);
+                houseLibraryCategoryTextMapper.insertSelective(houseLibraryCategoryText);
+            }
+        }
+        //todo 添加文件
+        if (Ttext.length!=0){
+            //todo 设置此分类是否最后一个分类
+            houseLibraryCategory.setIsAddText((byte) 0);
+            houseLibraryCategory.setIsLast((byte) 0);
+            for (String a : Ttext){
+                HouseLibraryCategoryText houseLibraryCategoryText = new HouseLibraryCategoryText();
+                houseLibraryCategoryText.setModifyDate(LocalDateTime.now());
+                houseLibraryCategoryText.setType(TextTypeEnum.PDF.getTextTypeType());
+                houseLibraryCategoryText.setText(a);
+                houseLibraryCategoryText.setLibraryCategoryId(categoryId);
                 houseLibraryCategoryText.setCreateDate(LocalDateTime.now());
                 houseLibraryCategoryText.setIsDeleted((byte) 0);
                 houseLibraryCategoryTextMapper.insertSelective(houseLibraryCategoryText);
@@ -868,28 +900,33 @@ public class TowerController {
     @RequestMapping(value = "/deleteLibraryCategoryText", method = RequestMethod.POST)
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "query", name = "categoryId", value = "分类id", required = true, type = "Integer"),
+            @ApiImplicitParam(paramType = "query", name = "categoryTextId", value = "分类文本id", required = true, type = "Integer"),
     })
     public ResponseEntity<JSONObject> deleteLibraryCategoryText(
-            Integer categoryId,
+            Integer categoryTextId,
             HttpServletResponse response
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
         //todo 删除文本
-        HouseLibraryCategoryTextExample houseLibraryCategoryTextExample = new HouseLibraryCategoryTextExample();
-        houseLibraryCategoryTextExample.createCriteria()
-                .andIsDeletedEqualTo((byte) 0)
-                .andLibraryCategoryIdEqualTo(categoryId);
-        HouseLibraryCategoryText houseLibraryCategoryText = new HouseLibraryCategoryText();
+        HouseLibraryCategoryText houseLibraryCategoryText = houseLibraryCategoryTextMapper.selectByPrimaryKey(categoryTextId);
+        houseLibraryCategoryText.setId(categoryTextId);
         houseLibraryCategoryText.setIsDeleted((byte) 1);
         houseLibraryCategoryText.setModifyDate(LocalDateTime.now());
-        houseLibraryCategoryTextMapper.updateByExampleSelective(houseLibraryCategoryText,houseLibraryCategoryTextExample);
+        houseLibraryCategoryTextMapper.updateByPrimaryKeySelective(houseLibraryCategoryText);
+        HouseLibraryCategoryTextExample houseLibraryCategoryTextExample = new HouseLibraryCategoryTextExample();
+        houseLibraryCategoryTextExample.createCriteria()
+                .andLibraryCategoryIdEqualTo(houseLibraryCategoryText.getLibraryCategoryId())
+                .andIsDeletedEqualTo((byte) 0);
+        List<HouseLibraryCategoryText> houseLibraryCategoryTexts =
+                houseLibraryCategoryTextMapper.selectByExampleWithBLOBs(houseLibraryCategoryTextExample);
         //todo 修改分类
-        HouseLibraryCategory houseLibraryCategory = new HouseLibraryCategory();
-        houseLibraryCategory.setId(categoryId);
-        houseLibraryCategory.setIsAddText((byte) CategoryIsText.NO.getStatus());
-        houseLibraryCategory.setModifyDate(LocalDateTime.now());
-        houseLibraryCategoryMapper.updateByPrimaryKeySelective(houseLibraryCategory);
+        if (houseLibraryCategoryTexts.size() == 0){
+            HouseLibraryCategory houseLibraryCategory = new HouseLibraryCategory();
+            houseLibraryCategory.setId(houseLibraryCategoryText.getLibraryCategoryId());
+            houseLibraryCategory.setIsAddText((byte) CategoryIsText.NO.getStatus());
+            houseLibraryCategory.setModifyDate(LocalDateTime.now());
+            houseLibraryCategoryMapper.updateByPrimaryKeySelective(houseLibraryCategory);
+        }
         return builder.body(ResponseUtils.getResponseBody(0));
     }
 }
