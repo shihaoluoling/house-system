@@ -20,6 +20,7 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.commons.collections.list.SynchronizedList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -742,7 +743,7 @@ public class TowerController {
             // todo 添加类目
             houseLibraryCategoryMapper.insertSelective(houseLibraryCategory);
             //todo 类目文本
-            if (text.length != 0||Ttext.length != 0){
+            if (text.length != 0){
                 for (String a : text){
                     HouseLibraryCategoryText houseLibraryCategoryText = new HouseLibraryCategoryText();
                     houseLibraryCategoryText.setLibraryCategoryId(houseLibraryCategory.getId());
@@ -791,7 +792,12 @@ public class TowerController {
             HttpServletResponse response
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
-
+        if (text==null){
+            text = new String[]{};
+        }
+        if (Ttext==null){
+            Ttext = new String[]{};
+        }
             // todo 是否有下级类目，有不能添加文本和图
             HouseLibraryCategoryExample houseLibraryCategoryExample = new HouseLibraryCategoryExample();
             houseLibraryCategoryExample.createCriteria()
@@ -860,6 +866,16 @@ public class TowerController {
                 houseLibraryCategoryText.setCreateDate(LocalDateTime.now());
                 houseLibraryCategoryText.setIsDeleted((byte) 0);
                 houseLibraryCategoryTextMapper.insertSelective(houseLibraryCategoryText);
+            }
+        }
+        if (text.length==0&&Ttext.length==0){
+            HouseLibraryCategoryTextExample houseLibraryCategoryTextExample = new HouseLibraryCategoryTextExample();
+            houseLibraryCategoryTextExample.createCriteria()
+                    .andIsDeletedEqualTo((byte) 0)
+                    .andLibraryCategoryIdEqualTo(houseLibraryCategory.getId());
+            long a = houseLibraryCategoryTextMapper.countByExample(houseLibraryCategoryTextExample);
+            if (a==0){
+                houseLibraryCategory.setIsAddText((byte) 1);
             }
         }
         houseLibraryCategoryMapper.updateByPrimaryKeySelective(houseLibraryCategory);
@@ -938,5 +954,13 @@ public class TowerController {
             houseLibraryCategoryMapper.updateByPrimaryKeySelective(houseLibraryCategory);
         }
         return builder.body(ResponseUtils.getResponseBody(0));
+    }
+    //3.添加定时任务
+    @Scheduled(cron = "0/5 * * * * ?")
+    //或直接指定时间间隔，例如：5秒
+    //@Scheduled(fixedRate=5000)
+    private void configureTasks() {
+        System.err.println("执行静态定时任务时间: " + LocalDateTime.now());
+
     }
 }
