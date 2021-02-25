@@ -17,6 +17,8 @@ public class SelectProject {
     private Integer projectId;//项目id
     private String projectName;//项目名称
     private List<String> developersName;//开发商
+    private String exploitName;//开发名称
+    private Integer exploitid;//开发id
     private Map<String, List<String>> LandType;//土地和下面的楼盘
 
 
@@ -50,5 +52,21 @@ public class SelectProject {
 
     public void setLandType(Map<String, List<String>> landType) {
         LandType = landType;
+    }
+
+    public String getExploitName() {
+        return exploitName;
+    }
+
+    public void setExploitName(String exploitName) {
+        this.exploitName = exploitName;
+    }
+
+    public Integer getExploitid() {
+        return exploitid;
+    }
+
+    public void setExploitid(Integer exploitid) {
+        this.exploitid = exploitid;
     }
 }

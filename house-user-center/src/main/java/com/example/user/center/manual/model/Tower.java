@@ -25,6 +25,10 @@ public class Tower {
      * 同步数据的楼号id
      */
     private Integer synchronizationNo;
+    /**
+     *  序列号
+     */
+    private String sequence;
 
     public Integer getTowerId() {
         return towerId;
@@ -56,5 +60,13 @@ public class Tower {
 
     public void setSynchronizationNo(Integer synchronizationNo) {
         this.synchronizationNo = synchronizationNo;
+    }
+
+    public String getSequence() {
+        return sequence;
+    }
+
+    public void setSequence(String sequence) {
+        this.sequence = sequence;
     }
 }

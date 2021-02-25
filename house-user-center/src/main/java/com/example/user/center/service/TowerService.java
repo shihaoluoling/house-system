@@ -13,5 +13,5 @@ public interface TowerService {
      * @param typeName 楼号名称
      * @param adminId 区域id
      * */
-    List<Tower> select(@Param("premisesId")Integer premisesId, @Param("plateId")Integer plateId, @Param("typeName")String typeName, @Param("adminId")Integer adminId);
+    List<Tower> select(@Param("premisesId")Integer premisesId, @Param("plateId")Integer plateId, @Param("typeName")String typeName, @Param("adminId")Integer adminId,@Param("sequence")String sequence);
 }

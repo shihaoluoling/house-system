@@ -22,5 +22,5 @@ public interface TowerMapper {
      * @param adminId 区域id
      * @return Tower
      * */
-    List<Tower> select(@Param("premisesId")Integer premisesId,@Param("plateId")Integer plateId,@Param("typeName")String typeName,@Param("adminId")Integer adminId);
+    List<Tower> select(@Param("premisesId")Integer premisesId,@Param("plateId")Integer plateId,@Param("typeName")String typeName,@Param("adminId")Integer adminId,@Param("sequence")String sequence);
 }

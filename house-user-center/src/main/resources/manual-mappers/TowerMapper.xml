@@ -4,6 +4,7 @@
     <resultMap id="BaseResultMap" type="com.example.user.center.manual.model.Tower">
         <result column="tower_id" jdbcType="INTEGER" property="towerId"/>
         <result column="tower_no" jdbcType="VARCHAR" property="towerNo"/>
+        <result column="sequence" jdbcType="VARCHAR" property="sequence"/>
         <result column="premises_id" jdbcType="INTEGER" property="premisesId"/>
         <result column="synchronization_no" jdbcType="INTEGER" property="synchronizationNo"/>
     </resultMap>
@@ -11,6 +12,7 @@
     <select id="select" resultMap="BaseResultMap">
     SELECT
 	h1.id tower_id,
+    h1.sequence,
 	h1.tower_no,
 	h1.premises_id,
 	h1.synchronization_no
@@ -32,6 +34,9 @@ FROM
         </if>
         <if test="typeName != null">
             and h1.tower_no LIKE concat('%',#{typeName},'%')
+        </if>
+        <if test="sequence != null">
+            and h1.sequence = #{sequence}
         </if>
     </select>
 </mapper>

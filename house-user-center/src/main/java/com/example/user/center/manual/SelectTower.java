@@ -33,6 +33,10 @@ public class SelectTower {
      * 同步楼号名称
      */
     private String synchronizationName;
+    /**
+     * 序列号
+     */
+    private String sequence;
 
     public Integer getTowerId() {
         return towerId;
@@ -80,5 +84,13 @@ public class SelectTower {
 
     public void setSynchronizationName(String synchronizationName) {
         this.synchronizationName = synchronizationName;
+    }
+
+    public String getSequence() {
+        return sequence;
+    }
+
+    public void setSequence(String sequence) {
+        this.sequence = sequence;
     }
 }

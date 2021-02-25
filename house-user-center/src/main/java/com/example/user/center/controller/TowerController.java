@@ -89,10 +89,12 @@ public class TowerController {
             @ApiImplicitParam(paramType = "query", name = "premisesId", value = "所属楼盘id", required = true, type = "Integer"),
             @ApiImplicitParam(paramType = "query", name = "towerNo", value = "楼号名称", required = true, type = "String"),
             @ApiImplicitParam(paramType = "query", name = "synchronizationNo", value = "同步数据的楼号", required = true, type = "Integer"),
+            @ApiImplicitParam(paramType = "query", name = "sequence", value = "序列号", required = true, type = "String"),
     })
-    public ResponseEntity<JSONObject> addTower(Integer premisesId,String towerNo,Integer synchronizationNo) throws Exception {
+    public ResponseEntity<JSONObject> addTower(String sequence,Integer premisesId,String towerNo,Integer synchronizationNo) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
         HouseTowerNo houseTower = new HouseTowerNo();
+        houseTower.setSequence(sequence);
         houseTower.setPremisesId(premisesId);
         houseTower.setTowerNo(towerNo);
         houseTower.setCreateDate(LocalDateTime.now());
@@ -165,17 +167,19 @@ public class TowerController {
             Integer premisesId,//楼盘id
             Integer plateId,//板块id
             String typeName,//楼号名称
+            String sequence,//序列号
             Integer adminId//区域id
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
         List<Tower> houseTowerNos =
-                towerService.select(premisesId,plateId,typeName,adminId);
+                towerService.select(premisesId,plateId,typeName,adminId,sequence);
         List<SelectTower> selectTowers = new ArrayList<>();
         houseTowerNos.forEach(houseTowerNo -> {
             SelectTower selectTower = new SelectTower();
             selectTower.setTowerId(houseTowerNo.getTowerId());
             selectTower.setTowerName(houseTowerNo.getTowerNo());
             selectTower.setPremisesId(houseTowerNo.getPremisesId());
+            selectTower.setSequence(houseTowerNo.getSequence());
             if (houseTowerNo.getPremisesId()!=null){
                 HousePremises housePremises = housePremisesMapper.selectByPrimaryKey(houseTowerNo.getPremisesId());
                 if (housePremises!=null){

@@ -1,6 +1,7 @@
 package com.example.user.center.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.example.user.center.dao.HouseExploitMapper;
 import com.example.user.center.dao.HouseLandMapper;
 import com.example.user.center.dao.HousePremisesMapper;
 import com.example.user.center.dao.HouseProjectMapper;
@@ -47,20 +48,25 @@ public class ProjectController {
     private HouseLandMapper houseLandMapper;
 @Autowired
     private HousePremisesMapper housePremisesMapper;
+    @Autowired
+    private HouseExploitMapper houseExploitMapper;
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     @ApiOperation(value = "添加项目", notes = "添加项目")
     @RequestMapping(value = "/addProject", method = RequestMethod.POST)
     @ApiImplicitParams({
             @ApiImplicitParam(paramType = "query", name = "projectName", value = "项目名称", required = true, type = "String"),
             @ApiImplicitParam(paramType = "query", name = "developersName", value = "开发商名称", required = true, type = "String"),
+            @ApiImplicitParam(paramType = "query", name = "exploitId", value = "开发商id", required = true, type = "Integer"),
     })
     public ResponseEntity<JSONObject> addProject(
             @RequestParam(name = "projectName") String projectName,
             @RequestParam(name = "developersName") String developersName,
+            @RequestParam(name = "exploitId") Integer exploitId,
             HttpServletResponse response
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
         HouseProject houseProject  = new HouseProject();
+        houseProject.setExploitId(exploitId);
         houseProject.setProjectName(projectName);
         houseProject.setDevelopersName(developersName);
         houseProject.setCreateDate(LocalDateTime.now());
@@ -82,10 +88,12 @@ public class ProjectController {
             @RequestParam(name = "projectName") String projectName,
             @RequestParam(name = "developersName") String developersName,
             @RequestParam(name = "projectId") Integer projectId,
+            @RequestParam(name = "exploitId") Integer exploitId,
             HttpServletResponse response
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
         HouseProject houseProject  = new HouseProject();
+        houseProject.setExploitId(exploitId);
         houseProject.setId(projectId);
         houseProject.setProjectName(projectName);
         houseProject.setDevelopersName(developersName);
@@ -133,7 +141,11 @@ public class ProjectController {
         List<SelectProject> selectProjects = new ArrayList<>();
         houseProjects.forEach(houseProject -> {
             SelectProject selectProject = new SelectProject();
-
+            selectProject.setExploitid(houseProject.getExploitId());
+            if (houseProject.getExploitId()!=null){
+                HouseExploit houseExploit = houseExploitMapper.selectByPrimaryKey(houseProject.getExploitId());
+                selectProject.setExploitName(houseExploit.getExploitName());
+            }
             selectProject.setProjectName(houseProject.getProjectName());
             selectProject.setProjectId(houseProject.getId());
             //土地

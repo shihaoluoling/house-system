@@ -21,7 +21,7 @@ public class TowerServiceImpl implements TowerService {
     @Autowired
     private TowerMapper towerMapper;
     @Override
-    public List<Tower> select(Integer premisesId, Integer plateId, String typeName, Integer adminId) {
-        return towerMapper.select(premisesId,plateId,typeName,adminId);
+    public List<Tower> select(Integer premisesId, Integer plateId, String typeName, Integer adminId,String sequence) {
+        return towerMapper.select(premisesId,plateId,typeName,adminId,sequence);
     }
 }

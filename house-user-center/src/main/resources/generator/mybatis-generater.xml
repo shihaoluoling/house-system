@@ -108,12 +108,12 @@
                           <!--identity="true"/>-->
         <!--</table>-->
 <!--&lt;!&ndash;项目管理&ndash;&gt;-->
-        <!--<table schema="user_center" tableName="house_project"-->
-               <!--domainObjectName="HouseProject">-->
-            <!--<property name="useActualColumnNames" value="false"/>-->
-            <!--<generatedKey column="id" sqlStatement="mysql"-->
-                          <!--identity="true"/>-->
-        <!--</table>-->
+        <table schema="user_center" tableName="house_project"
+               domainObjectName="HouseProject">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
 <!--&lt;!&ndash;系统设置&ndash;&gt;-->
         <!--<table schema="user_center" tableName="house_system"-->
                <!--domainObjectName="HouseSystem">-->
@@ -164,12 +164,12 @@
                           <!--identity="true"/>-->
         <!--</table>-->
         <!--楼号表-->
-        <table schema="user_center" tableName="house_tower_no"
-               domainObjectName="HouseTowerNo">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
+        <!--<table schema="user_center" tableName="house_tower_no"-->
+               <!--domainObjectName="HouseTowerNo">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
         <!--&lt;!&ndash;库表&ndash;&gt;-->
         <!--<table schema="user_center" tableName="house_library"-->
                <!--domainObjectName="HouseLibrary">-->
@@ -205,5 +205,12 @@
             <!--<generatedKey column="id" sqlStatement="mysql"-->
                           <!--identity="true"/>-->
         <!--</table>-->
+        <!--开发商管理-->
+        <table schema="user_center" tableName="house_exploit"
+               domainObjectName="HouseExploit">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="mysql"
+                          identity="true"/>
+        </table>
     </context>
 </generatorConfiguration>
