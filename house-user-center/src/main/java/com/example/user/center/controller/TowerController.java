@@ -654,6 +654,12 @@ public class TowerController {
                                                             HttpServletResponse response
                                                             ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
+        if (text==null){
+            text = new String[]{};
+        }
+        if (Ttext==null){
+            Ttext = new String[]{};
+        }
         if (parentCategoryId!=0){
             //todo 添加的不是一级分类
             HouseLibraryCategory houseLibraryCategory = houseLibraryCategoryMapper.selectByPrimaryKey(parentCategoryId);
