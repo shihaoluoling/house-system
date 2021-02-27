@@ -232,8 +232,7 @@ public class LoginController {
         HouseAuthExample example = new HouseAuthExample();
         example.createCriteria().andAuthKeyEqualTo(phone)
                 .andAuthTypeEqualTo(Login.PHONE.getPaymentTypeName())
-                .andIsDeletedEqualTo((byte) 0)
-                .andAuthStatusEqualTo(String.valueOf(0));
+                .andIsDeletedEqualTo((byte) 0);
         List<HouseAuth> list = houseAuthMapper.selectByExample(example);
         if(!list.isEmpty()) {
             response.sendError(HttpStatus.UNAUTHORIZED.value(), "手机号存在");
@@ -284,6 +283,11 @@ public class LoginController {
                                                @RequestParam(name = "userId") Integer userId
                                              ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder();
+        HouseUser houseUser = new HouseUser();
+        houseUser.setId(userId);
+        houseUser.setUserStatus((byte) 1);
+        houseUser.setModifyDate(LocalDateTime.now());
+        houseUserMapper.updateByPrimaryKeySelective(houseUser);
         HouseAuthExample houseAuthExample = new HouseAuthExample();
         houseAuthExample.createCriteria().andUserIdEqualTo(userId)
                 .andIsDeletedEqualTo((byte) 0);
@@ -355,6 +359,7 @@ public class LoginController {
             List<HouseAuth> houseAuth = houseAuthMapper.selectByExample(houseAuthExample);
             if (houseAuth.size() !=0){
                 selectUser.setPhone(houseAuth.get(0).getAuthKey());
+                selectUser.setState(houseAuth.get(0).getAuthStatus());
             }
             houseAuthExample.clear();
             houseAuthExample.createCriteria()

@@ -2,14 +2,17 @@ package com.example.user.center.manual;
 
 /**
  * @author shihao
- * @Title: SelectUser
+ * @Title: User
  * @ProjectName Second-order-center
- * @Description:
+ * @Description: 用户
  * @date Created in
  * @Version: $
  */
-public class SelectUser {
+public class User {
     private Integer userId;
+    private Integer authId;
+    private String name;
+    private String password;
     private String state;
     private String phone;
     private String userName;
@@ -21,6 +24,38 @@ public class SelectUser {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public Integer getAuthId() {
+        return authId;
+    }
+
+    public void setAuthId(Integer authId) {
+        this.authId = authId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getPhone() {
@@ -45,13 +80,5 @@ public class SelectUser {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
     }
 }

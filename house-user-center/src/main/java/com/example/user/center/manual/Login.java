@@ -9,8 +9,9 @@ package com.example.user.center.manual;
  * @Version: $
  */
 public enum  Login {
-    PHONE("phone"),//手机号登录
-    ADMIN("admin");//后台账号密码登录
+    PHONE("phone"),//后台手机号登录
+    ADMIN("admin"),//后台账号密码登录
+    WEBADMIN("webadmin");//前台账号密码登录
     private String paymentTypeName;
 
     Login(String paymentTypeName) {
