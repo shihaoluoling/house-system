@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author shihao
@@ -97,11 +98,18 @@ public class UserController {
     @RequestMapping(value = "/userSelect", method = RequestMethod.GET)
     @ApiOperation(value = "用户登录查询", notes = "用户登录查询")
     public ResponseEntity<JSONObject> userSelect(
+            String name,String username,String phone
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder();
         HouseUserExample houseUserExample = new HouseUserExample();
-        houseUserExample.createCriteria().andUserTypeEqualTo(UserType.USER.getPaymentTypeName())
+        HouseUserExample.Criteria criteria = houseUserExample.createCriteria().andUserTypeEqualTo(UserType.USER.getPaymentTypeName())
                 .andIsDeletedEqualTo((byte) 0);
+        if (name!=null){
+            criteria.andNickNameEqualTo(name);
+        }
+        if (phone!=null){
+            criteria.andPhoneEqualTo(phone);
+        }
         List<HouseUser> houseUsers =
                 houseUserMapper.selectByExample(houseUserExample);
         List<User> users = new ArrayList<>();
@@ -125,6 +133,10 @@ public class UserController {
             }
             users.add(user);
         });
+        if (username!=null){
+            List<User> users1 = users.stream().filter(a-> a.getUserName().equals(username)).collect(Collectors.toList());
+            return builder.body(ResponseUtils.getResponseBody(users1));
+        }
         return builder.body(ResponseUtils.getResponseBody(users));
     }
 }

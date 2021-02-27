@@ -19,6 +19,7 @@ public class SelectProject {
     private List<String> developersName;//开发商
     private String exploitName;//开发名称
     private Integer exploitid;//开发id
+    private String remark;//备注
     private Map<String, List<String>> LandType;//土地和下面的楼盘
 
 
@@ -68,5 +69,13 @@ public class SelectProject {
 
     public void setExploitid(Integer exploitid) {
         this.exploitid = exploitid;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 }

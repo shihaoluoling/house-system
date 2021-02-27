@@ -62,6 +62,7 @@ public class ProjectController {
             @RequestParam(name = "projectName") String projectName,
             @RequestParam(name = "developersName") String developersName,
             @RequestParam(name = "exploitId") Integer exploitId,
+            @RequestParam(name = "remark") String remark,
             HttpServletResponse response
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
@@ -72,6 +73,7 @@ public class ProjectController {
         houseProject.setCreateDate(LocalDateTime.now());
         houseProject.setModifyDate(LocalDateTime.now());
         houseProject.setIsDeleted((byte) 0);
+        houseProject.setRemark(remark);
         houseProjectMapper.insertSelective(houseProject);
         return builder.body(ResponseUtils.getResponseBody(0));
     }
@@ -89,6 +91,7 @@ public class ProjectController {
             @RequestParam(name = "developersName") String developersName,
             @RequestParam(name = "projectId") Integer projectId,
             @RequestParam(name = "exploitId") Integer exploitId,
+            @RequestParam(name = "remark") String remark,
             HttpServletResponse response
     ) throws Exception {
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
@@ -98,6 +101,7 @@ public class ProjectController {
         houseProject.setProjectName(projectName);
         houseProject.setDevelopersName(developersName);
         houseProject.setModifyDate(LocalDateTime.now());
+        houseProject.setRemark(remark);
         houseProjectMapper.updateByPrimaryKeySelective(houseProject);
         return builder.body(ResponseUtils.getResponseBody(0));
     }
@@ -141,6 +145,7 @@ public class ProjectController {
         List<SelectProject> selectProjects = new ArrayList<>();
         houseProjects.forEach(houseProject -> {
             SelectProject selectProject = new SelectProject();
+            selectProject.setRemark(houseProject.getRemark());
             selectProject.setExploitid(houseProject.getExploitId());
             if (houseProject.getExploitId()!=null){
                 HouseExploit houseExploit = houseExploitMapper.selectByPrimaryKey(houseProject.getExploitId());

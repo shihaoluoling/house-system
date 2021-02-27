@@ -206,11 +206,11 @@
                           <!--identity="true"/>-->
         <!--</table>-->
         <!--开发商管理-->
-        <table schema="user_center" tableName="house_exploit"
-               domainObjectName="HouseExploit">
-            <property name="useActualColumnNames" value="false"/>
-            <generatedKey column="id" sqlStatement="mysql"
-                          identity="true"/>
-        </table>
+        <!--<table schema="user_center" tableName="house_exploit"-->
+               <!--domainObjectName="HouseExploit">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="mysql"-->
+                          <!--identity="true"/>-->
+        <!--</table>-->
     </context>
 </generatorConfiguration>
