@@ -101,14 +101,16 @@ public class TowerController {
         houseTower.setCreateDate(LocalDateTime.now());
         houseTower.setModifyDate(LocalDateTime.now());
         houseTower.setIsDeleted((byte) 0);
+        houseTower.setSynchronizationNo(synchronizationNo);
         houseTowerNoMapper.insertSelective(houseTower);
         if (synchronizationNo!=null){
             // todo同步库
             HouseTowerLibraryExample houseTowerLibraryExample = new HouseTowerLibraryExample();
             houseTowerLibraryExample.createCriteria()
-                    .andTowerNoIdEqualTo(houseTower.getId())
+                    .andTowerNoIdEqualTo(synchronizationNo)
                     .andIsDeletedEqualTo((byte) 0);
             List<HouseTowerLibrary> houseTowerLibrarys = houseTowerLibraryMapper.selectByExample(houseTowerLibraryExample);
+            System.out.println("tongbu:"+houseTowerLibrarys.get(0));
             Set<Integer> libraryIds = houseTowerLibrarys.stream().map(HouseTowerLibrary::getLibraryId).collect(Collectors.toSet());
             for (Integer libraryId : libraryIds){
                 HouseTowerLibrary houseTowerLibrary = new HouseTowerLibrary();
