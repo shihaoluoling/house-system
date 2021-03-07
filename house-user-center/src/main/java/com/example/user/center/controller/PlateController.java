@@ -219,7 +219,9 @@ private HousePlateMapper housePlateMapper;
             //查询行政区
             HouseAdministrative houseAdministrative =
             houseAdministrativeMapper.selectByPrimaryKey(housePlate.getAdministrativeId());
-            selectPlate.setAdministrative(houseAdministrative.getAdministrativeName());
+            if (houseAdministrative!=null){
+                selectPlate.setAdministrative(houseAdministrative.getAdministrativeName());
+            }
             //板块地址
             selectPlate.setAddress(housePlate.getAddress());
             //标签

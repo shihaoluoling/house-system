@@ -69,7 +69,11 @@ public class AdministrativeController {
     public ResponseEntity<JSONObject> deleteAdministrative(Integer id) throws Exception {
         //constituteId 户型组成id
         ResponseEntity.BodyBuilder builder = ResponseUtils.getBodyBuilder(HttpStatus.OK);
-        houseAdministrativeMapper.deleteByPrimaryKey(id);
+        HouseAdministrative houseAdministrative = new HouseAdministrative();
+        houseAdministrative.setId(id);
+        houseAdministrative.setIsDeleted((byte) 1);
+        houseAdministrative.setModifyDate(LocalDateTime.now());
+        houseAdministrativeMapper.updateByPrimaryKeySelective(houseAdministrative);
         return builder.body(ResponseUtils.getResponseBody(0));
     }
     @ApiOperation(value = "查询区域", notes = "查询区域")
